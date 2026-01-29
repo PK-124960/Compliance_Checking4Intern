@@ -8,7 +8,8 @@ import {
     ChevronRight,
     Sparkles,
     Play,
-    Brain
+    Brain,
+    Workflow
 } from 'lucide-react'
 
 const navItems = [
@@ -16,6 +17,7 @@ const navItems = [
     { path: '/rules', icon: FileText, label: 'Rules' },
     { path: '/fol', icon: Code, label: 'FOL Viewer' },
     { path: '/validation', icon: Shield, label: 'Validation' },
+    { path: '/pipeline', icon: Workflow, label: 'Pipeline' },
     { path: '/demo', icon: Play, label: 'Live Demo' },
     { path: '/agent', icon: Brain, label: 'Agentic System' },
 ]
