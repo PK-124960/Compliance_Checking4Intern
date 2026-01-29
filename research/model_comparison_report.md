@@ -1,6 +1,6 @@
 # LLM Model Comparison for Policy Rule Verification
 
-**Generated:** 2026-01-29T16:50:21.660613
+**Generated:** 2026-01-29T16:56:43.790947
 
 ## Overview
 
@@ -20,26 +20,26 @@ This report compares three Large Language Models (LLMs) for their ability to ide
 
 | Model | Rules Found | Not Rules | Errors | Rule Rate | Avg Confidence |
 |-------|-------------|-----------|--------|-----------|----------------|
-| llama3.2 | 4 | 0 | 1 | 80.0% | 0.74 |
-| phi3 | 4 | 0 | 1 | 80.0% | 0.76 |
-| mistral | 5 | 0 | 0 | 100.0% | 0.98 |
-| mixtral | 5 | 0 | 0 | 100.0% | 0.93 |
-| llama3.1:70b | 5 | 0 | 0 | 100.0% | 0.88 |
+| llama3.2 | 93 | 0 | 4 | 95.9% | 0.88 |
+| phi3 | 92 | 1 | 4 | 94.8% | 0.91 |
+| mistral | 96 | 1 | 0 | 99.0% | 0.98 |
+| mixtral | 95 | 0 | 2 | 97.9% | 0.91 |
+| llama3.1:70b | 90 | 5 | 2 | 92.8% | 0.89 |
 
 ### Inter-Model Agreement
 
 | Model Pair | Agreement Rate |
 |------------|----------------|
-| llama3.2 vs phi3 | 80.0% |
-| llama3.2 vs mistral | 80.0% |
-| llama3.2 vs mixtral | 80.0% |
-| llama3.2 vs llama3.1:70b | 80.0% |
-| phi3 vs mistral | 80.0% |
-| phi3 vs mixtral | 80.0% |
-| phi3 vs llama3.1:70b | 80.0% |
-| mistral vs mixtral | 100.0% |
-| mistral vs llama3.1:70b | 100.0% |
-| mixtral vs llama3.1:70b | 100.0% |
+| llama3.2 vs phi3 | 90.7% |
+| llama3.2 vs mistral | 94.8% |
+| llama3.2 vs mixtral | 93.8% |
+| llama3.2 vs llama3.1:70b | 88.7% |
+| phi3 vs mistral | 95.9% |
+| phi3 vs mixtral | 93.8% |
+| phi3 vs llama3.1:70b | 89.7% |
+| mistral vs mixtral | 96.9% |
+| mistral vs llama3.1:70b | 93.8% |
+| mixtral vs llama3.1:70b | 90.7% |
 
 ## Sample Comparisons
 
@@ -48,10 +48,15 @@ The following table shows how models classified the same rule text:
 | Rule ID | Llama 3.2 | Mistral | Phi3 |
 |---------|-----------|---------|------|
 | GS-001 | ✅ | ✅ | ✅ |
-| GS-002 | ❌ | ✅ | ❌ |
+| GS-002 | ✅ | ✅ | ✅ |
 | GS-003 | ✅ | ✅ | ✅ |
 | GS-004 | ✅ | ✅ | ✅ |
 | GS-005 | ✅ | ✅ | ✅ |
+| GS-006 | ✅ | ✅ | ✅ |
+| GS-007 | ✅ | ✅ | ✅ |
+| GS-008 | ✅ | ✅ | ✅ |
+| GS-009 | ✅ | ✅ | ✅ |
+| GS-010 | ✅ | ✅ | ✅ |
 
 ## Methodology Notes
 
