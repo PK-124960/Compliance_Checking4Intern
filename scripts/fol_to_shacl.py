@@ -24,6 +24,7 @@ PREFIXES = """
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix ait: <http://example.org/ait-policy#> .
 @prefix deontic: <http://example.org/deontic#> .
 """
