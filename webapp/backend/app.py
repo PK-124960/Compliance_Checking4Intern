@@ -20,6 +20,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from agent.routes import agent_bp
 app.register_blueprint(agent_bp)
 
+# Register pipeline blueprint
+from backend.routes.pipeline import pipeline_bp
+app.register_blueprint(pipeline_bp)
+
 # Paths
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 RESEARCH_DIR = PROJECT_ROOT / "research"

@@ -8,6 +8,8 @@ import Validation from './pages/Validation'
 import Demo from './pages/Demo'
 import Agent from './pages/Agent'
 import Pipeline from './pages/Pipeline'
+import Upload from './pages/Upload'
+import ModelComparison from './pages/ModelComparison'
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -29,6 +31,8 @@ function App() {
                             <Route path="/demo" element={<Demo />} />
                             <Route path="/agent" element={<Agent />} />
                             <Route path="/pipeline" element={<Pipeline />} />
+                            <Route path="/upload" element={<Upload />} />
+                            <Route path="/compare" element={<ModelComparison />} />
                         </Routes>
                     </div>
                 </main>

@@ -9,11 +9,15 @@ import {
     Sparkles,
     Play,
     Brain,
-    Workflow
+    Workflow,
+    Upload,
+    BarChart3
 } from 'lucide-react'
 
 const navItems = [
     { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
+    { path: '/upload', icon: Upload, label: 'Process Document', highlight: true },
+    { path: '/compare', icon: BarChart3, label: 'Model Comparison' },
     { path: '/rules', icon: FileText, label: 'Rules' },
     { path: '/fol', icon: Code, label: 'FOL Viewer' },
     { path: '/validation', icon: Shield, label: 'Validation' },
@@ -47,11 +51,13 @@ export default function Sidebar({ open, setOpen }) {
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
                                 ? 'bg-blue-50 text-blue-600 font-semibold'
-                                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                                : item.highlight
+                                    ? 'text-purple-600 hover:text-purple-700 hover:bg-purple-50 font-medium'
+                                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
                             }`
                         }
                     >
-                        <item.icon className="w-5 h-5 flex-shrink-0" />
+                        <item.icon className={`w-5 h-5 flex-shrink-0 ${item.highlight ? 'text-purple-500' : ''}`} />
                         {open && <span className="font-medium">{item.label}</span>}
                     </NavLink>
                 ))}
