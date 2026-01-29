@@ -1,6 +1,57 @@
-# version: "3.8"
+version: '3.8'
 
 services:
+  # ============================================
+  # PolicyChecker Web Application
+  # ============================================
+  
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: policychecker-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./research:/app/research
+      - ./shacl:/app/shacl
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/policychecker
+    depends_on:
+      - postgres
+    networks:
+      - ait-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: policychecker-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - ait-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ============================================
+  # Database Services (Existing)
+  # ============================================
+  
   graphdb:
     image: ontotext/graphdb:11.1.1
     container_name: my-graphdb
@@ -23,10 +74,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    # environment:
-    #   - POSTGRES_DB=
-    #   - POSTGRES_USER=
-    #   - POSTGRES_PASSWORD=
     networks:
       - ait-network
 
