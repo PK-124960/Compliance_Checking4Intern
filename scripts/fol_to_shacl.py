@@ -69,6 +69,16 @@ def fol_to_shacl_shape(rule: Dict, index: int) -> str:
     expansion = fol.get('fol_expansion', '')
     original_text = rule.get('original_text', '')[:100]
     
+    # Clean text for Turtle format - escape newlines and special chars
+    def clean_for_turtle(text: str) -> str:
+        text = text.replace('\n', ' ').replace('\r', ' ')
+        text = text.replace('"', "'").replace('\\', '')
+        text = re.sub(r'\s+', ' ', text).strip()
+        return text
+    
+    original_clean = clean_for_turtle(original_text)
+    formula_clean = clean_for_turtle(formula)[:80]
+    
     # Extract main subject/class
     predicates = extract_predicates(formula + ' ' + expansion)
     main_class = predicates[0] if predicates else 'Thing'
@@ -80,15 +90,11 @@ def fol_to_shacl_shape(rule: Dict, index: int) -> str:
     shape_name = f"ait:{normalize_predicate(rule_id)}Shape"
     
     shape = f"""
-# ===========================================
 # {rule_id}: {deontic_type.upper()}
-# Original: "{original_text}..."
-# FOL: {formula[:80]}...
-# ===========================================
 {shape_name} a sh:NodeShape ;
     sh:targetClass ait:{normalize_predicate(main_class)} ;
     rdfs:label "{rule_id}" ;
-    rdfs:comment "{original_text.replace('"', "'")}" ;
+    rdfs:comment "{original_clean}" ;
     deontic:type deontic:{deontic_type} ;
     sh:severity {severity} ;
 """
