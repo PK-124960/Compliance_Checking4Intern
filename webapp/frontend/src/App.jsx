@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Rules from './pages/Rules'
 import FOLViewer from './pages/FOLViewer'
 import Validation from './pages/Validation'
+import Demo from './pages/Demo'
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -23,6 +24,7 @@ function App() {
                             <Route path="/rules" element={<Rules />} />
                             <Route path="/fol" element={<FOLViewer />} />
                             <Route path="/validation" element={<Validation />} />
+                            <Route path="/demo" element={<Demo />} />
                         </Routes>
                     </div>
                 </main>

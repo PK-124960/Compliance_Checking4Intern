@@ -6,7 +6,8 @@ import {
     Shield,
     ChevronLeft,
     ChevronRight,
-    Sparkles
+    Sparkles,
+    Play
 } from 'lucide-react'
 
 const navItems = [
@@ -14,6 +15,7 @@ const navItems = [
     { path: '/rules', icon: FileText, label: 'Rules' },
     { path: '/fol', icon: Code, label: 'FOL Viewer' },
     { path: '/validation', icon: Shield, label: 'Validation' },
+    { path: '/demo', icon: Play, label: 'Live Demo' },
 ]
 
 export default function Sidebar({ open, setOpen }) {

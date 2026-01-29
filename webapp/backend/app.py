@@ -198,6 +198,77 @@ def export_data(format):
     return jsonify({"error": "Invalid format"}), 400
 
 # ============================================
+# DEMO USE CASE - Student Compliance Checking
+# ============================================
+
+SAMPLE_STUDENTS = [
+    {"id": "STU001", "name": "John Doe", "program": "Master of CS", "status": "enrolled", 
+     "fees_paid": True, "visa_valid": True, "gpa": 3.5, "accommodation": "on_campus"},
+    {"id": "STU002", "name": "Jane Smith", "program": "PhD Data Science", "status": "enrolled",
+     "fees_paid": False, "visa_valid": True, "gpa": 3.8, "accommodation": "on_campus"},
+    {"id": "STU003", "name": "Bob Wilson", "program": "Master of Eng", "status": "graduated",
+     "fees_paid": True, "visa_valid": False, "gpa": 3.2, "accommodation": "on_campus", "days_after_graduation": 10},
+    {"id": "STU004", "name": "Alice Brown", "program": "Diploma in AI", "status": "suspended",
+     "fees_paid": True, "visa_valid": True, "gpa": 1.8, "accommodation": "on_campus"}
+]
+
+POLICY_RULES = [
+    {"id": "FB-R002", "type": "obligation", "description": "Students must pay fees before registration",
+     "check": lambda s: s.get("fees_paid") or s.get("status") != "enrolled", "msg": "Outstanding fees"},
+    {"id": "FS-R048", "type": "prohibition", "description": "Graduated students cannot stay >5 days",
+     "check": lambda s: not (s.get("status") == "graduated" and s.get("days_after_graduation", 0) > 5), "msg": "Overstaying"},
+    {"id": "DOC-R058", "type": "prohibition", "description": "Suspended students cannot use accommodation",
+     "check": lambda s: not (s.get("status") == "suspended" and s.get("accommodation") == "on_campus"), "msg": "Suspended in dorm"},
+    {"id": "GPA-MIN", "type": "obligation", "description": "Minimum GPA of 2.0 required",
+     "check": lambda s: s.get("gpa", 0) >= 2.0 or s.get("status") != "enrolled", "msg": "GPA below minimum"},
+    {"id": "VISA", "type": "obligation", "description": "Valid visa required",
+     "check": lambda s: s.get("visa_valid"), "msg": "Invalid visa"}
+]
+
+def check_compliance(student):
+    violations, passed = [], []
+    for rule in POLICY_RULES:
+        try:
+            if rule["check"](student):
+                passed.append({"rule_id": rule["id"], "type": rule["type"], "description": rule["description"]})
+            else:
+                violations.append({"rule_id": rule["id"], "type": rule["type"], "description": rule["description"], "msg": rule["msg"]})
+        except: pass
+    return {
+        "student_id": student["id"], "student_name": student["name"],
+        "passed": len(passed), "violations": len(violations),
+        "compliance_rate": round(len(passed) / len(POLICY_RULES) * 100, 1),
+        "is_compliant": len(violations) == 0,
+        "passed_rules": passed, "violation_details": violations
+    }
+
+@app.route('/api/demo/students', methods=['GET'])
+def get_students():
+    return jsonify(SAMPLE_STUDENTS)
+
+@app.route('/api/demo/check/<student_id>', methods=['GET'])
+def check_student(student_id):
+    student = next((s for s in SAMPLE_STUDENTS if s["id"] == student_id), None)
+    if not student: return jsonify({"error": "Not found"}), 404
+    return jsonify(check_compliance(student))
+
+@app.route('/api/demo/check-all', methods=['GET'])
+def check_all():
+    results = [check_compliance(s) for s in SAMPLE_STUDENTS]
+    return jsonify({
+        "total_students": len(SAMPLE_STUDENTS),
+        "compliant_students": sum(1 for r in results if r["is_compliant"]),
+        "non_compliant_students": sum(1 for r in results if not r["is_compliant"]),
+        "total_violations": sum(r["violations"] for r in results),
+        "student_results": results,
+        "summary": {"status": "ATTENTION REQUIRED" if any(not r["is_compliant"] for r in results) else "ALL COMPLIANT"}
+    })
+
+@app.route('/api/demo/rules', methods=['GET'])
+def get_demo_rules():
+    return jsonify([{"id": r["id"], "type": r["type"], "description": r["description"]} for r in POLICY_RULES])
+
+# ============================================
 # RUN SERVER
 # ============================================
 
