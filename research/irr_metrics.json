@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-01-31T06:05:58.144973",
+  "total_rules": 97,
+  "confusion_matrix": {
+    "true_positives": 81,
+    "true_negatives": 0,
+    "false_positives": 14,
+    "false_negatives": 2
+  },
+  "cohens_kappa": -0.0374,
+  "kappa_interpretation": "Poor (worse than chance)",
+  "accuracy": 83.51,
+  "precision": 85.26,
+  "recall": 97.59,
+  "f1_score": 91.01,
+  "agreement_rate": 83.51,
+  "rule_type_agreement": {
+    "permission": {
+      "agree": 33,
+      "disagree": 0
+    },
+    "obligation": {
+      "agree": 45,
+      "disagree": 0
+    },
+    "prohibition": {
+      "agree": 1,
+      "disagree": 2
+    }
+  },
+  "disagreements": [
+    {
+      "rule_id": "GS-029",
+      "text": "Having gathered the relevant\nfacts, the Grievance Committee should proceed to analyze\nthe grievance.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-032",
+      "text": "The instructor/invigilator should seek an explanation from\nthe student at the end of the examination...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-035",
+      "text": "If two or more students compete for a position and they are equally qualified to undertake\nthe work,...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-046",
+      "text": "No member of the AIT community, trustee, faculty, staff, or student, including\noutreach program part...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-055",
+      "text": "Furniture and appliances should not be removed from the accommodation\nunit.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-065",
+      "text": "The settlement should be supported by collated receipts issued under\nthe name of Asian Institute of ...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-066",
+      "text": "Students should move with the spouse when staff accommodation becomes\navailable.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-070",
+      "text": "The appeal should be\naddressed to the Vice President for Academic Affairs.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-077",
+      "text": "Hearings should normally be held\nwithin ten working days of the notice.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-079",
+      "text": "● Any safety and security concerns should be reported to Security Officer.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-081",
+      "text": "For training sessions, prior permission has to be taken from OFAM and\ntrainer might need to pay for ...",
+      "human": true,
+      "human_type": "obligation",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-082",
+      "text": "Questions about the plan, enrollment, claim should be directed to\nGenerali Life Assurance (Thailand)...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-085",
+      "text": "A student work time report should be completed for each student employee at the end\nof each month.",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-086",
+      "text": "Any\nevidence to be considered in the investigation should be reported to the\ncomplainee, who should ...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-088",
+      "text": "accommodation units dormitories not designed for such facilities, will be fined\nBaht 2,000 and charg...",
+      "human": true,
+      "human_type": "obligation",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    },
+    {
+      "rule_id": "GS-095",
+      "text": "2.3 Preliminary consultation should be available to any member of the Institute\ncommunity who wishes...",
+      "human": false,
+      "human_type": null,
+      "llm": true,
+      "llm_type": "obligation",
+      "llm_reasoning": "Fallback classification based on deontic markers"
+    }
+  ],
+  "threshold_met": false
+}
