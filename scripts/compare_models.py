@@ -41,7 +41,7 @@ MODELS = [
     "glm-4.7-flash",      # 30B - GLM reasoning
     "qwen3:32b",          # 32B - Alibaba latest
     # "qwen2.5:32b-instruct", # 32B - Alibaba instruction-tuned
-    "llama3.1:70b",       # 70B - Best accuracy (slow)
+    "llama3.1:70b"       # 70B - Best accuracy (slow)
 ]
 
 # Model metadata for thesis report
@@ -96,7 +96,7 @@ MODEL_INFO = {
         "year": 2024,
         "citation": "Qwen Team. (2024). Qwen Technical Report.",
         "type": "Large"
-    },
+    }
     # "qwen2.5:32b-instruct": {
     #     "size": "32B",
     #     "organization": "Alibaba Cloud",
