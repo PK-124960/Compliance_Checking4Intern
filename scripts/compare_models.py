@@ -32,14 +32,16 @@ except ImportError:
 PROJECT_ROOT = Path(__file__).parent.parent
 RESEARCH_DIR = PROJECT_ROOT / "research"
 
-# Research-backed models to compare
-# Each model has peer-reviewed evidence for text classification
+# Models available on HPC Ollama server (10.99.200.2:11434)
 MODELS = [
-    "llama3.2",      # 3B - Meta Technical Report 2024
-    "phi3",          # 3.8B - Microsoft Research 2024
-    "mistral",       # 7B - Mistral AI 2023
-    "mixtral",       # 47B MoE (13B active) - Mistral AI 2024, arXiv
-    "llama3.1:70b",  # 70B - Meta 2024 (best for classification per arXiv)
+    "mistral",            # 7B - Best for classification (primary)
+    "llama3.2",           # 3B - Fast baseline
+    "phi3",               # 3.8B - Microsoft compact
+    "mixtral",            # 47B MoE - High quality
+    "glm-4.7-flash",      # 30B - GLM reasoning
+    "qwen3:32b",          # 32B - Alibaba latest
+    "qwen2.5:32b-instruct", # 32B - Alibaba instruction-tuned
+    "llama3.1:70b",       # 70B - Best accuracy (slow)
 ]
 
 # Model metadata for thesis report
@@ -75,11 +77,33 @@ MODEL_INFO = {
     },
     "llama3.1:70b": {
         "size": "70B",
-        "organization": "Meta AI", 
+        "organization": "Meta AI",
         "year": 2024,
         "citation": "Meta AI. (2024). Llama 3.1 Model Card and Prompt Formats.",
         "evidence": "Fine-tuned Llama 3 outperforms RoBERTa-large on text classification (arXiv 2024)",
         "type": "Large"
+    },
+    "glm-4.7-flash": {
+        "size": "30B",
+        "organization": "Zhipu AI / Tsinghua",
+        "year": 2024,
+        "citation": "GLM Team. (2024). GLM-4 Technical Report.",
+        "type": "Large"
+    },
+    "qwen3:32b": {
+        "size": "32B",
+        "organization": "Alibaba Cloud",
+        "year": 2024,
+        "citation": "Qwen Team. (2024). Qwen Technical Report.",
+        "type": "Large"
+    },
+    "qwen2.5:32b-instruct": {
+        "size": "32B",
+        "organization": "Alibaba Cloud",
+        "year": 2024,
+        "citation": "Qwen Team. (2024). Qwen2.5 Technical Report.",
+        "evidence": "Instruction-tuned for following complex instructions",
+        "type": "Large (Instruct)"
     }
 }
 
@@ -391,8 +415,8 @@ Based on the comparison results:
 
 def main():
     parser = argparse.ArgumentParser(description="Multi-model comparison for rule verification")
-    parser.add_argument("--ollama-url", default="http://localhost:11434",
-                       help="Ollama API URL (e.g., http://hpc-host:11434)")
+    parser.add_argument("--ollama-url", default="http://10.99.200.2:11434",
+                       help="Ollama API URL (default: HPC server)")
     parser.add_argument("--gold-standard", default=str(RESEARCH_DIR / "gold_standard_template.json"),
                        help="Path to gold standard JSON file")
     parser.add_argument("--limit", type=int, help="Limit number of rules to process")

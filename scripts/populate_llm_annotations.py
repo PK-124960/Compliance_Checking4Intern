@@ -23,7 +23,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 RESEARCH_DIR = PROJECT_ROOT / "research"
 
 # Ollama configuration
-OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://compute02:11434")
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://10.99.200.2:11434")
 MODEL = "mistral"  # Best performing model based on comparison
 
 
