@@ -24,6 +24,10 @@ app.register_blueprint(agent_bp)
 from backend.routes.pipeline import pipeline_bp
 app.register_blueprint(pipeline_bp)
 
+# Register validation blueprint
+from backend.routes.validation import validation_bp
+app.register_blueprint(validation_bp)
+
 # Paths
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 RESEARCH_DIR = PROJECT_ROOT / "research"

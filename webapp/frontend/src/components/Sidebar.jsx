@@ -11,13 +11,15 @@ import {
     Brain,
     Workflow,
     Upload,
-    BarChart3
+    BarChart3,
+    CheckCircle
 } from 'lucide-react'
 
 const navItems = [
     { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/upload', icon: Upload, label: 'Process Document', highlight: true },
     { path: '/compare', icon: BarChart3, label: 'Model Comparison' },
+    { path: '/extraction-validation', icon: CheckCircle, label: 'Extraction QA' },
     { path: '/rules', icon: FileText, label: 'Rules' },
     { path: '/fol', icon: Code, label: 'FOL Viewer' },
     { path: '/validation', icon: Shield, label: 'Validation' },
