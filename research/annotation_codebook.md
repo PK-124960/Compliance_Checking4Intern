@@ -1,159 +1,242 @@
 # Policy Rule Annotation Codebook
-## Version 1.0 - Single Annotator with Advisor Sampling
 
-This codebook provides guidelines for annotating policy rules extracted from AIT P&P documents.
+## Purpose
 
----
-
-## 1. Syntactic Structure
-
-### 1.1 Sentence Type
-| Value | Definition | Example |
-|-------|------------|---------|
-| `simple` | Single independent clause | "Pets are not allowed." |
-| `compound` | Two+ independent clauses joined by coordinating conjunction | "Students must pay fees, and they must attend orientation." |
-| `complex` | Independent clause + dependent clause(s) | "Students who do not pay fees will be suspended." |
-| `compound-complex` | Multiple independent and dependent clauses | "If students fail to pay, they will be suspended, but they may appeal." |
-
-### 1.2 Clause Count
-Count the number of clauses (verb phrases) in the sentence.
-- Simple sentence: 1
-- "If X then Y": 2
-- "A and B and C": 3
-
-### 1.3 Nesting Depth
-Count how many levels of subordinate clauses exist.
-- "Students must pay." → 0
-- "Students who are enrolled must pay." → 1
-- "Students who have obligations that are overdue must pay." → 2
+This document provides guidelines for human annotators to classify policy statements from AIT institutional documents. The goal is to achieve consistent annotations for calculating inter-rater reliability (Cohen's Kappa).
 
 ---
 
-## 2. Deontic Markers
+## What is a Policy Rule?
 
-### 2.1 Deontic Marker
-| Marker | Examples |
-|--------|----------|
-| `must` | must, is required to, has to, shall |
-| `shall` | shall (often legal/formal) |
-| `may` | may, can, is permitted, is allowed |
-| `should` | should, ought to, is advised, is recommended |
-| `prohibited` | must not, shall not, is prohibited, cannot, not allowed |
-| `none` | No explicit deontic marker |
+A **policy rule** is a statement that:
 
-### 2.2 Deontic Type
-| Type | Meaning |
-|------|---------|
-| `obligation` | Something MUST be done |
-| `prohibition` | Something MUST NOT be done |
-| `permission` | Something MAY be done (optional) |
-| `recommendation` | Something SHOULD be done (not mandatory) |
+1. **Prescribes specific behavior** (obligation, permission, or prohibition)
+2. **Uses deontic language** (must, shall, may, should, cannot, etc.)
+3. **Has identifiable subjects** (students, employees, faculty, etc.)
+4. **Contains actionable requirements**
 
 ---
 
-## 3. Quantification
+## Deontic Markers Reference
 
-### 3.1 Quantification Type
-| Value | Definition | Example |
-|-------|------------|---------|
-| `universal` | Applies to ALL entities | "All students must...", "Every student..." |
-| `existential` | Applies to SOME entities | "At least one advisor...", "Some courses..." |
-| `negated_universal` | No entities | "No student may...", "None of the..." |
-| `implicit` | Quantification is implied | "Students must..." (implies all students) |
+### Strong Deontic Markers (Almost Always = Rule)
 
-### 3.2 Quantifier Words
-List actual words used: all, every, each, any, some, no, none, at least, etc.
+| Marker | Rule Type | Example |
+|--------|-----------|---------|
+| **must** | Obligation | "Students *must* submit fees before registration" |
+| **shall** | Obligation | "The committee *shall* review applications" |
+| **required/required to** | Obligation | "Students are *required* to attend orientation" |
+| **have to** | Obligation | "Employees *have to* report conflicts" |
+| **cannot/can not** | Prohibition | "Students *cannot* enroll without payment" |
+| **shall not** | Prohibition | "Members *shall not* disclose confidential..." |
+| **prohibited/forbidden** | Prohibition | "Smoking is *prohibited* in dormitories" |
+| **may** | Permission | "Students *may* appeal decisions" |
+| **permitted/allowed** | Permission | "Visitors are *permitted* to use facilities" |
 
----
+### Weak Deontic Markers (Context-Dependent)
 
-## 4. Conditional Structure
-
-### 4.1 Conditional Type
-| Value | Definition | Example |
-|-------|------------|---------|
-| `none` | No conditional | "Pets are not allowed." |
-| `single` | One condition | "If X, then Y" |
-| `conjunctive` | Multiple AND conditions | "If X and Y and Z, then W" |
-| `disjunctive` | Multiple OR conditions | "If X or Y, then Z" |
-| `nested` | Conditions within conditions | "If X, then (if Y then Z)" |
-
-### 4.2 Exception Presence
-Mark `True` if words like: unless, except, excluding, with the exception of, provided that (negating)
+| Marker | Default | When It's a Rule | When It's NOT a Rule |
+|--------|---------|------------------|---------------------|
+| **should** | Recommendation | Clear mandatory context | Advisory/suggestion |
+| **is expected to** | Expectation | Backed by policy | Social norm |
+| **will be** | Future | Consequence stated | Passive description |
 
 ---
 
-## 5. Temporal Elements
+## Decision Tree
 
-### 5.1 Temporal Types
-| Type | Examples |
-|------|----------|
-| `deadline` | within X days, before date, by time |
-| `duration` | for X period, during, throughout |
-| `sequence` | after, before, upon, following, prior to |
-| `frequency` | annually, per semester, monthly, each term |
-
-### 5.2 Temporal Expressions
-Record the actual phrases: "within two weeks", "before the end of semester", etc.
-
----
-
-## 6. Entity and Relationship
-
-### 6.1 Entity Types
-Common entities in AIT policies:
-- `student`, `staff`, `faculty`, `advisor`
-- `fee`, `payment`, `scholarship`
-- `course`, `registration`, `grade`
-- `accommodation`, `room`, `facility`
-- `document`, `form`, `application`
-- `department`, `office`, `committee`
-
-### 6.2 Relationship Complexity
-| Value | Definition | Example |
-|-------|------------|---------|
-| `direct` | Subject directly relates to object | "Student pays fee" |
-| `mediated` | Via intermediate entity | "Student has obligation; obligation has amount" |
-| `multi-hop` | Multiple intermediaries | "Student enrolled in program offered by department" |
+```
+                              Does the text contain a deontic marker?
+                                           │
+                              ┌────────────┼────────────┐
+                              │            │            │
+                             YES        UNCLEAR         NO
+                              │            │            │
+                              ▼            ▼            ▼
+                        Is there a    Check for      NOT A RULE
+                    clear subject?   implicit duty
+                              │            │
+                    ┌────────┼───────┐    │
+                   YES      NO       │    │
+                    │        │       │    │
+                    ▼        ▼       ▼    │
+              Is action   NOT A    MAYBE  │
+              specified?   RULE     ───────┘
+                    │
+           ┌───────┼───────┐
+          YES              NO
+           │                │
+           ▼                ▼
+      ✅ RULE         NOT A RULE
+```
 
 ---
 
-## 7. Ambiguity Indicators
+## Examples with Annotations
 
-### 7.1 Vague Terms
-Words without precise definition: large, appropriate, reasonable, timely, excessive, sufficient
+### Example 1: Clear Obligation ✅ RULE
 
-### 7.2 Implicit Knowledge
-Context needed beyond document: "as per standard procedure", "following normal process"
+> "Students **must** pay all fees before the start of the semester."
 
-### 7.3 Undefined References
-References to other documents or unspecified entities: "as specified in...", "according to policy..."
-
----
-
-## 8. Formalization Outcomes
-
-| Outcome | Definition |
-|---------|------------|
-| `SUCCESS` | Complete, valid FOL produced; can implement as SHACL |
-| `PARTIAL` | FOL produced but requires simplifications/assumptions |
-| `FAILURE-LINGUISTIC` | Cannot parse meaning unambiguously |
-| `FAILURE-EXPRESSIVE` | Meaning clear but beyond FOL/SHACL expressiveness |
-| `FAILURE-KNOWLEDGE` | Requires external knowledge not in policy |
+| Field | Value |
+|-------|-------|
+| is_rule | **true** |
+| rule_type | **obligation** |
+| deontic_marker | must |
+| subject | Students |
+| action | pay all fees |
+| confidence | 5 |
 
 ---
 
-## 9. Advisor Sampling Protocol
+### Example 2: Clear Permission ✅ RULE
 
-Since single-annotator approach is used:
-1. **Self-Review**: Annotate with high confidence first
-2. **Flag Uncertain**: Mark rules where annotation is uncertain
-3. **Advisor Sample**: Request advisor review on:
-   - All `PARTIAL` and `FAILURE` outcomes
-   - Rules with confidence < 3
-   - Complex rules (clause_count > 2)
-   - Rules with ambiguity indicators
-4. **Document Disagreements**: Record any annotation changes after review
+> "Students **may** appeal the decision to the Vice President."
+
+| Field | Value |
+|-------|-------|
+| is_rule | **true** |
+| rule_type | **permission** |
+| deontic_marker | may |
+| subject | Students |
+| action | appeal the decision |
+| confidence | 5 |
 
 ---
 
-*Codebook Version 1.0 - Created for ST124960 Thesis Research*
+### Example 3: Clear Prohibition ✅ RULE
+
+> "Sub-letting rooms is **prohibited** and may result in eviction."
+
+| Field | Value |
+|-------|-------|
+| is_rule | **true** |
+| rule_type | **prohibition** |
+| deontic_marker | prohibited |
+| subject | (Students - implied) |
+| action | sub-letting rooms |
+| confidence | 5 |
+
+---
+
+### Example 4: Recommendation ❌ NOT A RULE
+
+> "The committee **should** proceed to analyze the grievance."
+
+| Field | Value |
+|-------|-------|
+| is_rule | **false** |
+| rule_type | null |
+| notes | "Should" is advisory here |
+| confidence | 3 |
+
+**Why not a rule?** "Should" without mandatory context is a recommendation, not an enforceable rule.
+
+---
+
+### Example 5: Description ❌ NOT A RULE
+
+> "Students ride a pick-up known as 'Luth' to campus."
+
+| Field | Value |
+|-------|-------|
+| is_rule | **false** |
+| rule_type | null |
+| notes | Descriptive statement, no deontic content |
+| confidence | 5 |
+
+---
+
+### Example 6: Borderline Case - Annotate as RULE with Low Confidence
+
+> "The settlement **should** be supported by collated receipts."
+
+| Field | Value |
+|-------|-------|
+| is_rule | **true** |
+| rule_type | **obligation** |
+| deontic_marker | should |
+| notes | Borderline - could be recommendation |
+| confidence | 2 |
+
+**When uncertain:** Annotate as you interpret it, but lower confidence (1-2).
+
+---
+
+## Confidence Scale
+
+| Score | Meaning |
+|-------|---------|
+| 5 | Very confident - clear-cut case |
+| 4 | Confident - minor interpretation needed |
+| 3 | Moderately confident - some ambiguity |
+| 2 | Uncertain - could go either way |
+| 1 | Very uncertain - guessing |
+
+---
+
+## Special Cases
+
+### 1. "Should" Statements
+
+**Default:** NOT a rule (recommendation)
+
+**Exception - IS a rule if:**
+
+- Followed by consequences ("should... otherwise...")
+- Part of a policy with enforcement mechanisms
+- Context makes it clearly mandatory
+
+### 2. Conditional Statements
+
+Still a rule if the condition + action are clear:
+> "If a student fails to pay, they shall be deregistered."
+
+**→ IS a rule** (conditional obligation)
+
+### 3. Passive Voice
+
+Rewrite mentally to identify subject:
+> "Fees are required to be paid before registration."
+> → "Students are required to pay fees..."
+
+**→ IS a rule** (obligation)
+
+### 4. Lists within Rules
+
+If the sentence is part of a numbered list under a rule heading, it likely IS a rule.
+
+---
+
+## Annotation Template
+
+For each text, provide:
+
+```json
+{
+  "is_rule": true | false,
+  "rule_type": "obligation" | "permission" | "prohibition" | null,
+  "deontic_marker": "the specific word" | null,
+  "subject": "who this applies to" | null,
+  "action": "what must/may/cannot be done" | null,
+  "condition": "when/if this applies" | null,
+  "confidence": 1-5,
+  "notes": "any clarification"
+}
+```
+
+---
+
+## Annotator Agreement
+
+After independent annotation:
+
+1. Calculate Cohen's Kappa on `is_rule` (binary)
+2. Resolve disagreements through discussion
+3. Document final consensus
+
+**Target:** κ ≥ 0.80 (substantial agreement)
+
+---
+
+*Version: 1.0 | Created: 2026-01-31*
