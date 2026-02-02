@@ -1,42 +1,60 @@
 {
-  "timestamp": "2026-01-31T06:05:58.144973",
-  "total_rules": 97,
+  "timestamp": "2026-02-02T23:41:49.946636",
+  "total_rules": 96,
   "confusion_matrix": {
-    "true_positives": 81,
-    "true_negatives": 0,
-    "false_positives": 14,
-    "false_negatives": 2
+    "true_positives": 70,
+    "true_negatives": 7,
+    "false_positives": 7,
+    "false_negatives": 12
   },
-  "cohens_kappa": -0.0374,
-  "kappa_interpretation": "Poor (worse than chance)",
-  "accuracy": 83.51,
-  "precision": 85.26,
-  "recall": 97.59,
-  "f1_score": 91.01,
-  "agreement_rate": 83.51,
+  "cohens_kappa": 0.308,
+  "kappa_interpretation": "Fair agreement",
+  "accuracy": 80.21,
+  "precision": 90.91,
+  "recall": 85.37,
+  "f1_score": 88.05,
+  "agreement_rate": 80.21,
   "rule_type_agreement": {
     "permission": {
-      "agree": 33,
-      "disagree": 0
+      "agree": 8,
+      "disagree": 14
     },
     "obligation": {
       "agree": 45,
       "disagree": 0
     },
     "prohibition": {
-      "agree": 1,
-      "disagree": 2
+      "agree": 3,
+      "disagree": 0
     }
   },
   "disagreements": [
     {
-      "rule_id": "GS-029",
-      "text": "Having gathered the relevant\nfacts, the Grievance Committee should proceed to analyze\nthe grievance.",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "rule_id": "GS-011",
+      "text": "For subsequent semesters, these\nstudents may opt to reside off-campus.",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text 'For subsequent semesters, these students may opt to reside off-campus' is a statement of permission, not a policy rule."
+    },
+    {
+      "rule_id": "GS-016",
+      "text": "A student dormitory may be allocated for a\nmaximum period of one month, in case of availability to:\n...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator and it is stating a fact about the availability period for a student dormitory, not specifying an obligation, permission, or prohibition."
+    },
+    {
+      "rule_id": "GS-030",
+      "text": "39 up to Rangsit and from there\nmay ride a pick-up, popularly known as \"Luth\".",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text provides a permission, but it lacks clear mandatory intent and specific actions."
     },
     {
       "rule_id": "GS-032",
@@ -45,7 +63,25 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text clearly outlines an obligation for the subject to take specific actions (seek an explanation and submit a report) with the deontic operator 'should'."
+    },
+    {
+      "rule_id": "GS-033",
+      "text": "2.5 Direct communication may sometimes follow consultation, the complainant\nseeking the advice of on...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator and does not impose an obligation, permission, or prohibition."
+    },
+    {
+      "rule_id": "GS-034",
+      "text": "This is an area where our cultural differences can lead to additional\nmisunderstanding; for example,...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator or specific actionable requirements."
     },
     {
       "rule_id": "GS-035",
@@ -54,7 +90,7 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text contains a deontic operator 'should', it specifies an obligation (preference should be given), and there is a clear subject (students competing for a position)."
     },
     {
       "rule_id": "GS-046",
@@ -63,7 +99,34 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text contains a deontic operator 'should', specifies an obligation to not interfere with others' study, work or home environment, and has a clear subject"
+    },
+    {
+      "rule_id": "GS-048",
+      "text": "In emergency cases or if any medical emergency\nassistance is required, the nurse on duty can be cont...",
+      "human": true,
+      "human_type": "obligation",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text provides information about how to contact the nurse in an emergency, but does not contain a deontic operator and does not impose any mandatory actions, so it is not considered a policy rule."
+    },
+    {
+      "rule_id": "GS-049",
+      "text": "Notes of the interview will be recorded and\nshould be agreed upon by all parties.",
+      "human": true,
+      "human_type": "obligation",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text contains 'should', which is often a recommendation rather than a mandatory rule."
+    },
+    {
+      "rule_id": "GS-052",
+      "text": "When getting off at the Don Muang (Bangkok International Airport), you may\ntake local buses no.",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a DEONTIC operator that specifies an OBLIGATION, PERMISSION, or PROHIBITION with clear SUBJECT and actionable REQUIREMENTS."
     },
     {
       "rule_id": "GS-055",
@@ -71,44 +134,35 @@
       "human": false,
       "human_type": null,
       "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_type": "prohibition",
+      "llm_reasoning": "The text 'Furniture and appliances should not be removed from the accommodation unit' is a prohibition rule as it specifies that something cannot be done (removing furniture and appliances). The deontic marker 'should not' indicates this, although it's often used for recommendations, in this context, it carries a clear prohibitive intent."
     },
     {
-      "rule_id": "GS-065",
-      "text": "The settlement should be supported by collated receipts issued under\nthe name of Asian Institute of ...",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "rule_id": "GS-067",
+      "text": "In discharging his/her responsibility to implement this Policy, the President may\nbe assisted by the...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator specifying an obligation, permission or prohibition."
     },
     {
-      "rule_id": "GS-066",
-      "text": "Students should move with the spouse when staff accommodation becomes\navailable.",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "rule_id": "GS-068",
+      "text": "The AIT campus includes a diverse mixture of settings,\nfrom offices, classrooms and laboratories to ...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator or any specific actionable requirements."
     },
     {
-      "rule_id": "GS-070",
-      "text": "The appeal should be\naddressed to the Vice President for Academic Affairs.",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
-    },
-    {
-      "rule_id": "GS-077",
-      "text": "Hearings should normally be held\nwithin ten working days of the notice.",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "rule_id": "GS-069",
+      "text": "2.2 Consultation refers, in this context, to discussion of problems or potential\nproblems before rec...",
+      "human": true,
+      "human_type": "permission",
+      "llm": false,
+      "llm_type": null,
+      "llm_reasoning": "The text does not contain a deontic operator and does not specify an obligation, permission, or prohibition."
     },
     {
       "rule_id": "GS-079",
@@ -117,25 +171,7 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
-    },
-    {
-      "rule_id": "GS-081",
-      "text": "For training sessions, prior permission has to be taken from OFAM and\ntrainer might need to pay for ...",
-      "human": true,
-      "human_type": "obligation",
-      "llm": false,
-      "llm_type": null,
-      "llm_reasoning": "Fallback classification based on deontic markers"
-    },
-    {
-      "rule_id": "GS-082",
-      "text": "Questions about the plan, enrollment, claim should be directed to\nGenerali Life Assurance (Thailand)...",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The use of 'should' in this context implies an obligation to act."
     },
     {
       "rule_id": "GS-085",
@@ -144,7 +180,7 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text instructs 'a student work time report should be completed', implying an obligation for the student employee to do so."
     },
     {
       "rule_id": "GS-086",
@@ -153,25 +189,16 @@
       "human_type": null,
       "llm": true,
       "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text specifies that the investigator must report evidence and give the complainee an opportunity to challenge it or present evidence in defense."
     },
     {
-      "rule_id": "GS-088",
-      "text": "accommodation units dormitories not designed for such facilities, will be fined\nBaht 2,000 and charg...",
+      "rule_id": "GS-094",
+      "text": "The duties of non-\ninstructional teaching assistants may include assisting faculty in preparing mate...",
       "human": true,
-      "human_type": "obligation",
+      "human_type": "permission",
       "llm": false,
       "llm_type": null,
-      "llm_reasoning": "Fallback classification based on deontic markers"
-    },
-    {
-      "rule_id": "GS-095",
-      "text": "2.3 Preliminary consultation should be available to any member of the Institute\ncommunity who wishes...",
-      "human": false,
-      "human_type": null,
-      "llm": true,
-      "llm_type": "obligation",
-      "llm_reasoning": "Fallback classification based on deontic markers"
+      "llm_reasoning": "The text does not contain a deontic operator (must, shall, may, should) and it is describing duties rather than enforcing obligations, permissions, or prohibitions."
     }
   ],
   "threshold_met": false
