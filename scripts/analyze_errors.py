@@ -26,23 +26,24 @@ import re
 
 
 def load_gold_standard(filepath: str):
-    """Load gold standard annotations"""
+    """Load gold standard annotations - ALL entries like thesis methodology"""
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    # Extract only rules (is_rule=true)
-    rules = []
+    # Extract ALL entries (both rules and non-rules) to match thesis
+    all_entries = []
     for item in data:
         human_ann = item.get('human_annotation', {})
-        if human_ann.get('is_rule', True):
-            rules.append({
-                'id': item.get('id', ''),
-                'text': item.get('text', item.get('original_text', '')),
-                'rule_type': human_ann.get('rule_type'),
-                'source': item.get('source_document', '')
-            })
+        # Include everything, even non-rules
+        all_entries.append({
+            'id': item.get('id', ''),
+            'text': item.get('text', item.get('original_text', '')),
+            'rule_type': human_ann.get('rule_type'),
+            'is_rule': human_ann.get('is_rule', True),
+            'source': item.get('source_document', '')
+        })
     
-    return rules
+    return all_entries
 
 
 def load_model_predictions(filepath: str):
