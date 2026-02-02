@@ -286,13 +286,14 @@ def calculate_agreement_stats(annotated: list) -> dict:
 
 def main():
     """Main execution flow."""
+    global OLLAMA_HOST  # Declare global before first use
+    
     parser = argparse.ArgumentParser(description="LLM Annotation with Connection Verification")
     parser.add_argument("--test-connection", action="store_true", help="Test Ollama connection only")
     parser.add_argument("--run", action="store_true", help="Run annotation (requires successful connection)")
     parser.add_argument("--host", default=OLLAMA_HOST, help=f"Ollama host (default: {OLLAMA_HOST})")
     args = parser.parse_args()
     
-    global OLLAMA_HOST
     OLLAMA_HOST = args.host
     
     print("=" * 60)
