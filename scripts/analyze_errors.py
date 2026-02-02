@@ -166,7 +166,7 @@ def analyze_errors(gold_standard, predictions):
         'correct': total - error_count,
         'accuracy': accuracy,
         'error_rate': 1 - accuracy,
-        'confusion_matrix': dict(confusion),
+        'confusion_matrix': {f"{k[0]}->{k[1]}": v for k, v in confusion.items()},  # Convert tuple keys to strings
         'error_categories': dict(error_categories),
         'avg_confidence': {
             'errors': avg_error_conf,
