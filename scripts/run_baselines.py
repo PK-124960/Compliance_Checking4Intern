@@ -137,8 +137,8 @@ def evaluate_classifier(classifier, gold_standard: List[Dict]) -> Dict:
     confusion = {}
     
     for i, rule in enumerate(gold_standard):
-        text = rule['text']
-        true_label = rule['rule_type']
+        text = rule.get('text', rule.get('original_text', ''))
+        true_label = rule.get('rule_type', rule.get('human_annotation', {}).get('rule_type'))
         
         # Classify
         pred_label = classifier.classify(text)
@@ -159,7 +159,7 @@ def evaluate_classifier(classifier, gold_standard: List[Dict]) -> Dict:
     
     # Calculate overall metrics
     correct = sum(1 for rule, pred in zip(gold_standard, predictions) 
-                  if rule['rule_type'] == pred)
+                  if rule.get('rule_type', rule.get('human_annotation', {}).get('rule_type')) == pred)
     accuracy = correct / len(gold_standard) if gold_standard else 0
     
     # Per-class metrics
@@ -261,7 +261,8 @@ def main():
     gold_standard = load_gold_standard(args.gold)
     
     # Calculate class distribution
-    true_labels = [rule['rule_type'] for rule in gold_standard]
+    true_labels = [rule.get('rule_type', rule.get('human_annotation', {}).get('rule_type')) 
+                   for rule in gold_standard]
     class_dist = Counter(true_labels)
     majority_class = class_dist.most_common(1)[0][0]
     
