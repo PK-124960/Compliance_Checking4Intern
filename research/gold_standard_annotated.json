@@ -19,11 +19,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": "Contracted research",
+      "reasoning": "The text implies that certain actions (confidentiality and restriction on publication) are obligated when engaging in contracted research.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.134081"
+      "annotation_date": "2026-02-02T23:40:17.835175",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -47,11 +50,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 1.0,
+      "deontic_marker": "may be cancelled",
+      "subject": "international students with educational visas",
+      "reasoning": "The text specifies a prohibited action (cancellation) for the given subject.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:18.280354",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -76,10 +82,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Continuing full-time postgraduate students (Master, Doctor and Diploma)",
+      "reasoning": "The text specifies an obligation for the specified subjects to pay their registration, tuition, and other fees in advance or fully paid before each semester/term starts.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:18.835626",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -104,10 +113,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "have to be",
+      "subject": "individuals or departments requesting writing-off of doubtful accounts",
+      "reasoning": "The text clearly states that a specific action (writing-off of doubtful accounts) must be approved by OFIN and the President or their VP designate, making it an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:19.396727",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -132,10 +144,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Sponsors",
+      "reasoning": "The text contains the deontic operator 'must' which signifies an obligation, specifying that sponsors are required to take a specific action (invoice and provide a promissory note).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:19.922762",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -160,10 +175,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "the department or individuals responsible for overdue accounts",
+      "reasoning": "The text contains a deontic operator 'shall', specifies an obligation ('be reviewed periodically, and follow-up collections shall be initiated'), has clear subject (overdue accounts), and has actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:20.489484",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -188,10 +206,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "part-time students registering for additional payments in audited and repeated courses",
+      "reasoning": "The text states that part-time students must pay additional fees one week before the mid-semester examination period starts.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:21.002079",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -216,10 +237,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "the tenant",
+      "reasoning": "The text clearly specifies an obligation (tenant must vacate) and uses a deontic operator (required), making it a policy rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:21.475491",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -243,11 +267,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "Students",
+      "reasoning": "The text contains a deontic operator 'shall' which specifies a prohibition against disturbing fellow students in the residential areas.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:21.930567",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -271,11 +298,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "only be given",
+      "subject": "those whose exchange program is less than two months",
+      "reasoning": "The text specifies an obligation (what can be done) for a specific subject and has a clear deontic operator",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:22.422210",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -298,14 +328,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text 'For subsequent semesters, these students may opt to reside off-campus' is a statement of permission, not a policy rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:22.875037",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-012",
@@ -327,11 +360,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may have their accommodation unit sealed",
+      "subject": "Graduating students residing beyond the five day limit",
+      "reasoning": "The text specifies an action (having the accommodation unit sealed) that is not allowed unless a condition (prior approval from the OFAM Director) is met, indicating an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:23.460123",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -356,10 +392,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "New students",
+      "reasoning": "The text specifies that new students are permitted to do something (choose from all available units).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:23.880685",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -384,10 +423,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "Students",
+      "reasoning": "The text specifies that students are allowed to perform an action (putting their names on the waiting list and live in employee accommodation), therefore it is a permission rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:24.357810",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -412,10 +454,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "guests",
+      "reasoning": "The sentence clearly specifies an obligation for guests with the deontic operator 'shall'.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.139210"
+      "annotation_date": "2026-02-02T23:40:24.782550",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -438,14 +483,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.7,
+      "deontic_marker": null,
+      "subject": "A student dormitory",
+      "reasoning": "The text does not contain a deontic operator and it is stating a fact about the availability period for a student dormitory, not specifying an obligation, permission, or prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:25.279602",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-017",
@@ -467,11 +515,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": "students who sublet rooms in student accommodation",
+      "reasoning": "The text clearly indicates that students may not sublet rooms in student accommodation to avoid eviction.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:25.726019",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -496,10 +547,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "are required",
+      "subject": "Students who will study in another country as part of the Exchange/Dual Degree program",
+      "reasoning": "The text specifies an obligation for a specific group of students to perform a certain action",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:26.221757",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -524,10 +578,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Alternative rooms",
+      "reasoning": "The text 'Alternative rooms designated for such purpose must be used.' is an obligation rule because it contains the deontic operator 'must', specifies what action (using alternative rooms) should be done, and has a clear subject (Alternative rooms).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:26.818960",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -551,11 +608,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "Students found guilty",
+      "reasoning": "The text contains a deontic operator 'may', which specifies a potential consequence for an action (smoking or burning), and it has clear requirements (facing a fine or paying the costs of damage).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:27.369016",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -580,10 +640,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "The Grievance Tribunal",
+      "reasoning": "The text contains the deontic operator 'must' which indicates an obligation and specifies a clear subject, implying this is a policy rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.140759"
+      "annotation_date": "2026-02-02T23:40:27.862082",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -608,10 +671,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "Acceptance by an employee of a gift valued at THB 3,000 or more must",
+      "subject": "employee",
+      "reasoning": "The text contains a deontic operator 'must', specifies an obligation (reporting the gift), and has a clear subject ('employee').",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.141801"
+      "annotation_date": "2026-02-02T23:40:28.422774",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -636,10 +702,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "accomplishments, activities and individual differences of other people",
+      "reasoning": "The text specifies an obligation towards others' accomplishments, activities and individual differences using the deontic marker 'must', making it a rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.141801"
+      "annotation_date": "2026-02-02T23:40:28.934550",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -664,10 +733,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "They (possibly faculty members or staff)",
+      "reasoning": "The text includes a deontic operator 'must', and specifies an obligation to inform the President of all settlements made during the grievance process.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.141801"
+      "annotation_date": "2026-02-02T23:40:29.436346",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -692,10 +764,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "they (performing their duties)",
+      "reasoning": "The text contains a deontic operator 'must', specifies an obligation, and has a clear subject.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.141801"
+      "annotation_date": "2026-02-02T23:40:29.882764",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -720,10 +795,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Grievance Committee",
+      "reasoning": "The statement 'The Grievance Committee must be prepared to identify breaches of the Institute P&Ps' clearly defines an obligation for the Grievance Committee and uses the deontic operator 'must', making it a rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142324"
+      "annotation_date": "2026-02-02T23:40:30.428324",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -748,10 +826,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "Anyone",
+      "reasoning": "The text specifies a permission ('may') about accepting items below a certain value without reporting.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142324"
+      "annotation_date": "2026-02-02T23:40:30.835771",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -776,10 +857,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "are required",
+      "subject": "AIT employees and students",
+      "reasoning": "The text contains a deontic operator ('required') that specifies an obligation (what must be done), has a clear subject (AIT employees and students), and presents actionable requirements (explicitly noting personal opinions).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142324"
+      "annotation_date": "2026-02-02T23:40:31.394202",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -802,14 +886,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a deontic operator and the context suggests a suggestion or recommendation rather than a mandatory rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142324"
+      "annotation_date": "2026-02-02T23:40:31.809453",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-030",
@@ -830,14 +917,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.9,
+      "deontic_marker": "may",
+      "subject": "students (implied)",
+      "reasoning": "The text provides a permission, but it lacks clear mandatory intent and specific actions.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142918"
+      "annotation_date": "2026-02-02T23:40:32.218148",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-031",
@@ -859,11 +949,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 1.0,
+      "deontic_marker": "cannot",
+      "subject": "students during the suspended period",
+      "reasoning": "The text contains a deontic operator 'cannot', specifies what cannot be done (enrolling in courses, availing privileges), has a clear subject ('students during the suspended period'), and outlines specific prohibitions.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142918"
+      "annotation_date": "2026-02-02T23:40:32.794511",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -888,10 +981,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "should",
+      "subject": "The instructor/invigilator",
+      "reasoning": "The text clearly outlines an obligation for the subject to take specific actions (seek an explanation and submit a report) with the deontic operator 'should'.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142918"
+      "annotation_date": "2026-02-02T23:40:33.301515",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -914,14 +1010,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a deontic operator and does not impose an obligation, permission, or prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.142918"
+      "annotation_date": "2026-02-02T23:40:33.718602",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-034",
@@ -942,14 +1041,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a deontic operator or specific actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.143501"
+      "annotation_date": "2026-02-02T23:40:34.100456",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-035",
@@ -972,10 +1074,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.9,
+      "deontic_marker": "should",
+      "subject": "students competing for a position",
+      "reasoning": "The text contains a deontic operator 'should', it specifies an obligation (preference should be given), and there is a clear subject (students competing for a position).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.143501"
+      "annotation_date": "2026-02-02T23:40:34.619791",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -1000,10 +1105,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "have to",
+      "subject": "Head-OFAM",
+      "reasoning": "The text specifies that the Head-OFAM must request something and it has to be approved, implying a mandatory requirement.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.143501"
+      "annotation_date": "2026-02-02T23:40:35.085010",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1028,10 +1136,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "external/sponsored students",
+      "reasoning": "The text explicitly states that 'authorized documentary proof of sponsorship must be submitted' for external/sponsored students, implying a mandatory obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.143501"
+      "annotation_date": "2026-02-02T23:40:35.569357",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1056,10 +1167,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "prohibition",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "cannot",
+      "subject": "Sports facilities",
+      "reasoning": "The text specifies that sports facilities cannot be used for other sporting events, which is a clear prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.143501"
+      "annotation_date": "2026-02-02T23:40:36.014114",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1083,11 +1197,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 0.8,
+      "deontic_marker": "to be renewed",
+      "subject": "new students of August Intake and continuing students studying in January and August semesters",
+      "reasoning": "The text specifies the obligation for students to pay certain premiums at specific times.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144206"
+      "annotation_date": "2026-02-02T23:40:36.510982",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1112,10 +1229,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "They",
+      "reasoning": "The text contains a clear deontic operator 'must' and specifies an obligation ('submit') with actionable requirements (submitting the title page).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144206"
+      "annotation_date": "2026-02-02T23:40:36.993545",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1139,11 +1259,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "students leaving AIT",
+      "reasoning": "The text specifies a permission for the subject (students leaving AIT) to take an action (keep the linen set and pillow).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144206"
+      "annotation_date": "2026-02-02T23:40:37.470222",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1167,11 +1290,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "School Dean",
+      "reasoning": "The School Dean has the discretion to impose specific actions (which can be seen as obligations) based on receiving a retake.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144206"
+      "annotation_date": "2026-02-02T23:40:37.939155",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1195,11 +1321,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 0.8,
+      "deontic_marker": "may recommend to the School Dean to",
+      "subject": "Department Head and the instructor/invigilator",
+      "reasoning": "The text contains a deontic operator 'may' and specifies an obligation for the subject to take specific actions",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:38.445446",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1224,10 +1353,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "students",
+      "reasoning": "The text clearly states that students must complete and submit a form for approval and payment, indicating an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:38.873622",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1252,10 +1384,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "An Assistant",
+      "reasoning": "The text specifies that the assistant must terminate their contract if they do not meet certain conditions.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:39.298995",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1280,10 +1415,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "should",
+      "subject": "No member of the AIT community, trustee, faculty, staff, or student, including outreach program participants",
+      "reasoning": "The text contains a deontic operator 'should', specifies an obligation to not interfere with others' study, work or home environment, and has a clear subject",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:39.885306",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -1308,10 +1446,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "All Non-Thai students",
+      "reasoning": "The text contains a deontic operator 'required' that specifies an obligation for the subject 'All Non-Thai students' to pay a certain fee.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:40.384879",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1334,14 +1475,17 @@
       "notes": "Contains 'required' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": "nurse on duty",
+      "reasoning": "The text provides information about how to contact the nurse in an emergency, but does not contain a deontic operator and does not impose any mandatory actions, so it is not considered a policy rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.144645"
+      "annotation_date": "2026-02-02T23:40:40.894917",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-049",
@@ -1362,14 +1506,17 @@
       "notes": "Contains 'will be' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.7,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text contains 'should', which is often a recommendation rather than a mandatory rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:41.275995",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-050",
@@ -1392,10 +1539,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "indeterminate (assumed to be general)",
+      "reasoning": "The text specifies that proper swimwear is required, which indicates an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:41.714378",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1420,10 +1570,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "have to",
+      "subject": "All dependents",
+      "reasoning": "The text explicitly states that 'All dependents have to complete the health declaration form', indicating a mandatory action.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:42.153451",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1446,14 +1599,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a DEONTIC operator that specifies an OBLIGATION, PERMISSION, or PROHIBITION with clear SUBJECT and actionable REQUIREMENTS.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:42.642065",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-053",
@@ -1475,11 +1631,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 0.9,
+      "deontic_marker": "may lay sanctions",
+      "subject": "OFAM",
+      "reasoning": "The text specifies that OFAM is permitted to enforce a certain action (sanctions) if a specific condition (the unit being found dirty and unhygienic) is met, thus implying an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:43.184006",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1504,10 +1663,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "may",
+      "subject": "A special student who is a master or doctoral student studying at another institution and enrolled at AIT under a Memorandum of Understanding",
+      "reasoning": "The text contains the deontic operator 'may', which signifies a permission, and it specifies a clear subject and actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:43.768351",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1531,11 +1693,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 0.8,
+      "deontic_marker": "should not",
+      "subject": "students or occupants of the accommodation unit",
+      "reasoning": "The text 'Furniture and appliances should not be removed from the accommodation unit' is a prohibition rule as it specifies that something cannot be done (removing furniture and appliances). The deontic marker 'should not' indicates this, although it's often used for recommendations, in this context, it carries a clear prohibitive intent.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:44.461334",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -1560,10 +1725,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "All students",
+      "reasoning": "The text contains the deontic operator 'must' and specifies an obligation ('have their advisor approve...') that applies to a clear subject ('All students').",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:44.960306",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1588,10 +1756,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.95,
+      "deontic_marker": "may",
+      "subject": "complainant",
+      "reasoning": "The text contains a deontic operator 'may', which specifies a permission for the complainant to seek redress through formal grievance procedures.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.145374"
+      "annotation_date": "2026-02-02T23:40:45.432487",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1616,10 +1787,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "should",
+      "subject": "instructor",
+      "reasoning": "The text specifies that the instructor must make known certain criteria at the beginning of the course.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:45.852448",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1644,10 +1818,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": null,
+      "reasoning": "The text 'No credit shall be granted' clearly specifies an obligation (what cannot be done) with the deontic operator 'shall'.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:46.312312",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1672,10 +1849,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "Responsibility centers",
+      "reasoning": "The policy contains the deontic operator 'required', specifying an obligation for the subject 'Responsibility centers' to perform actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:46.792217",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1700,10 +1880,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "Lessees",
+      "reasoning": "The text contains a deontic operator 'required', specifies an obligation (to pay), has a clear subject ('Lessees'), and provides actionable requirements (pay three-month advance deposit).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:47.316484",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1728,10 +1911,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "Student Assistants",
+      "reasoning": "The text contains a deontic operator 'shall', specifies an obligation for Student Assistants to be in good standing at the time of their appointment.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:47.797970",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1756,10 +1942,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "students who engage in drug abuse",
+      "reasoning": "The text contains a deontic operator 'shall' which specifies an obligation, i.e., expulsion is mandatory for students who engage in drug abuse.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:48.302341",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1784,10 +1973,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "Students",
+      "reasoning": "The text contains a clear deontic operator 'required' which specifies an obligation (to vacate rooms) and has a specific subject (Students)",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:48.776058",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -1810,14 +2002,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text 'should' is not used here as a deontic operator with mandatory intent but rather as an advisory or recommendation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:49.200913",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-066",
@@ -1838,14 +2033,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": "Students",
+      "reasoning": "The text contains the word 'should', which is often a recommendation, not a binding rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:49.609384",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-067",
@@ -1866,14 +2064,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": "the President",
+      "reasoning": "The text does not contain a deontic operator specifying an obligation, permission or prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:50.011838",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-068",
@@ -1894,14 +2095,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a deontic operator or any specific actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.146388"
+      "annotation_date": "2026-02-02T23:40:50.395410",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-069",
@@ -1922,14 +2126,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.95,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "The text does not contain a deontic operator and does not specify an obligation, permission, or prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:50.816300",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-070",
@@ -1950,14 +2157,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "While the text advises to address the appeal to a specific person, it does not contain a deontic operator that indicates a mandatory or binding rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:51.261224",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-071",
@@ -1980,10 +2190,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "Students",
+      "reasoning": "The text contains a deontic operator ('shall'), specifies an obligation (receiving a formal reprimand), and has a clear subject (Students).",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:51.748549",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2008,10 +2221,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "each sports facility user",
+      "reasoning": "The text contains a deontic operator 'required', specifies an obligation, and has a clear subject 'each sports facility'.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:52.205958",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2036,10 +2252,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "shall",
+      "subject": "accounts that are overdue",
+      "reasoning": "The text specifies an obligation to periodically review and initiate follow-up on collections for accounts that are overdue.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:52.671616",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2064,10 +2283,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "Students",
+      "reasoning": "The text specifies what students are allowed to do (put their names in the waiting list and live in staff housing), indicating a permission rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:53.126737",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2092,10 +2314,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Students within the normal study period",
+      "reasoning": "The text specifies an obligation for students to pay a certain fee and does so using the deontic operator 'must'.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:53.605752",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2120,10 +2345,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "Last players of the evening",
+      "reasoning": "The text specifies an obligation for the last players to turn off the lights and electrical equipment.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:54.037147",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2146,14 +2374,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "Although 'should' is used, it is more likely a recommendation rather than a mandatory rule",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:54.434782",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-078",
@@ -2176,10 +2407,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "may",
+      "subject": "vehicle owner/operator",
+      "reasoning": "The text implies that the vehicle owner/operator is given permission to lock their vehicle, with a potential fine as a consequence if they do not.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:54.902013",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2204,10 +2438,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "should",
+      "subject": "Any individual with safety and security concerns",
+      "reasoning": "The use of 'should' in this context implies an obligation to act.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:55.321172",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -2231,11 +2468,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may only be given",
+      "subject": "those whose exchange program is less than two months",
+      "reasoning": "The text specifies a restriction (what cannot be done) and the deontic operator 'may' implies an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.147384"
+      "annotation_date": "2026-02-02T23:40:55.813981",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2258,14 +2498,17 @@
       "notes": "Contains 'need to' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": false,
-      "rule_type": null,
-      "confidence": 0.7,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": true,
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "has to be taken",
+      "subject": "trainer",
+      "reasoning": "The text specifies that the trainer must seek permission, which is an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.148700"
+      "annotation_date": "2026-02-02T23:40:56.232953",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-082",
@@ -2286,14 +2529,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": null,
+      "reasoning": "This text is not a policy rule because it does not contain a deontic operator and does not specify an obligation, permission, or prohibition.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.148700"
+      "annotation_date": "2026-02-02T23:40:56.673370",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-083",
@@ -2316,10 +2562,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "new students",
+      "reasoning": "The text specifies an obligation for 'new students' to attend the orientation seminar.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.148700"
+      "annotation_date": "2026-02-02T23:40:57.084602",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2343,11 +2592,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "A student found guilty of grave cheating",
+      "reasoning": "The text contains a deontic operator 'may', specifies an obligation ('be dismissed'), has a clear subject ('A student found guilty of grave cheating') and involves actionable requirements (dismissal)",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.148700"
+      "annotation_date": "2026-02-02T23:40:57.631029",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2372,10 +2624,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.95,
+      "deontic_marker": "should",
+      "subject": "student employee",
+      "reasoning": "The text instructs 'a student work time report should be completed', implying an obligation for the student employee to do so.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.148700"
+      "annotation_date": "2026-02-02T23:40:58.082155",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -2400,10 +2655,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 0.8,
+      "deontic_marker": "should",
+      "subject": "investigator",
+      "reasoning": "The text specifies that the investigator must report evidence and give the complainee an opportunity to challenge it or present evidence in defense.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:40:58.541139",
+      "method": "llm"
     },
     "human_llm_agreement": false
   },
@@ -2428,10 +2686,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "Admissions and Scholarships Unit (ASU)",
+      "reasoning": "The text specifies an obligation ('required') for the Admissions and Scholarships Unit to ensure financial support before student enrollment.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:40:59.035922",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2454,14 +2715,17 @@
       "notes": "Contains 'will be' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": false,
-      "rule_type": null,
-      "confidence": 0.7,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": true,
+      "rule_type": "obligation",
+      "confidence": 1.0,
+      "deontic_marker": "will be fined",
+      "subject": "accommodation units dormitories not designed for such facilities",
+      "reasoning": "The text specifies an obligation (fine and charge) and contains a deontic operator ('will be fined').",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:40:59.540529",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-089",
@@ -2484,10 +2748,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "a member of the faculty or a senior administrative staff member in the School, the Student Union President, or the Motor Pool",
+      "reasoning": "The text contains the deontic operator 'must' and specifies an obligation (reservation of vehicle), with a clear subject.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:00.090521",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2510,14 +2777,13 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": null,
+      "error": "Could not parse JSON from response:  {\n    \"is_rule\": false,\n    \"rule_type\": null,\n    \"confidence\": 1.0,\n    \"deontic_marker\": null,\n    \"subject\": \"Student dormitories\",\n    \"reasoning\": \"The text does not contain a deontic operator ",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:00.503625",
+      "method": "error"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": null
   },
   {
     "id": "GS-091",
@@ -2540,10 +2806,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "required",
+      "subject": "Invoices",
+      "reasoning": "The text 'Invoices are required to be settled by the indicated due date' specifies an obligation for invoices and uses a deontic marker ('required')",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:00.996324",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2568,10 +2837,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "over staying guests",
+      "reasoning": "The text clearly states that 'must be obtained' which implies an obligation.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:01.403218",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2595,11 +2867,14 @@
     },
     "llm_annotation": {
       "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "rule_type": "prohibition",
+      "confidence": 1.0,
+      "deontic_marker": "may not",
+      "subject": "Families of non-resident students",
+      "reasoning": "The text contains a deontic operator ('may not'), specifies a prohibition (staying on campus), has a clear subject ('Families of non-resident students'), and has specific actions implied by the prohibited action.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:01.986958",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2622,14 +2897,17 @@
       "notes": "Contains 'may' deontic marker"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 1.0,
+      "deontic_marker": null,
+      "subject": "non-instructional teaching assistants",
+      "reasoning": "The text does not contain a deontic operator (must, shall, may, should) and it is describing duties rather than enforcing obligations, permissions, or prohibitions.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:02.507373",
+      "method": "llm"
     },
-    "human_llm_agreement": true
+    "human_llm_agreement": false
   },
   {
     "id": "GS-095",
@@ -2650,14 +2928,17 @@
       "notes": "No clear deontic content"
     },
     "llm_annotation": {
-      "is_rule": true,
-      "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "is_rule": false,
+      "rule_type": null,
+      "confidence": 0.8,
+      "deontic_marker": null,
+      "subject": "any member of the Institute community",
+      "reasoning": "'Should' is often a recommendation and not necessarily a binding rule.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:02.896938",
+      "method": "llm"
     },
-    "human_llm_agreement": false
+    "human_llm_agreement": true
   },
   {
     "id": "GS-096",
@@ -2680,10 +2961,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "permission",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "may",
+      "subject": "Students",
+      "reasoning": "The text specifies a permission for Students to wait for vans at the specified location",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:03.300313",
+      "method": "llm"
     },
     "human_llm_agreement": true
   },
@@ -2708,10 +2992,13 @@
     "llm_annotation": {
       "is_rule": true,
       "rule_type": "obligation",
-      "confidence": 0.85,
-      "reasoning": "Fallback classification based on deontic markers",
+      "confidence": 1.0,
+      "deontic_marker": "must",
+      "subject": "All degree program students (including CAS and Certificate leading to Master)",
+      "reasoning": "The text explicitly states that 'All degree program students must take the AIT Writing Test upon arrival on campus', which specifies an obligation for a clear subject with specific actionable requirements.",
       "model": "mistral",
-      "annotation_date": "2026-01-31T06:04:34.149428"
+      "annotation_date": "2026-02-02T23:41:03.861636",
+      "method": "llm"
     },
     "human_llm_agreement": true
   }
