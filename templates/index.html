@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Research Demo - Policy Formalization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 3rem;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .phase-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .phase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        .phase-number {
+            font-size: 2.5rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .phase-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .phase-description {
+            color: #666;
+            line-height: 1.5;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Automated Policy Formalization</h1>
+        <p class="subtitle">Research Demonstration: LLM + FOL + SHACL Pipeline</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">{{ stats.total_rules }}</div>
+                <div class="stat-label">Policy Rules Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ stats.accuracy }}</div>
+                <div class="stat-label">Classification Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ stats.formalization_success }}</div>
+                <div class="stat-label">FOL Formalization Success</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{{ stats.triples }}</div>
+                <div class="stat-label">RDF Triples Generated</div>
+            </div>
+        </div>
+
+        <h2 style="margin: 3rem 0 1rem 0; color: #333;">4-Phase Methodology</h2>
+        
+        <div class="phase-grid">
+            <a href="/phase1">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">Text Simplification</div>
+                    <div class="phase-description">
+                        Remove OCR artifacts, normalize whitespace, clean extracted text
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/phase2">
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">LLM Classification</div>
+                    <div class="phase-description">
+                        Identify rules and classify deontic types (Obligation/Permission/Prohibition)
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/phase3">
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">FOL Formalization</div>
+                    <div class="phase-description">
+                        Convert natural language to First-Order Logic with deontic operators
+                    </div>
+                </div>
+            </a>
+            
+            <a href="/phase4">
+                <div class="phase-card">
+                    <div class="phase-number">4</div>
+                    <div class="phase-title">SHACL Translation</div>
+                    <div class="phase-description">
+                        Generate W3C-standard SHACL validation constraints from FOL
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="/results" class="btn">📊 View Comprehensive Results</a>
+        </div>
+    </div>
+</body>
+</html>
