@@ -44,7 +44,7 @@ export default function Dashboard() {
                     <div className="flex items-center justify-center gap-4">
                         <Link to="/methodology" className="btn btn-primary">
                             <Workflow className="w-5 h-5" />
-                            View 4-Phase Methodology
+                            View 5-Phase Methodology
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                         <Link to="/results" className="btn btn-secondary">
@@ -130,13 +130,13 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            {/* 4-Phase Overview */}
+            {/* 5-Phase Overview */}
             <div className="card">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
                     <Workflow className="w-7 h-7 text-gray-700" />
-                    4-Phase Methodology
+                    5-Phase Methodology
                 </h2>
-                <div className="grid grid-cols-4 gap-4 mb-6">
+                <div className="grid grid-cols-5 gap-4 mb-6">
                     <div className="text-center p-4 rounded-xl bg-blue-50 border border-blue-200">
                         <div className="w-12 h-12 rounded-full bg-blue-500 text-white font-bold text-xl flex items-center justify-center mx-auto mb-3">1</div>
                         <h3 className="font-semibold text-gray-800 mb-2">Text Simplification</h3>
@@ -160,6 +160,12 @@ export default function Dashboard() {
                         <h3 className="font-semibold text-gray-800 mb-2">SHACL Translation</h3>
                         <p className="text-sm text-gray-600">Semantic web</p>
                         <div className="mt-3 text-xs font-semibold text-orange-700">1,309 triples</div>
+                    </div>
+                    <div className="text-center p-4 rounded-xl bg-red-50 border border-red-200">
+                        <div className="w-12 h-12 rounded-full bg-red-500 text-white font-bold text-xl flex items-center justify-center mx-auto mb-3">5</div>
+                        <h3 className="font-semibold text-gray-800 mb-2">Rule Validation</h3>
+                        <p className="text-sm text-gray-600">SHACL checking</p>
+                        <div className="mt-3 text-xs font-semibold text-red-700">Automated + LLM</div>
                     </div>
                 </div>
                 <div className="text-center">
