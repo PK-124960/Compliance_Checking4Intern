@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Search, FileText, Filter } from 'lucide-react'
+import { Search, FileText, Filter, Code, Sparkles } from 'lucide-react'
 import axios from 'axios'
 
 export default function Rules() {
@@ -19,9 +19,21 @@ export default function Rules() {
             setRulesData(res.data)
         } catch (err) {
             console.error('Failed to fetch rules:', err)
+            // If backend fails, load from local data for demo
+            loadLocalData()
         } finally {
             setLoading(false)
         }
+    }
+
+    const loadLocalData = () => {
+        // Fallback: use axios to fetch the JSON file directly
+        axios.get('/research/gold_standard_annotated_v2.json')
+            .then(res => {
+                console.log('Loaded local data:', res.data.length, 'rules')
+                setRulesData({ rules: res.data, total: res.data.length })
+            })
+            .catch(err => console.error('Failed to load local data:', err))
     }
 
     if (loading) {
@@ -35,14 +47,15 @@ export default function Rules() {
     const rules = rulesData?.rules || []
 
     const filteredRules = rules.filter(rule => {
-        const ruleText = rule.text || rule.original_text || ''
+        const ruleText = rule.original_text || rule.text || ''
         const ruleId = rule.id || rule.rule_id || ''
         const matchesSearch = ruleText.toLowerCase().includes(searchTerm.toLowerCase()) ||
             ruleId.toLowerCase().includes(searchTerm.toLowerCase())
 
-        // Get deontic type from either direct field or nested in fol
-        const deonticType = rule.deontic_type || rule.fol?.deontic_type || rule.llm_classification
-        const matchesFilter = filterType === 'All' || deonticType === filterType
+        // Get deontic type from human or LLM annotation
+        const deonticType = rule.human_annotation?.rule_type || rule.llm_annotation?.rule_type || rule.deontic_type
+        const matchesFilter = filterType === 'All' ||
+            (deonticType && deonticType.toLowerCase() === filterType.toLowerCase())
 
         return matchesSearch && matchesFilter
     })
@@ -51,16 +64,16 @@ export default function Rules() {
     const typeCounts = {
         All: rules.length,
         Obligation: rules.filter(r => {
-            const type = r.deontic_type || r.fol?.deontic_type || r.llm_classification
-            return type === 'Obligation'
+            const type = r.human_annotation?.rule_type || r.llm_annotation?.rule_type || r.deontic_type
+            return type && type.toLowerCase() === 'obligation'
         }).length,
         Permission: rules.filter(r => {
-            const type = r.deontic_type || r.fol?.deontic_type || r.llm_classification
-            return type === 'Permission'
+            const type = r.human_annotation?.rule_type || r.llm_annotation?.rule_type || r.deontic_type
+            return type && type.toLowerCase() === 'permission'
         }).length,
         Prohibition: rules.filter(r => {
-            const type = r.deontic_type || r.fol?.deontic_type || r.llm_classification
-            return type === 'Prohibition'
+            const type = r.human_annotation?.rule_type || r.llm_annotation?.rule_type || r.deontic_type
+            return type && type.toLowerCase() === 'prohibition'
         }).length
     }
 
@@ -136,45 +149,96 @@ export default function Rules() {
             </div>
 
             {/* Rules List */}
-            <div className="space-y-3">
+            <div className="space-y-4">
                 {filteredRules.map((rule, idx) => {
-                    const deonticType = rule.deontic_type || rule.fol?.deontic_type || rule.llm_classification || 'Unknown'
+                    const deonticType = (rule.human_annotation?.rule_type || rule.llm_annotation?.rule_type || rule.deontic_type || 'Unknown')
                     const ruleId = rule.id || rule.rule_id || `R${idx + 1}`
-                    const ruleText = rule.text || rule.original_text || 'No text available'
+                    const originalText = rule.original_text || rule.text || 'No text available'
+                    // Simplified text is original text with line breaks removed
+                    const simplifiedText = originalText.replace(/\n/g, ' ')
                     const folFormula = rule.fol?.fol_formula || rule.fol_formula || rule.fol?.formula
+                    const humanType = rule.human_annotation?.rule_type
+                    const llmType = rule.llm_annotation?.rule_type
+                    const agreement = rule.human_llm_agreement
 
                     return (
-                        <div key={idx} className="card hover:shadow-lg transition-shadow">
+                        <div key={idx} className="card hover:shadow-xl transition-all">
                             <div className="flex items-start gap-4">
                                 <div className="flex-shrink-0">
-                                    <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center font-bold text-blue-700 text-sm">
-                                        {ruleId}
+                                    <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white shadow-lg">
+                                        <div className="text-center">
+                                            <div className="text-xs font-semibold">{ruleId}</div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="flex-1">
-                                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${deonticType === 'Obligation' ? 'bg-red-100 text-red-700' :
-                                                deonticType === 'Permission' ? 'bg-green-100 text-green-700' :
-                                                    deonticType === 'Prohibition' ? 'bg-orange-100 text-orange-700' :
+                                    {/* Type Badges */}
+                                    <div className="flex items-center gap-2 mb-3 flex-wrap">
+                                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${deonticType.toLowerCase() === 'obligation' ? 'bg-red-100 text-red-700' :
+                                                deonticType.toLowerCase() === 'permission' ? 'bg-green-100 text-green-700' :
+                                                    deonticType.toLowerCase() === 'prohibition' ? 'bg-orange-100 text-orange-700' :
                                                         'bg-gray-100 text-gray-700'
                                             }`}>
-                                            {deonticType}
+                                            {deonticType.charAt(0).toUpperCase() + deonticType.slice(1)}
                                         </span>
-                                        {rule.llm_classification && (
-                                            <span className="px-3 py-1 rounded-full text-xs bg-purple-100 text-purple-700 font-semibold">
-                                                LLM: {rule.llm_classification}
+                                        {humanType && (
+                                            <span className="px-3 py-1 rounded-full text-xs bg-blue-100 text-blue-700 font-semibold">
+                                                👤 Human: {humanType}
                                             </span>
                                         )}
-                                        {rule.human_annotation && (
-                                            <span className="px-3 py-1 rounded-full text-xs bg-blue-100 text-blue-700 font-semibold">
-                                                Human: {rule.human_annotation}
+                                        {llmType && (
+                                            <span className="px-3 py-1 rounded-full text-xs bg-purple-100 text-purple-700 font-semibold">
+                                                🤖 LLM: {llmType}
+                                            </span>
+                                        )}
+                                        {agreement !== undefined && (
+                                            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${agreement ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
+                                                }`}>
+                                                {agreement ? '✓ Agreement' : '✗ Disagreement'}
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-gray-800 leading-relaxed mb-2">{ruleText}</p>
+
+                                    {/* Original Text */}
+                                    <div className="mb-3">
+                                        <div className="text-xs font-semibold text-gray-500 mb-1 flex items-center gap-1">
+                                            <FileText className="w-3 h-3" />
+                                            Original (with line breaks):
+                                        </div>
+                                        <div className="bg-gray-50 p-3 rounded border border-gray-200 text-gray-600 text-sm italic whitespace-pre-wrap">
+                                            {originalText}
+                                        </div>
+                                    </div>
+
+                                    {/* Simplified Text */}
+                                    <div className="mb-3">
+                                        <div className="text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                                            <Sparkles className="w-3 h-3 text-blue-600" />
+                                            Simplified (after Phase 1):
+                                        </div>
+                                        <p className="text-gray-800 leading-relaxed text-base font-medium">
+                                            {simplifiedText}
+                                        </p>
+                                    </div>
+
+                                    {/* FOL Formula */}
                                     {folFormula && (
-                                        <div className="mt-3 p-3 bg-gray-900 text-gray-100 rounded-lg font-mono text-sm overflow-x-auto">
-                                            {folFormula}
+                                        <div className="mt-3">
+                                            <div className="text-xs font-semibold text-gray-700 mb-2 flex items-center gap-1">
+                                                <Code className="w-3 h-3 text-green-600" />
+                                                FOL Formula (Phase 3):
+                                            </div>
+                                            <div className="bg-gray-900 text-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
+                                                {folFormula}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Source Info */}
+                                    {rule.source_document && (
+                                        <div className="mt-3 text-xs text-gray-500">
+                                            <strong>Source:</strong> {rule.source_document}
+                                            {rule.page_number && ` (Page ${rule.page_number})`}
                                         </div>
                                     )}
                                 </div>

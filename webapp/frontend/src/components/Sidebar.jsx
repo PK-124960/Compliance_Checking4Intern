@@ -1,13 +1,19 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Workflow, BarChart3, FileText, Code, ChevronLeft, ChevronRight, Sparkles, Shield } from 'lucide-react'
+import { Home, Workflow, BarChart3, FileText, Code, ChevronLeft, ChevronRight, Sparkles, Shield, FlaskConical, PlayCircle } from 'lucide-react'
 
-const navItems = [
+const researchNavItems = [
     { path: '/', icon: Home, label: 'Research Overview', description: 'Key findings & RQs' },
     { path: '/methodology', icon: Workflow, label: '5-Phase Pipeline', description: 'Complete methodology' },
     { path: '/results', icon: BarChart3, label: 'Results & Validation', description: 'All experiments' },
-    { path: '/validation', icon: Shield, label: 'Validation Demo', description: 'Interactive checking' },
+]
+
+const dataNavItems = [
     { path: '/rules', icon: FileText, label: 'Rules Browser', description: '97 annotated rules' },
     { path: '/fol', icon: Code, label: 'FOL Formulas', description: 'Logic representations' }
+]
+
+const demoNavItems = [
+    { path: '/validation', icon: Shield, label: 'Validation Demo', description: 'Interactive checking' }
 ]
 
 export default function Sidebar({ open, setOpen }) {
@@ -24,26 +30,93 @@ export default function Sidebar({ open, setOpen }) {
                     </div>
                 )}
             </div>
-            <nav className="p-4 space-y-2">
-                {navItems.map((item) => (
-                    <NavLink
-                        key={item.path}
-                        to={item.path}
-                        className={({ isActive }) =>
-                            `flex items-start gap-3 px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-blue-50 text-blue-700 shadow-sm border border-blue-100' : 'text-gray-600 hover:bg-gray-50'
-                            }`
-                        }
-                    >
-                        <item.icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                        {open && (
-                            <div>
-                                <div className="font-semibold text-sm">{item.label}</div>
-                                <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
-                            </div>
-                        )}
-                    </NavLink>
-                ))}
+
+            <nav className="p-4 space-y-6 overflow-y-auto h-[calc(100vh-200px)]">
+                {/* Research Section */}
+                {open && (
+                    <div className="flex items-center gap-2 px-2 mb-2">
+                        <FlaskConical className="w-4 h-4 text-purple-600" />
+                        <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">Research</span>
+                    </div>
+                )}
+                <div className="space-y-2">
+                    {researchNavItems.map((item) => (
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
+                            className={({ isActive }) =>
+                                `flex items-start gap-3 px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-purple-50 text-purple-700 shadow-sm border border-purple-100' : 'text-gray-600 hover:bg-gray-50'
+                                }`
+                            }
+                        >
+                            <item.icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                            {open && (
+                                <div>
+                                    <div className="font-semibold text-sm">{item.label}</div>
+                                    <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                                </div>
+                            )}
+                        </NavLink>
+                    ))}
+                </div>
+
+                {/* Data Browser Section */}
+                {open && (
+                    <div className="flex items-center gap-2 px-2 mb-2 mt-6">
+                        <FileText className="w-4 h-4 text-blue-600" />
+                        <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Data Browser</span>
+                    </div>
+                )}
+                <div className="space-y-2">
+                    {dataNavItems.map((item) => (
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
+                            className={({ isActive }) =>
+                                `flex items-start gap-3 px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-blue-50 text-blue-700 shadow-sm border border-blue-100' : 'text-gray-600 hover:bg-gray-50'
+                                }`
+                            }
+                        >
+                            <item.icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                            {open && (
+                                <div>
+                                    <div className="font-semibold text-sm">{item.label}</div>
+                                    <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                                </div>
+                            )}
+                        </NavLink>
+                    ))}
+                </div>
+
+                {/* Interactive Demo Section */}
+                {open && (
+                    <div className="flex items-center gap-2 px-2 mb-2 mt-6">
+                        <PlayCircle className="w-4 h-4 text-green-600" />
+                        <span className="text-xs font-bold text-green-700 uppercase tracking-wider">Interactive Demo</span>
+                    </div>
+                )}
+                <div className="space-y-2">
+                    {demoNavItems.map((item) => (
+                        <NavLink
+                            key={item.path}
+                            to={item.path}
+                            className={({ isActive }) =>
+                                `flex items-start gap-3 px-4 py-3 rounded-xl transition-all ${isActive ? 'bg-green-50 text-green-700 shadow-sm border border-green-100' : 'text-gray-600 hover:bg-gray-50'
+                                }`
+                            }
+                        >
+                            <item.icon className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                            {open && (
+                                <div>
+                                    <div className="font-semibold text-sm">{item.label}</div>
+                                    <div className="text-xs text-gray-500 mt-0.5">{item.description}</div>
+                                </div>
+                            )}
+                        </NavLink>
+                    ))}
+                </div>
             </nav>
+
             {open && (
                 <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100 bg-gray-50">
                     <div className="text-xs text-gray-600">
