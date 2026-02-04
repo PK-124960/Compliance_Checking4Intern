@@ -38,8 +38,9 @@ SHACL_DIR = PROJECT_ROOT / "shacl"
 # ============================================
 
 def load_rules():
-    """Load gold standard rules."""
-    gs_file = RESEARCH_DIR / "gold_standard_template.json"
+    """Load gold standard rules with latest annotations."""
+    # Use v2 file with LLM annotations (Jan 31, 2026)
+    gs_file = RESEARCH_DIR / "gold_standard_annotated_v2.json"
     if gs_file.exists():
         with open(gs_file, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -47,7 +48,7 @@ def load_rules():
 
 def save_rules(rules):
     """Save rules to file."""
-    gs_file = RESEARCH_DIR / "gold_standard_template.json"
+    gs_file = RESEARCH_DIR / "gold_standard_annotated_v2.json"
     with open(gs_file, 'w', encoding='utf-8') as f:
         json.dump(rules, f, indent=2, ensure_ascii=False)
 
