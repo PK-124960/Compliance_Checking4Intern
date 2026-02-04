@@ -14,7 +14,7 @@ export default function FOLViewer() {
 
     const fetchFOLData = async () => {
         try {
-            const res = await axios.get('/api/fol-results')
+            const res = await axios.get('/api/fol')
             console.log('FOL API response:', res.data)
             setFolData(res.data)
         } catch (err) {
@@ -108,8 +108,8 @@ export default function FOLViewer() {
                                     key={type}
                                     onClick={() => setFilterType(type)}
                                     className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${filterType === type
-                                            ? 'bg-green-600 text-white'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                        ? 'bg-green-600 text-white'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                         }`}
                                 >
                                     {type} ({typeCounts[type]})
@@ -177,9 +177,9 @@ export default function FOLViewer() {
                                     {/* Type Badge */}
                                     <div className="flex items-center gap-2 mb-3 flex-wrap">
                                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${deonticType.toLowerCase() === 'obligation' ? 'bg-red-100 text-red-700' :
-                                                deonticType.toLowerCase() === 'permission' ? 'bg-green-100 text-green-700' :
-                                                    deonticType.toLowerCase() === 'prohibition' ? 'bg-orange-100 text-orange-700' :
-                                                        'bg-gray-100 text-gray-700'
+                                            deonticType.toLowerCase() === 'permission' ? 'bg-green-100 text-green-700' :
+                                                deonticType.toLowerCase() === 'prohibition' ? 'bg-orange-100 text-orange-700' :
+                                                    'bg-gray-100 text-gray-700'
                                             }`}>
                                             {deonticType.charAt(0).toUpperCase() + deonticType.slice(1)}
                                         </span>
