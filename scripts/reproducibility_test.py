@@ -16,11 +16,7 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import argparse
-
-# Parallel processing config
-MAX_WORKERS = 4  # Concurrent LLM calls (adjust based on Ollama capacity)
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -132,7 +128,7 @@ class ReproducibilityTest:
         }
     
     def _run_classification_phase(self, extraction_result: Dict) -> Dict[str, Any]:
-        """Run LLM classification phase with parallel processing."""
+        """Run LLM classification phase (sequential processing)."""
         try:
             from scripts.populate_llm_annotations_v2 import classify_rule_strict
             has_classify = True
@@ -147,8 +143,8 @@ class ReproducibilityTest:
             "results": []
         }
         
-        def classify_single_rule(rule):
-            """Classify a single rule (for parallel execution)."""
+        # Process rules sequentially
+        for rule in rules:
             if self.use_mock_llm or not has_classify:
                 rule_type = rule.get("human_annotation", {}).get("rule_type", "obligation")
             else:
@@ -157,41 +153,25 @@ class ReproducibilityTest:
                     rule_type = result.get("rule_type", "obligation")
                 except Exception:
                     rule_type = rule.get("human_annotation", {}).get("rule_type", "obligation")
-            return {
+            
+            classification_result = {
                 "id": rule.get("id"),
                 "type": rule_type,
                 "original_text": rule.get("original_text", "")
             }
-        
-        # Process rules in parallel using ThreadPoolExecutor
-        if not self.use_mock_llm and has_classify:
-            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-                futures = {executor.submit(classify_single_rule, rule): rule for rule in rules}
-                for future in as_completed(futures):
-                    result = future.result()
-                    classifications["results"].append(result)
-                    if result["type"] == "obligation":
-                        classifications["obligations"] += 1
-                    elif result["type"] == "permission":
-                        classifications["permissions"] += 1
-                    elif result["type"] == "prohibition":
-                        classifications["prohibitions"] += 1
-        else:
-            # Sequential for mock
-            for rule in rules:
-                result = classify_single_rule(rule)
-                classifications["results"].append(result)
-                if result["type"] == "obligation":
-                    classifications["obligations"] += 1
-                elif result["type"] == "permission":
-                    classifications["permissions"] += 1
-                elif result["type"] == "prohibition":
-                    classifications["prohibitions"] += 1
+            classifications["results"].append(classification_result)
+            
+            if rule_type == "obligation":
+                classifications["obligations"] += 1
+            elif rule_type == "permission":
+                classifications["permissions"] += 1
+            elif rule_type == "prohibition":
+                classifications["prohibitions"] += 1
         
         return classifications
     
     def _run_fol_phase(self, classification_result: Dict) -> Dict[str, Any]:
-        """Run FOL generation phase with parallel processing."""
+        """Run FOL generation phase (sequential processing)."""
         try:
             from scripts.generate_fol_v2 import generate_fol
             import os
@@ -204,46 +184,39 @@ class ReproducibilityTest:
         results = classification_result.get("results", [])
         fol_formulas = []
         
-        def generate_single_fol(item):
-            """Generate FOL for a single rule (for parallel execution)."""
+        # Process FOL generation sequentially
+        for item in results:
             if self.use_mock_llm or not has_fol:
-                return {
+                fol_result = {
                     "id": item.get("id"),
                     "fol": f"O({item['type']}(x))",
                     "original_text": item.get("original_text", "")
                 }
-            try:
-                result = generate_fol(item.get("original_text", ""), ollama_url)
-                if result and not result.get("error"):
-                    return {
-                        "id": item.get("id"),
-                        "fol": result.get("deontic_formula", ""),
-                        "fol_expansion": result.get("fol_expansion", ""),
-                        "deontic_type": result.get("deontic_type", item.get("type")),
-                        "original_text": item.get("original_text", "")
-                    }
-                else:
-                    return {
+            else:
+                try:
+                    result = generate_fol(item.get("original_text", ""), ollama_url)
+                    if result and not result.get("error"):
+                        fol_result = {
+                            "id": item.get("id"),
+                            "fol": result.get("deontic_formula", ""),
+                            "fol_expansion": result.get("fol_expansion", ""),
+                            "deontic_type": result.get("deontic_type", item.get("type")),
+                            "original_text": item.get("original_text", "")
+                        }
+                    else:
+                        fol_result = {
+                            "id": item.get("id"),
+                            "fol": f"O({item['type']}(x))",
+                            "original_text": item.get("original_text", "")
+                        }
+                except Exception:
+                    fol_result = {
                         "id": item.get("id"),
                         "fol": f"O({item['type']}(x))",
                         "original_text": item.get("original_text", "")
                     }
-            except Exception:
-                return {
-                    "id": item.get("id"),
-                    "fol": f"O({item['type']}(x))",
-                    "original_text": item.get("original_text", "")
-                }
-        
-        # Process FOL generation in parallel
-        if not self.use_mock_llm and has_fol:
-            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-                futures = {executor.submit(generate_single_fol, item): item for item in results}
-                for future in as_completed(futures):
-                    fol_formulas.append(future.result())
-        else:
-            for item in results:
-                fol_formulas.append(generate_single_fol(item))
+            
+            fol_formulas.append(fol_result)
         
         return {
             "count": len(fol_formulas),
