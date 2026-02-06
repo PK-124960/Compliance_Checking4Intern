@@ -124,6 +124,13 @@ DEFINITION of a Policy Rule:
 
 IMPORTANT: "Should" statements are OFTEN recommendations, not binding rules. Only classify as rule if there's clear mandatory intent.
 
+EXAMPLES:
+1. "Students must submit their thesis by May 15th" → obligation, subject: students, marker: must
+2. "Faculty may request additional office space" → permission, subject: faculty, marker: may  
+3. "Plagiarism is strictly prohibited" → prohibition, subject: all, marker: prohibited
+4. "The university provides library resources" → NOT a rule (just a statement of fact)
+5. "Students should consider attending workshops" → NOT a rule (recommendation, not mandatory)
+
 Text to analyze:
 "{text}"
 
@@ -145,7 +152,7 @@ JSON:"""
             json={
                 "model": model,
                 "prompt": prompt,
-                "temperature": 0.1,
+                "temperature": 0.0,  # Changed from 0.1 for reproducibility
                 "stream": False,
                 "options": {"num_predict": 800}
             },

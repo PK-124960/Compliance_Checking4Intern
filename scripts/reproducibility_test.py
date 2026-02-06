@@ -16,7 +16,11 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Any, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import argparse
+
+# Parallel processing config
+MAX_WORKERS = 4  # Concurrent LLM calls (adjust based on Ollama capacity)
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -128,7 +132,7 @@ class ReproducibilityTest:
         }
     
     def _run_classification_phase(self, extraction_result: Dict) -> Dict[str, Any]:
-        """Run LLM classification phase."""
+        """Run LLM classification phase with parallel processing."""
         try:
             from scripts.populate_llm_annotations_v2 import classify_rule_strict
             has_classify = True
@@ -143,37 +147,51 @@ class ReproducibilityTest:
             "results": []
         }
         
-        for rule in rules:
+        def classify_single_rule(rule):
+            """Classify a single rule (for parallel execution)."""
             if self.use_mock_llm or not has_classify:
-                # Use existing annotation for mock
                 rule_type = rule.get("human_annotation", {}).get("rule_type", "obligation")
             else:
-                # Call actual LLM
                 try:
                     result = classify_rule_strict(rule.get("original_text", ""))
                     rule_type = result.get("rule_type", "obligation")
-                except Exception as e:
-                    print(f"  Warning: LLM classification failed for rule {rule.get('id')}: {e}")
-                    # Fallback to existing annotation
+                except Exception:
                     rule_type = rule.get("human_annotation", {}).get("rule_type", "obligation")
-            
-            classifications["results"].append({
+            return {
                 "id": rule.get("id"),
                 "type": rule_type,
                 "original_text": rule.get("original_text", "")
-            })
-            
-            if rule_type == "obligation":
-                classifications["obligations"] += 1
-            elif rule_type == "permission":
-                classifications["permissions"] += 1
-            elif rule_type == "prohibition":
-                classifications["prohibitions"] += 1
+            }
+        
+        # Process rules in parallel using ThreadPoolExecutor
+        if not self.use_mock_llm and has_classify:
+            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+                futures = {executor.submit(classify_single_rule, rule): rule for rule in rules}
+                for future in as_completed(futures):
+                    result = future.result()
+                    classifications["results"].append(result)
+                    if result["type"] == "obligation":
+                        classifications["obligations"] += 1
+                    elif result["type"] == "permission":
+                        classifications["permissions"] += 1
+                    elif result["type"] == "prohibition":
+                        classifications["prohibitions"] += 1
+        else:
+            # Sequential for mock
+            for rule in rules:
+                result = classify_single_rule(rule)
+                classifications["results"].append(result)
+                if result["type"] == "obligation":
+                    classifications["obligations"] += 1
+                elif result["type"] == "permission":
+                    classifications["permissions"] += 1
+                elif result["type"] == "prohibition":
+                    classifications["prohibitions"] += 1
         
         return classifications
     
     def _run_fol_phase(self, classification_result: Dict) -> Dict[str, Any]:
-        """Run FOL generation phase."""
+        """Run FOL generation phase with parallel processing."""
         try:
             from scripts.generate_fol_v2 import generate_fol
             import os
@@ -181,44 +199,51 @@ class ReproducibilityTest:
             has_fol = True
         except ImportError:
             has_fol = False
+            ollama_url = None
         
         results = classification_result.get("results", [])
         fol_formulas = []
         
-        for item in results:
+        def generate_single_fol(item):
+            """Generate FOL for a single rule (for parallel execution)."""
             if self.use_mock_llm or not has_fol:
-                # Generate mock FOL
-                fol = f"O({item['type']}(x))"
-                fol_formulas.append({
+                return {
                     "id": item.get("id"),
-                    "fol": fol,
+                    "fol": f"O({item['type']}(x))",
                     "original_text": item.get("original_text", "")
-                })
-            else:
-                try:
-                    result = generate_fol(item.get("original_text", ""), ollama_url)
-                    if result and not result.get("error"):
-                        fol_formulas.append({
-                            "id": item.get("id"),
-                            "fol": result.get("deontic_formula", ""),
-                            "fol_expansion": result.get("fol_expansion", ""),
-                            "deontic_type": result.get("deontic_type", item.get("type")),
-                            "original_text": item.get("original_text", "")
-                        })
-                    else:
-                        # Fallback
-                        fol_formulas.append({
-                            "id": item.get("id"),
-                            "fol": f"O({item['type']}(x))",
-                            "original_text": item.get("original_text", "")
-                        })
-                except Exception as e:
-                    print(f"  Warning: FOL generation failed for {item.get('id')}: {e}")
-                    fol_formulas.append({
+                }
+            try:
+                result = generate_fol(item.get("original_text", ""), ollama_url)
+                if result and not result.get("error"):
+                    return {
+                        "id": item.get("id"),
+                        "fol": result.get("deontic_formula", ""),
+                        "fol_expansion": result.get("fol_expansion", ""),
+                        "deontic_type": result.get("deontic_type", item.get("type")),
+                        "original_text": item.get("original_text", "")
+                    }
+                else:
+                    return {
                         "id": item.get("id"),
                         "fol": f"O({item['type']}(x))",
                         "original_text": item.get("original_text", "")
-                    })
+                    }
+            except Exception:
+                return {
+                    "id": item.get("id"),
+                    "fol": f"O({item['type']}(x))",
+                    "original_text": item.get("original_text", "")
+                }
+        
+        # Process FOL generation in parallel
+        if not self.use_mock_llm and has_fol:
+            with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+                futures = {executor.submit(generate_single_fol, item): item for item in results}
+                for future in as_completed(futures):
+                    fol_formulas.append(future.result())
+        else:
+            for item in results:
+                fol_formulas.append(generate_single_fol(item))
         
         return {
             "count": len(fol_formulas),

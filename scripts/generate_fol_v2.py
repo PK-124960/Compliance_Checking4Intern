@@ -71,7 +71,7 @@ def query_ollama(prompt: str, ollama_url: str, model: str = MODEL, retries: int 
                     "prompt": prompt,
                     "stream": False,
                     "options": {
-                        "temperature": 0.1,
+                        "temperature": 0.0,  # Changed from 0.1 for reproducibility
                         "num_predict": 1024,  # Increased from default ~128
                         "stop": ["\n\n"]  # Stop at double newline to prevent runaway
                     }
