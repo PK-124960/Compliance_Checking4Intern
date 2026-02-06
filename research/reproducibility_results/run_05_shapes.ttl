@@ -10,14 +10,6 @@
 # owl:imports <ait_policy_ontology.ttl> .
 
 
-# Rule: GS-002
-ait:Gs002Shape a sh:NodeShape ;
-    sh:targetClass ait:Person ;
-    rdfs:label "GS-002" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
-    rdfs:comment "Their educational visas may also be cancelled." .
-
 # Rule: GS-001
 ait:Gs001Shape a sh:NodeShape ;
     sh:targetClass ait:ContractedResearch ;
@@ -25,6 +17,14 @@ ait:Gs001Shape a sh:NodeShape ;
     deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Contracted research may entail confidentiality and restriction on publication." .
+
+# Rule: GS-002
+ait:Gs002Shape a sh:NodeShape ;
+    sh:targetClass ait:Person ;
+    rdfs:label "GS-002" ;
+    deontic:type deontic:prohibition ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Their educational visas may also be cancelled." .
 
 # Rule: GS-003
 ait:Gs003Shape a sh:NodeShape ;

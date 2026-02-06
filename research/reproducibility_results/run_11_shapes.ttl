@@ -10,14 +10,6 @@
 # owl:imports <ait_policy_ontology.ttl> .
 
 
-# Rule: GS-004
-ait:Gs004Shape a sh:NodeShape ;
-    sh:targetClass ait:Accommodation ;
-    rdfs:label "GS-004" ;
-    deontic:type deontic:obligation ;
-    sh:severity sh:Violation ;
-    rdfs:comment "Writing-off of doubtful accounts will be requested by OFIN and have to be approved by the President, or their VP designate." .
-
 # Rule: GS-001
 ait:Gs001Shape a sh:NodeShape ;
     sh:targetClass ait:ContractedResearch ;
@@ -41,6 +33,14 @@ ait:Gs003Shape a sh:NodeShape ;
     deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "(2) Continuing full-time postgraduate (PG) students (Master, Doctor and Diploma), i.e., those who completed at least one semester/term, will be invoic" .
+
+# Rule: GS-004
+ait:Gs004Shape a sh:NodeShape ;
+    sh:targetClass ait:Accommodation ;
+    rdfs:label "GS-004" ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Writing-off of doubtful accounts will be requested by OFIN and have to be approved by the President, or their VP designate." .
 
 # Rule: GS-005
 ait:Gs005Shape a sh:NodeShape ;
