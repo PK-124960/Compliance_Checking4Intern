@@ -10,22 +10,6 @@
 # owl:imports <ait_policy_ontology.ttl> .
 
 
-# Rule: GS-001
-ait:Gs001Shape a sh:NodeShape ;
-    sh:targetClass ait:ContractedResearch ;
-    rdfs:label "GS-001" ;
-    deontic:type deontic:obligation ;
-    sh:severity sh:Violation ;
-    rdfs:comment "Contracted research may entail confidentiality and restriction on publication." .
-
-# Rule: GS-002
-ait:Gs002Shape a sh:NodeShape ;
-    sh:targetClass ait:Person ;
-    rdfs:label "GS-002" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
-    rdfs:comment "Their educational visas may also be cancelled." .
-
 # Rule: GS-003
 ait:Gs003Shape a sh:NodeShape ;
     sh:targetClass ait:PostgraduateStudent ;
@@ -34,6 +18,14 @@ ait:Gs003Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "(2) Continuing full-time postgraduate (PG) students (Master, Doctor and Diploma), i.e., those who completed at least one semester/term, will be invoic" .
 
+# Rule: GS-001
+ait:Gs001Shape a sh:NodeShape ;
+    sh:targetClass ait:ContractedResearch ;
+    rdfs:label "GS-001" ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Contracted research may entail confidentiality and restriction on publication." .
+
 # Rule: GS-004
 ait:Gs004Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
@@ -41,6 +33,14 @@ ait:Gs004Shape a sh:NodeShape ;
     deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Writing-off of doubtful accounts will be requested by OFIN and have to be approved by the President, or their VP designate." .
+
+# Rule: GS-002
+ait:Gs002Shape a sh:NodeShape ;
+    sh:targetClass ait:Person ;
+    rdfs:label "GS-002" ;
+    deontic:type deontic:prohibition ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Their educational visas may also be cancelled." .
 
 # Rule: GS-005
 ait:Gs005Shape a sh:NodeShape ;
@@ -366,7 +366,7 @@ ait:Gs044Shape a sh:NodeShape ;
 ait:Gs045Shape a sh:NodeShape ;
     sh:targetClass ait:Semester ;
     rdfs:label "GS-045" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "An Assistant’s contract shall be terminated if, during the period of appointment, they are (a) not achieving good academic standing after one semester" .
 
@@ -406,7 +406,7 @@ ait:Gs049Shape a sh:NodeShape ;
 ait:Gs050Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-050" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Proper swim wear is required." .
 
@@ -582,7 +582,7 @@ ait:Gs071Shape a sh:NodeShape ;
 ait:Gs072Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-072" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "Proper sports attire is required for each sports facility." .
 
@@ -678,7 +678,7 @@ ait:Gs083Shape a sh:NodeShape ;
 ait:Gs084Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-084" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "A student found guilty of grave cheating by the School Dean, the Vice President for Academic Affairs and the Academic Senate may be dismissed." .
 
@@ -710,7 +710,7 @@ ait:Gs087Shape a sh:NodeShape ;
 ait:Gs088Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-088" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "accommodation units dormitories not designed for such facilities, will be fined Baht 2,000 and charged for the services related to the removal of the " .
 
