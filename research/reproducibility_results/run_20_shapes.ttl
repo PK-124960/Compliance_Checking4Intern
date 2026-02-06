@@ -582,7 +582,7 @@ ait:Gs071Shape a sh:NodeShape ;
 ait:Gs072Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-072" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Proper sports attire is required for each sports facility." .
 

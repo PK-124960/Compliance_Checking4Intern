@@ -710,7 +710,7 @@ ait:Gs087Shape a sh:NodeShape ;
 ait:Gs088Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-088" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "accommodation units dormitories not designed for such facilities, will be fined Baht 2,000 and charged for the services related to the removal of the " .
 

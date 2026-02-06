@@ -366,7 +366,7 @@ ait:Gs044Shape a sh:NodeShape ;
 ait:Gs045Shape a sh:NodeShape ;
     sh:targetClass ait:Semester ;
     rdfs:label "GS-045" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "An Assistant’s contract shall be terminated if, during the period of appointment, they are (a) not achieving good academic standing after one semester" .
 
