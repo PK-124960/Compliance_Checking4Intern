@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Database, RefreshCw, Code, Shield, CheckCircle, XCircle, Search, Loader } from 'lucide-react'
+import { Database, RefreshCw, Code, Shield, CheckCircle, XCircle, Search, Loader, User, AlertTriangle } from 'lucide-react'
 
 export default function Validation() {
     const [rules, setRules] = useState([])
@@ -8,9 +8,15 @@ export default function Validation() {
     const [loading, setLoading] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
 
-    // Load all rules on component mount
+    // Student selection state
+    const [students, setStudents] = useState([])
+    const [selectedScenario, setSelectedScenario] = useState('multiple_violations')
+    const [dbStats, setDbStats] = useState(null)
+
+    // Load all rules and students on component mount
     useEffect(() => {
         fetchRules()
+        fetchStudents()
     }, [])
 
     const fetchRules = async () => {
@@ -26,6 +32,17 @@ export default function Validation() {
         }
     }
 
+    const fetchStudents = async () => {
+        try {
+            const response = await fetch('/api/validation/students')
+            const data = await response.json()
+            setStudents(data.scenarios || [])
+            setDbStats(data.stats || null)
+        } catch (error) {
+            console.error('Failed to load students:', error)
+        }
+    }
+
     const handleValidateRule = async () => {
         if (!selectedRule) return
 
@@ -34,7 +51,10 @@ export default function Validation() {
             const response = await fetch('/api/validation/validate-rule', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ rule_id: selectedRule })
+                body: JSON.stringify({
+                    rule_id: selectedRule,
+                    scenario: selectedScenario
+                })
             })
             const data = await response.json()
             setValidationResult(data)
@@ -51,6 +71,13 @@ export default function Validation() {
     )
 
     const currentRule = rules.find(r => r.id === selectedRule)
+    const currentStudent = students.find(s => s.scenario === selectedScenario)
+
+    const scenarioLabels = {
+        'compliant': '✅ Compliant Student',
+        'single_violation': '⚠️ Single Violation',
+        'multiple_violations': '❌ Multiple Violations'
+    }
 
     return (
         <div className="space-y-6">
@@ -61,13 +88,48 @@ export default function Validation() {
                     Policy Rule Validation
                 </h1>
                 <p className="text-gray-600 mt-2 text-lg">
-                    Validate individual policy rules using SHACL constraints
+                    Validate individual policy rules against student data using SHACL constraints
                 </p>
             </div>
 
             <div className="grid grid-cols-3 gap-6">
                 {/* Left: Rule Selector */}
                 <div className="col-span-1 space-y-4">
+                    {/* Student Selector */}
+                    <div className="card bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200">
+                        <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                            <User className="w-5 h-5 text-amber-600" />
+                            Test Student
+                        </h3>
+                        <select
+                            value={selectedScenario}
+                            onChange={(e) => {
+                                setSelectedScenario(e.target.value)
+                                setValidationResult(null)
+                            }}
+                            className="w-full px-3 py-2 border border-amber-300 rounded-lg bg-white focus:ring-2 focus:ring-amber-500"
+                        >
+                            {Object.entries(scenarioLabels).map(([value, label]) => (
+                                <option key={value} value={value}>{label}</option>
+                            ))}
+                        </select>
+                        {currentStudent && (
+                            <div className="mt-3 text-sm text-gray-600 space-y-1">
+                                <div><strong>ID:</strong> {currentStudent.student_id}</div>
+                                <div><strong>Name:</strong> {currentStudent.name}</div>
+                                <div><strong>Program:</strong> {currentStudent.program}</div>
+                                <div className={`flex items-center gap-1 ${currentStudent.violation_count > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                                    {currentStudent.violation_count > 0 ? (
+                                        <AlertTriangle className="w-4 h-4" />
+                                    ) : (
+                                        <CheckCircle className="w-4 h-4" />
+                                    )}
+                                    <strong>{currentStudent.violation_count}</strong> expected violations
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="card">
                         <h3 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
                             <Code className="w-5 h-5 text-blue-600" />
@@ -87,7 +149,7 @@ export default function Validation() {
                         </div>
 
                         {/* Rule List */}
-                        <div className="max-h-96 overflow-y-auto space-y-2">
+                        <div className="max-h-64 overflow-y-auto space-y-2">
                             {filteredRules.map((rule) => (
                                 <button
                                     key={rule.id}
@@ -162,12 +224,12 @@ export default function Validation() {
                                 {loading ? (
                                     <>
                                         <Loader className="w-5 h-5 animate-spin" />
-                                        Validating...
+                                        Validating with pySHACL...
                                     </>
                                 ) : (
                                     <>
                                         <Shield className="w-5 h-5" />
-                                        Run SHACL Validation
+                                        Run SHACL Validation on {scenarioLabels[selectedScenario]?.split(' ')[0]}
                                     </>
                                 )}
                             </button>
@@ -182,42 +244,65 @@ export default function Validation() {
                             {validationResult && (
                                 <div className="card">
                                     <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                                        {validationResult.validation_result?.conforms ? (
+                                        {validationResult.conforms ? (
                                             <CheckCircle className="w-5 h-5 text-green-600" />
                                         ) : (
                                             <XCircle className="w-5 h-5 text-red-600" />
                                         )}
                                         Validation Results
+                                        {validationResult.is_mock && (
+                                            <span className="ml-2 px-2 py-0.5 text-xs bg-amber-100 text-amber-700 rounded">
+                                                pySHACL not installed
+                                            </span>
+                                        )}
                                     </h4>
 
-                                    <div className={`p-4 rounded-lg mb-4 ${validationResult.validation_result?.conforms
+                                    {/* Student Info */}
+                                    {validationResult.student && (
+                                        <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                            <h5 className="font-semibold text-sm text-blue-800 mb-2">Student Data Used:</h5>
+                                            <div className="text-sm text-gray-700 grid grid-cols-2 gap-2">
+                                                <div><strong>ID:</strong> {validationResult.student.id}</div>
+                                                <div><strong>Name:</strong> {validationResult.student.name}</div>
+                                                <div><strong>Program:</strong> {validationResult.student.program}</div>
+                                                <div><strong>Fees Paid:</strong> {validationResult.student.fees_paid ? '✅ Yes' : '❌ No'}</div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className={`p-4 rounded-lg mb-4 ${validationResult.conforms
                                         ? 'bg-green-50 border border-green-200'
                                         : 'bg-red-50 border border-red-200'
                                         }`}>
                                         <div className="font-semibold mb-1">
-                                            {validationResult.validation_result?.conforms ? '✅ CONFORMS' : '❌ VIOLATIONS DETECTED'}
+                                            {validationResult.conforms ? '✅ CONFORMS' : '❌ VIOLATIONS DETECTED'}
                                         </div>
                                         <div className="text-sm text-gray-600">
-                                            {validationResult.validation_result?.message}
+                                            {validationResult.validation_result?.message ||
+                                                validationResult.validation_result?.report_text?.substring(0, 200)}
                                         </div>
                                     </div>
 
-                                    {/* FOL Formula */}
-                                    {validationResult.fol_formula && (
+                                    {/* Violations */}
+                                    {validationResult.violations && validationResult.violations.length > 0 && (
                                         <div className="mb-4">
-                                            <h5 className="font-semibold text-sm text-gray-700 mb-2">FOL Formula:</h5>
-                                            <pre className="bg-gray-50 p-3 rounded-lg text-xs font-mono overflow-x-auto">
-                                                {validationResult.fol_formula}
-                                            </pre>
+                                            <h5 className="font-semibold text-sm text-red-700 mb-2">
+                                                Violations ({validationResult.violations.length}):
+                                            </h5>
+                                            <div className="bg-red-50 p-3 rounded-lg space-y-1 max-h-32 overflow-y-auto">
+                                                {validationResult.violations.map((v, i) => (
+                                                    <div key={i} className="text-xs font-mono text-red-800">{v}</div>
+                                                ))}
+                                            </div>
                                         </div>
                                     )}
 
-                                    {/* SHACL Shape */}
-                                    {validationResult.shacl_shape && (
+                                    {/* Student RDF */}
+                                    {validationResult.student_rdf && (
                                         <div>
-                                            <h5 className="font-semibold text-sm text-gray-700 mb-2">SHACL Shape:</h5>
-                                            <pre className="bg-gray-50 p-3 rounded-lg text-xs font-mono overflow-x-auto max-h-64">
-                                                {validationResult.shacl_shape}
+                                            <h5 className="font-semibold text-sm text-gray-700 mb-2">Student RDF (Turtle):</h5>
+                                            <pre className="bg-gray-50 p-3 rounded-lg text-xs font-mono overflow-x-auto max-h-48">
+                                                {validationResult.student_rdf}
                                             </pre>
                                         </div>
                                     )}
@@ -234,7 +319,7 @@ export default function Validation() {
             </div>
 
             {/* Stats Footer */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-5 gap-4">
                 <div className="card text-center">
                     <div className="text-3xl font-bold text-blue-600">{rules.length}</div>
                     <div className="text-sm text-gray-600">Total Rules</div>
@@ -256,6 +341,12 @@ export default function Validation() {
                         {rules.filter(r => r.deontic_type === 'permission').length}
                     </div>
                     <div className="text-sm text-gray-600">Permissions</div>
+                </div>
+                <div className="card text-center">
+                    <div className="text-3xl font-bold text-amber-600">
+                        {dbStats?.total_students || '?'}
+                    </div>
+                    <div className="text-sm text-gray-600">Test Students</div>
                 </div>
             </div>
         </div>

@@ -69,12 +69,46 @@ def get_validation_rules():
         'rules': enhanced_rules
     })
 
+@app.route('/api/validation/students', methods=['GET'])
+def get_validation_students():
+    """Get students for validation testing."""
+    try:
+        from backend.services.student_db import get_student_by_scenario, get_database_stats
+        
+        stats = get_database_stats()
+        
+        # Get one sample student for each scenario
+        scenarios = []
+        for scenario_type in ['compliant', 'single_violation', 'multiple_violations']:
+            student = get_student_by_scenario(scenario_type)
+            if student:
+                scenarios.append({
+                    'scenario': scenario_type,
+                    'student_id': student.get('student_id'),
+                    'name': student.get('name'),
+                    'program': student.get('program', 'Unknown'),
+                    'violation_count': student.get('violation_count', 0)
+                })
+        
+        return jsonify({
+            'stats': stats,
+            'scenarios': scenarios
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/api/validation/validate-rule', methods=['POST'])
 def validate_specific_rule():
-    """Validate a specific rule against test data."""
+    """Validate a specific rule against selected student data using real pySHACL."""
+    from backend.services.student_db import get_student_by_id, get_student_by_scenario, get_student_violations
+    from backend.services.rdf_converter import student_to_rdf
+    from backend.services.shacl_validator import validate_student
+    
     data = request.json or {}
     rule_id = data.get('rule_id')
+    student_id = data.get('student_id')
+    scenario = data.get('scenario', 'multiple_violations')
     
     if not rule_id:
         return jsonify({"error": "rule_id required"}), 400
@@ -86,7 +120,7 @@ def validate_specific_rule():
     if not rule:
         return jsonify({"error": f"Rule {rule_id} not found"}), 404
     
-    # Load FOL and SHACL for this rule
+    # Load FOL for this rule
     fol_data = load_fol_results()
     fol_list = fol_data.get('formalized_rules', [])
     rule_fol = next((f for f in fol_list if f.get('id') == rule_id), None)
@@ -94,20 +128,56 @@ def validate_specific_rule():
     if not rule_fol:
         return jsonify({"error": f"No FOL found for rule {rule_id}"}), 404
     
-    # For now, return the rule data and mock validation
-    # In production, this would run actual pySHACL validation
-    return jsonify({
-        'rule_id': rule_id,
-        'rule_text': rule.get('original_text'),
-        'deontic_type': rule_fol.get('fol_formalization', {}).get('deontic_type'),
-        'fol_formula': rule_fol.get('fol_formalization', {}).get('deontic_formula'),
-        'shacl_shape': '# SHACL shape would be loaded from file',
-        'validation_result': {
-            'conforms': True,
-            'violations': [],
-            'message': 'Mock validation - pySHACL integration pending'
-        }
-    })
+    # Get student data
+    try:
+        if student_id:
+            student = get_student_by_id(student_id)
+        else:
+            student = get_student_by_scenario(scenario)
+        
+        if not student:
+            return jsonify({"error": "No student found for validation"}), 404
+        
+        # Get student violations
+        violations = get_student_violations(student['student_id'])
+        
+        # Convert student to RDF
+        student_rdf = student_to_rdf(student, violations)
+        
+        # Run SHACL validation
+        validation_result = validate_student(student_rdf)
+        
+        return jsonify({
+            'rule_id': rule_id,
+            'rule_text': rule.get('original_text'),
+            'deontic_type': rule_fol.get('fol_formalization', {}).get('deontic_type'),
+            'fol_formula': rule_fol.get('fol_formalization', {}).get('deontic_formula'),
+            'student': {
+                'id': student['student_id'],
+                'name': student.get('name'),
+                'program': student.get('program'),
+                'fees_paid': student.get('fees_paid'),
+                'is_full_time': student.get('is_full_time')
+            },
+            'student_rdf': student_rdf,
+            'validation_result': validation_result,
+            'conforms': validation_result.get('conforms', True),
+            'violations': validation_result.get('violations', []),
+            'is_mock': validation_result.get('mock', False)
+        })
+    except Exception as e:
+        return jsonify({
+            'rule_id': rule_id,
+            'rule_text': rule.get('original_text'),
+            'deontic_type': rule_fol.get('fol_formalization', {}).get('deontic_type'),
+            'fol_formula': rule_fol.get('fol_formalization', {}).get('deontic_formula'),
+            'error': str(e),
+            'validation_result': {
+                'conforms': True,
+                'violations': [],
+                'message': f'Validation error: {str(e)}'
+            }
+        })
 
 
 @app.route('/api/validation/run', methods=['POST'])
