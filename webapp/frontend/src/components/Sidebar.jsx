@@ -8,7 +8,7 @@ const researchNavItems = [
 ]
 
 const dataNavItems = [
-    { path: '/rules', icon: FileText, label: 'Rules Browser', description: '97 annotated rules' },
+    { path: '/rules', icon: FileText, label: 'Rules Browser', description: '97 sentences (83 rules)' },
     { path: '/fol', icon: Code, label: 'FOL Formulas', description: 'Logic representations' }
 ]
 
@@ -123,9 +123,9 @@ export default function Sidebar({ open, setOpen }) {
                         <div className="font-semibold text-gray-800 mb-1">Data Status:</div>
                         <div className="flex items-center gap-1">
                             <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                            <span>97 rules loaded ✓</span>
+                            <span>97 sentences loaded ✓</span>
                         </div>
-                        <div className="text-gray-500 mt-1">Updated: Jan 31, 2026</div>
+                        <div className="text-gray-500 mt-1">Updated: Feb 7, 2026 (v4)</div>
                     </div>
                 </div>
             )}

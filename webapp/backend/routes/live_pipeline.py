@@ -487,11 +487,20 @@ Category:"""
                 emitter.emit_progress("classification", (i + 1) / len(rules), 
                                      f"Classified {i + 1} of {len(rules)} rules")
     else:
-        # Demo mode: Use pre-computed annotations
+        # Demo mode: Use pre-computed annotations from gold standard v4
         print("[Classification] Using DEMO mode (pre-computed annotations)")
         
-        for i, rule in enumerate(rules):
-            rule_type = rule.get("human_annotation", {}).get("rule_type", "obligation")
+        # Filter: only process entries marked as rules (skip 14 non-rules)
+        actual_rules = [r for r in rules if r.get("human_annotation", {}).get("is_rule") == True]
+        print(f"[Classification] Filtered to {len(actual_rules)} actual rules (skipped {len(rules) - len(actual_rules)} non-rules)")
+        
+        for i, rule in enumerate(actual_rules):
+            # Fallback chain: human_annotation → llm_annotation → default
+            rule_type = (
+                rule.get("human_annotation", {}).get("rule_type") or
+                rule.get("llm_annotation", {}).get("rule_type") or
+                "obligation"
+            )
             if i < 3:
                 print(f"[Classification] Rule {i}: type={rule_type}, id={rule.get('id')}")
             
@@ -511,8 +520,8 @@ Category:"""
             
             # Emit progress every 10 rules
             if i % 10 == 0:
-                emitter.emit_progress("classification", (i + 1) / len(rules), 
-                                     f"Classified {i + 1} of {len(rules)} rules")
+                emitter.emit_progress("classification", (i + 1) / len(actual_rules), 
+                                     f"Classified {i + 1} of {len(actual_rules)} rules")
     
     emitter.emit_intermediate_output("classification", "distribution", {
         "obligations": result["obligations"],
