@@ -112,10 +112,12 @@ class PipelineEventEmitter:
         })
     
     def close(self):
-        """Close the event queue."""
+        """Close the event queue - don't delete it, let SSE stream handle cleanup."""
         self.emit("close", {"message": "Pipeline complete"})
-        if self.run_id in RUN_QUEUES:
-            del RUN_QUEUES[self.run_id]
+        # NOTE: Don't delete queue here - SSE stream will read the close event
+        # and then the queue can be garbage collected or cleaned up later
+        # if self.run_id in RUN_QUEUES:
+        #     del RUN_QUEUES[self.run_id]
 
 
 def run_pipeline_async(run_id: str, pdf_path: Optional[str] = None, queue: Queue = None):
@@ -537,9 +539,14 @@ def stream_events(run_id: str):
         while True:
             try:
                 event = queue.get(timeout=30)  # 30 second timeout
+                print(f"[SSE] Got event: {event.get('type', 'unknown')}")
                 
                 if event.get("type") == "close":
                     yield f"data: {json.dumps(event)}\n\n"
+                    # Clean up queue now that stream is closing
+                    if run_id in RUN_QUEUES:
+                        del RUN_QUEUES[run_id]
+                        print(f"[SSE] Cleaned up queue for {run_id}")
                     break
                 
                 yield f"data: {json.dumps(event)}\n\n"
