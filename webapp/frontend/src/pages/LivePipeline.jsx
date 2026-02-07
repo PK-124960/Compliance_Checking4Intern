@@ -82,6 +82,16 @@ export default function LivePipeline() {
     const fetchRunHistory = async () => {
         try {
             const response = await fetch('/api/live/history')
+            // Check if response is OK and content type is JSON
+            if (!response.ok) {
+                console.error('Failed to fetch history: HTTP', response.status)
+                return
+            }
+            const contentType = response.headers.get('content-type')
+            if (!contentType || !contentType.includes('application/json')) {
+                console.error('Expected JSON response but got:', contentType)
+                return
+            }
             const data = await response.json()
             setRunHistory(data.runs || [])
         } catch (err) {
@@ -126,6 +136,15 @@ export default function LivePipeline() {
                 body: formData
             })
 
+            // Check if response is JSON
+            if (!response.ok) {
+                throw new Error(`Upload failed: HTTP ${response.status}`)
+            }
+            const contentType = response.headers.get('content-type')
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new Error('Backend returned non-JSON response. Is the backend running?')
+            }
+
             const data = await response.json()
             setCurrentRunId(data.run_id)
 
@@ -147,8 +166,12 @@ export default function LivePipeline() {
         eventSourceRef.current = eventSource
 
         eventSource.onmessage = (event) => {
-            const data = JSON.parse(event.data)
-            handleEvent(data)
+            try {
+                const data = JSON.parse(event.data)
+                handleEvent(data)
+            } catch (err) {
+                console.error('Failed to parse SSE event:', err)
+            }
         }
 
         eventSource.onerror = () => {
