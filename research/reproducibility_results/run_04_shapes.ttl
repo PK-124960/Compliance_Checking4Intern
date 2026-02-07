@@ -58,11 +58,11 @@ ait:Gs006Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "(20) Overdue accounts shall be reviewed periodically, and follow-up collections shall be initiated." .
 
-# Rule: GS-007 (prohibition)
+# Rule: GS-007 (obligation)
 ait:Gs007Shape a sh:NodeShape ;
     sh:targetClass ait:Examination ;
     rdfs:label "GS-007" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "(10) Additional payments for audited and repeated courses, as well as beyond the minimum 3 credits for part-time students, registered for the semester" .
 
@@ -82,26 +82,13 @@ ait:Gs009Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Students shall not disturb fellow students in the residential areas." .
 
-# Rule: GS-010 — DEFAULT RESTRICTION (permission-as-exception)
-# Under closed-world assumption: action restricted unless explicitly permitted
-ait:Gs010DefaultShape a sh:NodeShape ;
+# Rule: GS-010 (obligation)
+ait:Gs010Shape a sh:NodeShape ;
     sh:targetClass ait:ExchangeStudent ;
-    rdfs:label "GS-010 Default Restriction" ;
-    deontic:type deontic:prohibition ;
-    deontic:defaultRestriction true ;
-    sh:severity sh:Warning ;
-    rdfs:comment "Default: give exceptions for less than two months is restricted unless permission is granted. Source: Exceptions to this may only be given to those whose exchange program is less than two months." .
-
-# Rule: GS-010 — PERMISSION EXCEPTION
-# Grants explicit permission, overriding the default restriction
-ait:Gs010PermissionShape a sh:NodeShape ;
-    sh:targetClass ait:ExchangeStudent ;
-    rdfs:label "GS-010 Permission" ;
-    deontic:type deontic:permission ;
-    deontic:permissionScope "explicit" ;
-    deontic:overrides ait:Gs010DefaultShape ;
-    sh:severity sh:Info ;
-    rdfs:comment "Permission: Exceptions to this may only be given to those whose exchange program is less than two months." .
+    rdfs:label "GS-010" ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Exceptions to this may only be given to those whose exchange program is less than two months." .
 
 # Rule: GS-011 — DEFAULT RESTRICTION (permission-as-exception)
 # Under closed-world assumption: action restricted unless explicitly permitted
@@ -140,7 +127,7 @@ ait:Gs013DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: choose unit is restricted unless permission is granted. Source: ● New students may choose from all the available units when their queuing number is called." .
+    rdfs:comment "Default: choose is restricted unless permission is granted. Source: ● New students may choose from all the available units when their queuing number is called." .
 
 # Rule: GS-013 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -161,7 +148,7 @@ ait:Gs014DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: add name to waiting list is restricted unless permission is granted. Source: Students may put their names on the waiting list and live in employee accommodation subject to availability." .
+    rdfs:comment "Default: put name on waiting list is restricted unless permission is granted. Source: Students may put their names on the waiting list and live in employee accommodation subject to availability." .
 
 # Rule: GS-014 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -190,7 +177,7 @@ ait:Gs016DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: allocate room is restricted unless permission is granted. Source: A student dormitory may be allocated for a maximum period of one month, in case of availability to: a." .
+    rdfs:comment "Default: allocate dormitory is restricted unless permission is granted. Source: A student dormitory may be allocated for a maximum period of one month, in case of availability to: a." .
 
 # Rule: GS-016 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -227,11 +214,11 @@ ait:Gs019Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Alternative rooms designated for such purpose must be used." .
 
-# Rule: GS-020 (prohibition)
+# Rule: GS-020 (obligation)
 ait:Gs020Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-020" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Students found guilty may face a fine of Baht 2,000, or the actual costs of the damage caused by smoking or burning." .
 
@@ -291,7 +278,7 @@ ait:Gs027DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: accept items is restricted unless permission is granted. Source: Items valued at less than THB 3,000 may be accepted without reporting." .
+    rdfs:comment "Default: accept is restricted unless permission is granted. Source: Items valued at less than THB 3,000 may be accepted without reporting." .
 
 # Rule: GS-027 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -328,7 +315,7 @@ ait:Gs030DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: travel to rangsit is restricted unless permission is granted. Source: 39 up to Rangsit and from there may ride a pick-up, popularly known as 'Luth'." .
+    rdfs:comment "Default: ride is restricted unless permission is granted. Source: 39 up to Rangsit and from there may ride a pick-up, popularly known as 'Luth'." .
 
 # Rule: GS-030 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -479,19 +466,19 @@ ait:Gs044Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Complete the Student Research Expense - Advance (SRA) form which must be approved by the School and submit to Finance for payment to student." .
 
-# Rule: GS-045 (obligation)
+# Rule: GS-045 (prohibition)
 ait:Gs045Shape a sh:NodeShape ;
     sh:targetClass ait:Semester ;
     rdfs:label "GS-045" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "An Assistant’s contract shall be terminated if, during the period of appointment, they are (a) not achieving good academic standing after one semester" .
 
-# Rule: GS-046 (obligation)
+# Rule: GS-046 (prohibition)
 ait:Gs046Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-046" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "No member of the AIT community, trustee, faculty, staff, or student, including outreach program participants, should act deliberately or thoughtlessly" .
 
@@ -511,7 +498,7 @@ ait:Gs048DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: contact nurse is restricted unless permission is granted. Source: In emergency cases or if any medical emergency assistance is required, the nurse on duty can be contacted at 02-524-5555." .
+    rdfs:comment "Default: nurse is restricted unless permission is granted. Source: In emergency cases or if any medical emergency assistance is required, the nurse on duty can be contacted at 02-524-5555." .
 
 # Rule: GS-048 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -556,7 +543,7 @@ ait:Gs052DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: takes local bus is restricted unless permission is granted. Source: When getting off at the Don Muang (Bangkok International Airport), you may take local buses no." .
+    rdfs:comment "Default: getting is restricted unless permission is granted. Source: When getting off at the Don Muang (Bangkok International Airport), you may take local buses no." .
 
 # Rule: GS-052 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -577,7 +564,7 @@ ait:Gs053DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: conducts random inspection is restricted unless permission is granted. Source: OFAM is authorized to undertake random inspections and may lay sanctions if the unit is found to be dirty and unhygienic." .
+    rdfs:comment "Default: o a m is restricted unless permission is granted. Source: OFAM is authorized to undertake random inspections and may lay sanctions if the unit is found to be dirty and unhygienic." .
 
 # Rule: GS-053 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -598,7 +585,7 @@ ait:Gs054DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: appoints as assistant is restricted unless permission is granted. Source: A special student who is a master or doctoral student studying at another institution and enrolled at AIT under a Memorandum of Understanding, for a p" .
+    rdfs:comment "Default: special is restricted unless permission is granted. Source: A special student who is a master or doctoral student studying at another institution and enrolled at AIT under a Memorandum of Understanding, for a p" .
 
 # Rule: GS-054 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -635,7 +622,7 @@ ait:Gs057DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: seek redress through formal grievance procedures is restricted unless permission is granted. Source: Formal procedures 3.1 A complainant may, with or without previous recourse to informal channels, decide to seek redress through formal grievance proce" .
+    rdfs:comment "Default: complainant is restricted unless permission is granted. Source: Formal procedures 3.1 A complainant may, with or without previous recourse to informal channels, decide to seek redress through formal grievance proce" .
 
 # Rule: GS-057 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -680,19 +667,19 @@ ait:Gs061Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Lessees are required to pay three-month advance deposit to take on the lease of premises." .
 
-# Rule: GS-062 (prohibition)
+# Rule: GS-062 (obligation)
 ait:Gs062Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-062" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Student Assistants shall be students in good standing on the effective dates of their appointment." .
 
-# Rule: GS-063 (obligation)
+# Rule: GS-063 (prohibition)
 ait:Gs063Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-063" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "Expulsion shall be imposed for drug abuse." .
 
@@ -728,7 +715,7 @@ ait:Gs067DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: is assisted by is restricted unless permission is granted. Source: In discharging his/her responsibility to implement this Policy, the President may be assisted by the Campus Environment and Development Committee." .
+    rdfs:comment "Default: assist is restricted unless permission is granted. Source: In discharging his/her responsibility to implement this Policy, the President may be assisted by the Campus Environment and Development Committee." .
 
 # Rule: GS-067 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -741,11 +728,11 @@ ait:Gs067PermissionShape a sh:NodeShape ;
     sh:severity sh:Info ;
     rdfs:comment "Permission: In discharging his/her responsibility to implement this Policy, the President may be assisted by the Campus Environment and Development Committee." .
 
-# Rule: GS-068 (prohibition)
+# Rule: GS-068 (obligation)
 ait:Gs068Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-068" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "The AIT campus includes a diverse mixture of settings, from offices, classrooms and laboratories to houses and dormitories, and each setting may prese" .
 
@@ -797,7 +784,7 @@ ait:Gs074DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: add name to waiting list and live in staff housing is restricted unless permission is granted. Source: Students may put their names in the waiting list and live in staff housing depending on availability." .
+    rdfs:comment "Default: put name in waiting list is restricted unless permission is granted. Source: Students may put their names in the waiting list and live in staff housing depending on availability." .
 
 # Rule: GS-074 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -834,26 +821,13 @@ ait:Gs077Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Hearings should normally be held within ten working days of the notice." .
 
-# Rule: GS-078 — DEFAULT RESTRICTION (permission-as-exception)
-# Under closed-world assumption: action restricted unless explicitly permitted
-ait:Gs078DefaultShape a sh:NodeShape ;
+# Rule: GS-078 (obligation)
+ait:Gs078Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
-    rdfs:label "GS-078 Default Restriction" ;
-    deontic:type deontic:prohibition ;
-    deontic:defaultRestriction true ;
-    sh:severity sh:Warning ;
-    rdfs:comment "Default: imposes fine or locks vehicle is restricted unless permission is granted. Source: Vehicle may be locked or fine may also be imposed, if needed." .
-
-# Rule: GS-078 — PERMISSION EXCEPTION
-# Grants explicit permission, overriding the default restriction
-ait:Gs078PermissionShape a sh:NodeShape ;
-    sh:targetClass ait:Person ;
-    rdfs:label "GS-078 Permission" ;
-    deontic:type deontic:permission ;
-    deontic:permissionScope "explicit" ;
-    deontic:overrides ait:Gs078DefaultShape ;
-    sh:severity sh:Info ;
-    rdfs:comment "Permission: Vehicle may be locked or fine may also be imposed, if needed." .
+    rdfs:label "GS-078" ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
+    rdfs:comment "Vehicle may be locked or fine may also be imposed, if needed." .
 
 # Rule: GS-079 (obligation)
 ait:Gs079Shape a sh:NodeShape ;
@@ -863,11 +837,11 @@ ait:Gs079Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "● Any safety and security concerns should be reported to Security Officer." .
 
-# Rule: GS-080 (prohibition)
+# Rule: GS-080 (obligation)
 ait:Gs080Shape a sh:NodeShape ;
     sh:targetClass ait:ExchangeStudent ;
     rdfs:label "GS-080" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Exceptions may only be given to those whose exchange program is less than two months." .
 
@@ -879,11 +853,11 @@ ait:Gs081Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "For training sessions, prior permission has to be taken from OFAM and trainer might need to pay for using the facilities." .
 
-# Rule: GS-082 (prohibition)
+# Rule: GS-082 (obligation)
 ait:Gs082Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-082" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Questions about the plan, enrollment, claim should be directed to Generali Life Assurance (Thailand) Co., Ltd." .
 
@@ -927,11 +901,11 @@ ait:Gs087Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Before a student is accepted for enrolment, the Admissions and Scholarships Unit (ASU) is required to ensure that there is proof of financial support " .
 
-# Rule: GS-088 (prohibition)
+# Rule: GS-088 (obligation)
 ait:Gs088Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-088" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "accommodation units dormitories not designed for such facilities, will be fined Baht 2,000 and charged for the services related to the removal of the " .
 
@@ -951,7 +925,7 @@ ait:Gs090DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: provide student dormitories is restricted unless permission is granted. Source: Student dormitories may be provided for a maximum period of one month, in case of availability to: a." .
+    rdfs:comment "Default: provide student dormitory is restricted unless permission is granted. Source: Student dormitories may be provided for a maximum period of one month, in case of availability to: a." .
 
 # Rule: GS-090 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
@@ -972,11 +946,11 @@ ait:Gs091Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Invoices are required to be settled by the indicated due date." .
 
-# Rule: GS-092 (prohibition)
+# Rule: GS-092 (obligation)
 ait:Gs092Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-092" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "In case of over staying guests, special prior permission must be obtained from the Director, Office of Facilities and Asset Management (OFAM) and a da" .
 
@@ -988,26 +962,13 @@ ait:Gs093Shape a sh:NodeShape ;
     sh:severity sh:Violation ;
     rdfs:comment "Families of non-resident students may not reside on campus if the non-resident student is off-campus." .
 
-# Rule: GS-094 — DEFAULT RESTRICTION (permission-as-exception)
-# Under closed-world assumption: action restricted unless explicitly permitted
-ait:Gs094DefaultShape a sh:NodeShape ;
+# Rule: GS-094 (obligation)
+ait:Gs094Shape a sh:NodeShape ;
     sh:targetClass ait:Faculty ;
-    rdfs:label "GS-094 Default Restriction" ;
-    deontic:type deontic:prohibition ;
-    deontic:defaultRestriction true ;
-    sh:severity sh:Warning ;
-    rdfs:comment "Default: performs duties is restricted unless permission is granted. Source: The duties of non- instructional teaching assistants may include assisting faculty in preparing materials for lectures, grading assignments and quizze" .
-
-# Rule: GS-094 — PERMISSION EXCEPTION
-# Grants explicit permission, overriding the default restriction
-ait:Gs094PermissionShape a sh:NodeShape ;
-    sh:targetClass ait:Faculty ;
-    rdfs:label "GS-094 Permission" ;
-    deontic:type deontic:permission ;
-    deontic:permissionScope "explicit" ;
-    deontic:overrides ait:Gs094DefaultShape ;
-    sh:severity sh:Info ;
-    rdfs:comment "Permission: The duties of non- instructional teaching assistants may include assisting faculty in preparing materials for lectures, grading assignments and quizze" .
+    rdfs:label "GS-094" ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
+    rdfs:comment "The duties of non- instructional teaching assistants may include assisting faculty in preparing materials for lectures, grading assignments and quizze" .
 
 # Rule: GS-095 (obligation)
 ait:Gs095Shape a sh:NodeShape ;
@@ -1025,7 +986,7 @@ ait:Gs096DefaultShape a sh:NodeShape ;
     deontic:type deontic:prohibition ;
     deontic:defaultRestriction true ;
     sh:severity sh:Warning ;
-    rdfs:comment "Default: wait van is restricted unless permission is granted. Source: Students may wait for the vans at the Thammasat Road near AIT Gate No." .
+    rdfs:comment "Default: waits is restricted unless permission is granted. Source: Students may wait for the vans at the Thammasat Road near AIT Gate No." .
 
 # Rule: GS-096 — PERMISSION EXCEPTION
 # Grants explicit permission, overriding the default restriction
