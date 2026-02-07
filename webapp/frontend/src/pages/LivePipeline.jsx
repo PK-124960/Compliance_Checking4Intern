@@ -584,17 +584,79 @@ export default function LivePipeline() {
                                         )}
 
                                         {phase.id === 'validation' && data.passed !== undefined && (
-                                            <div className={`p-4 rounded-lg ${data.passed ? 'bg-green-50' : 'bg-red-50'}`}>
-                                                <div className="flex items-center gap-2">
-                                                    {data.passed ? (
-                                                        <CheckCircle className="w-5 h-5 text-green-500" />
-                                                    ) : (
-                                                        <XCircle className="w-5 h-5 text-red-500" />
-                                                    )}
-                                                    <span className={data.passed ? 'text-green-700' : 'text-red-700'}>
-                                                        {data.passed ? 'Validation Passed' : 'Validation Failed'}
-                                                    </span>
+                                            <div className="space-y-3">
+                                                {/* Summary Banner */}
+                                                <div className={`p-4 rounded-lg ${data.passed ? 'bg-green-50' : 'bg-red-50'}`}>
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex items-center gap-2">
+                                                            {data.passed ? (
+                                                                <CheckCircle className="w-5 h-5 text-green-500" />
+                                                            ) : (
+                                                                <XCircle className="w-5 h-5 text-red-500" />
+                                                            )}
+                                                            <span className={data.passed ? 'text-green-700 font-medium' : 'text-red-700 font-medium'}>
+                                                                {data.passed ? 'Validation Passed' : 'Validation Failed'}
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex gap-4 text-sm">
+                                                            <span className="text-gray-600">
+                                                                Shapes: <strong>{data.shapes_validated || data.intermediate?.results?.shapes_validated || 0}</strong>
+                                                            </span>
+                                                            <span className={data.violations > 0 ? 'text-red-600' : 'text-green-600'}>
+                                                                Violations: <strong>{data.violations || 0}</strong>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                {/* Detailed Violations List */}
+                                                {(data.violations_list?.length > 0 || data.intermediate?.results?.violations?.length > 0) && (
+                                                    <div className="bg-white border border-red-200 rounded-lg overflow-hidden">
+                                                        <div className="bg-red-50 px-4 py-2 border-b border-red-200">
+                                                            <span className="text-sm font-medium text-red-700">
+                                                                Violation Details ({data.violations_list?.length || data.intermediate?.results?.violations?.length} found)
+                                                            </span>
+                                                        </div>
+                                                        <div className="max-h-60 overflow-y-auto">
+                                                            {(data.violations_list || data.intermediate?.results?.violations || []).map((v, i) => (
+                                                                <div key={i} className="px-4 py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50">
+                                                                    <div className="flex items-start gap-3">
+                                                                        <span className={`px-2 py-0.5 text-xs rounded ${v.severity === 'Violation' ? 'bg-red-100 text-red-700' :
+                                                                                v.severity === 'Warning' ? 'bg-yellow-100 text-yellow-700' :
+                                                                                    'bg-blue-100 text-blue-700'
+                                                                            }`}>
+                                                                            {v.severity || 'Violation'}
+                                                                        </span>
+                                                                        <div className="flex-1 min-w-0">
+                                                                            <p className="text-sm text-gray-800">{v.message || 'Constraint violation detected'}</p>
+                                                                            <div className="mt-1 flex flex-wrap gap-3 text-xs text-gray-500">
+                                                                                {v.focus_node && (
+                                                                                    <span>
+                                                                                        <strong>Focus:</strong> {v.focus_node.split('#').pop().split('/').pop()}
+                                                                                    </span>
+                                                                                )}
+                                                                                {v.path && (
+                                                                                    <span>
+                                                                                        <strong>Path:</strong> {v.path.split('#').pop().split('/').pop()}
+                                                                                    </span>
+                                                                                )}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+
+                                                {/* Success Details */}
+                                                {data.passed && (
+                                                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                                                        <p className="text-sm text-green-700">
+                                                            ✓ All {data.shapes_validated || 0} SHACL shapes validated successfully against test data.
+                                                        </p>
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                     </div>
