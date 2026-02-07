@@ -1,230 +1,5 @@
 [
   {
-    "rule_id": "AA-4-1-1-R001",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 1,
-    "section": "",
-    "original_text": "Research may be\nsponsored by a government agency, private or non-government organization,\nfoundation, or individual.",
-    "simplified_text": "",
-    "deontic_markers": "may",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "may",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R002",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 1,
-    "section": "",
-    "original_text": "Contracted research may\nentail confidentiality and restriction on publication.",
-    "simplified_text": "",
-    "deontic_markers": "may",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "may",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R003",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 2,
-    "section": "",
-    "original_text": "Authors must be\nresponsible for what has been written in return for the credit and recognition that\nauthorship brings.",
-    "simplified_text": "",
-    "deontic_markers": "must",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "must",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R004",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 2,
-    "section": "",
-    "original_text": "For any multi-authored article based on a student thesis, research study or\ndissertation, the student should normally be the first author, unless there is\ndocumented evidence that the journal required that the authorship should be\nwritten in a different order.",
-    "simplified_text": "",
-    "deontic_markers": "should, should",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "should",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R005",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 2,
-    "section": "",
-    "original_text": "However, the Chair of the student’s Program\nCommittee should serve as the corresponding author with any journal.",
-    "simplified_text": "",
-    "deontic_markers": "should",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "should",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R006",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 3,
-    "section": "",
-    "original_text": "Use of data of a confidential nature, particularly that of a contracted research\nwhere secrecy may be necessary for a limited period, for one’s personal advantage\nor that of a third party.",
-    "simplified_text": "",
-    "deontic_markers": "may",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "may",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R007",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 4,
-    "section": "",
-    "original_text": "DISCIPLINARY ACTION\nAny member of the AIT community who is aware of academic misconduct in\nresearch or publication may report the incident or practice to the School Dean or\ndirectly to the Vice President for Academic Affairs.",
-    "simplified_text": "",
-    "deontic_markers": "may",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "may",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R008",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 4,
-    "section": "",
-    "original_text": "The procedures for disciplinary actions shall be according to the Institute Policy and\nProcedures on Employment of Faculty and of Staff: General Work Regulations and\nStudent Handbook (section on Student Code of Conduct).",
-    "simplified_text": "",
-    "deontic_markers": "shall",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "shall",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
-    "rule_id": "AA-4-1-1-R009",
-    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
-    "page_number": 4,
-    "section": "",
-    "original_text": "• (19 Nov 2010) For a multi-authored article, the Chair of the student’s Program\nCommittee should serve as the corresponding author with any journal;\nTransferred management of the electronic plagiarism checking to the IT\nServices Unit (from the Library).",
-    "simplified_text": "",
-    "deontic_markers": "should",
-    "ann_syntactic_structure": "",
-    "ann_clause_count": "",
-    "ann_nesting_depth": "",
-    "ann_deontic_marker": "should",
-    "ann_deontic_type": "",
-    "ann_quantification": "",
-    "ann_conditional_structure": "",
-    "ann_has_exception": "",
-    "ann_temporal_elements": "",
-    "ann_entity_types": "",
-    "ann_ambiguity_indicators": "",
-    "form_outcome": "",
-    "form_fol_statement": "",
-    "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
-    "needs_review": true
-  },
-  {
     "rule_id": "FB-6-1-1-R001",
     "source_document": "FB-6-1-1 Credit Policy AMT8Jun2022.pdf",
     "page_number": 1,
@@ -246,7 +21,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367565",
     "needs_review": true
   },
   {
@@ -271,7 +46,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367595",
     "needs_review": true
   },
   {
@@ -296,7 +71,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367602",
     "needs_review": true
   },
   {
@@ -321,7 +96,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367609",
     "needs_review": true
   },
   {
@@ -346,7 +121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367614",
     "needs_review": true
   },
   {
@@ -371,7 +146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367619",
     "needs_review": true
   },
   {
@@ -396,7 +171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367623",
     "needs_review": true
   },
   {
@@ -421,7 +196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367628",
     "needs_review": true
   },
   {
@@ -446,7 +221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.987316",
+    "extraction_date": "2026-02-07T20:19:29.367633",
     "needs_review": true
   },
   {
@@ -471,7 +246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367637",
     "needs_review": true
   },
   {
@@ -496,7 +271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367643",
     "needs_review": true
   },
   {
@@ -521,7 +296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367653",
     "needs_review": true
   },
   {
@@ -546,7 +321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367657",
     "needs_review": true
   },
   {
@@ -571,7 +346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367662",
     "needs_review": true
   },
   {
@@ -596,7 +371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367666",
     "needs_review": true
   },
   {
@@ -621,7 +396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367671",
     "needs_review": true
   },
   {
@@ -646,7 +421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367677",
     "needs_review": true
   },
   {
@@ -671,7 +446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367681",
     "needs_review": true
   },
   {
@@ -696,7 +471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367685",
     "needs_review": true
   },
   {
@@ -721,7 +496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367689",
     "needs_review": true
   },
   {
@@ -746,7 +521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367697",
     "needs_review": true
   },
   {
@@ -771,7 +546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367702",
     "needs_review": true
   },
   {
@@ -796,7 +571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367710",
     "needs_review": true
   },
   {
@@ -821,7 +596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367715",
     "needs_review": true
   },
   {
@@ -846,7 +621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367719",
     "needs_review": true
   },
   {
@@ -871,7 +646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367723",
     "needs_review": true
   },
   {
@@ -896,7 +671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367727",
     "needs_review": true
   },
   {
@@ -921,7 +696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367733",
     "needs_review": true
   },
   {
@@ -946,7 +721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367738",
     "needs_review": true
   },
   {
@@ -971,7 +746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367742",
     "needs_review": true
   },
   {
@@ -996,7 +771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367747",
     "needs_review": true
   },
   {
@@ -1021,7 +796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367751",
     "needs_review": true
   },
   {
@@ -1046,7 +821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367758",
     "needs_review": true
   },
   {
@@ -1071,7 +846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367762",
     "needs_review": true
   },
   {
@@ -1096,7 +871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367767",
     "needs_review": true
   },
   {
@@ -1121,7 +896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367771",
     "needs_review": true
   },
   {
@@ -1146,7 +921,232 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367775",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R001",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 1,
+    "section": "",
+    "original_text": "Research may be\nsponsored by a government agency, private or non-government organization,\nfoundation, or individual.",
+    "simplified_text": "",
+    "deontic_markers": "may",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "may",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367786",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R002",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 1,
+    "section": "",
+    "original_text": "Contracted research may\nentail confidentiality and restriction on publication.",
+    "simplified_text": "",
+    "deontic_markers": "may",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "may",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367791",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R003",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 2,
+    "section": "",
+    "original_text": "Authors must be\nresponsible for what has been written in return for the credit and recognition that\nauthorship brings.",
+    "simplified_text": "",
+    "deontic_markers": "must",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "must",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367795",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R004",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 2,
+    "section": "",
+    "original_text": "For any multi-authored article based on a student thesis, research study or\ndissertation, the student should normally be the first author, unless there is\ndocumented evidence that the journal required that the authorship should be\nwritten in a different order.",
+    "simplified_text": "",
+    "deontic_markers": "should, should",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "should",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367799",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R005",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 2,
+    "section": "",
+    "original_text": "However, the Chair of the student’s Program\nCommittee should serve as the corresponding author with any journal.",
+    "simplified_text": "",
+    "deontic_markers": "should",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "should",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367803",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R006",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 3,
+    "section": "",
+    "original_text": "Use of data of a confidential nature, particularly that of a contracted research\nwhere secrecy may be necessary for a limited period, for one’s personal advantage\nor that of a third party.",
+    "simplified_text": "",
+    "deontic_markers": "may",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "may",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367811",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R007",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 4,
+    "section": "",
+    "original_text": "DISCIPLINARY ACTION\nAny member of the AIT community who is aware of academic misconduct in\nresearch or publication may report the incident or practice to the School Dean or\ndirectly to the Vice President for Academic Affairs.",
+    "simplified_text": "",
+    "deontic_markers": "may",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "may",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367815",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R008",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 4,
+    "section": "",
+    "original_text": "The procedures for disciplinary actions shall be according to the Institute Policy and\nProcedures on Employment of Faculty and of Staff: General Work Regulations and\nStudent Handbook (section on Student Code of Conduct).",
+    "simplified_text": "",
+    "deontic_markers": "shall",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "shall",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367820",
+    "needs_review": true
+  },
+  {
+    "rule_id": "AA-4-1-1-R009",
+    "source_document": "AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf",
+    "page_number": 4,
+    "section": "",
+    "original_text": "• (19 Nov 2010) For a multi-authored article, the Chair of the student’s Program\nCommittee should serve as the corresponding author with any journal;\nTransferred management of the electronic plagiarism checking to the IT\nServices Unit (from the Library).",
+    "simplified_text": "",
+    "deontic_markers": "should",
+    "ann_syntactic_structure": "",
+    "ann_clause_count": "",
+    "ann_nesting_depth": "",
+    "ann_deontic_marker": "should",
+    "ann_deontic_type": "",
+    "ann_quantification": "",
+    "ann_conditional_structure": "",
+    "ann_has_exception": "",
+    "ann_temporal_elements": "",
+    "ann_entity_types": "",
+    "ann_ambiguity_indicators": "",
+    "form_outcome": "",
+    "form_fol_statement": "",
+    "form_confidence": "",
+    "extraction_date": "2026-02-07T20:19:29.367823",
     "needs_review": true
   },
   {
@@ -1171,7 +1171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367829",
     "needs_review": true
   },
   {
@@ -1196,7 +1196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367835",
     "needs_review": true
   },
   {
@@ -1221,7 +1221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367842",
     "needs_review": true
   },
   {
@@ -1246,7 +1246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367846",
     "needs_review": true
   },
   {
@@ -1271,7 +1271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367852",
     "needs_review": true
   },
   {
@@ -1296,7 +1296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367857",
     "needs_review": true
   },
   {
@@ -1321,7 +1321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367861",
     "needs_review": true
   },
   {
@@ -1346,7 +1346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367868",
     "needs_review": true
   },
   {
@@ -1371,7 +1371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367873",
     "needs_review": true
   },
   {
@@ -1396,7 +1396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367877",
     "needs_review": true
   },
   {
@@ -1421,7 +1421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367882",
     "needs_review": true
   },
   {
@@ -1446,7 +1446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367886",
     "needs_review": true
   },
   {
@@ -1471,7 +1471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367895",
     "needs_review": true
   },
   {
@@ -1496,7 +1496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367900",
     "needs_review": true
   },
   {
@@ -1521,7 +1521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367904",
     "needs_review": true
   },
   {
@@ -1546,7 +1546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367909",
     "needs_review": true
   },
   {
@@ -1571,7 +1571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367913",
     "needs_review": true
   },
   {
@@ -1596,7 +1596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367919",
     "needs_review": true
   },
   {
@@ -1621,7 +1621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367923",
     "needs_review": true
   },
   {
@@ -1646,7 +1646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367927",
     "needs_review": true
   },
   {
@@ -1671,7 +1671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367931",
     "needs_review": true
   },
   {
@@ -1696,7 +1696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367934",
     "needs_review": true
   },
   {
@@ -1721,7 +1721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367938",
     "needs_review": true
   },
   {
@@ -1746,7 +1746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367945",
     "needs_review": true
   },
   {
@@ -1771,7 +1771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367949",
     "needs_review": true
   },
   {
@@ -1796,7 +1796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367953",
     "needs_review": true
   },
   {
@@ -1821,7 +1821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367959",
     "needs_review": true
   },
   {
@@ -1846,7 +1846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367964",
     "needs_review": true
   },
   {
@@ -1871,7 +1871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367971",
     "needs_review": true
   },
   {
@@ -1896,7 +1896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367975",
     "needs_review": true
   },
   {
@@ -1921,7 +1921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367979",
     "needs_review": true
   },
   {
@@ -1946,7 +1946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.367995",
     "needs_review": true
   },
   {
@@ -1971,7 +1971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368002",
     "needs_review": true
   },
   {
@@ -1996,7 +1996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368011",
     "needs_review": true
   },
   {
@@ -2021,7 +2021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368015",
     "needs_review": true
   },
   {
@@ -2046,7 +2046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368020",
     "needs_review": true
   },
   {
@@ -2071,7 +2071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368024",
     "needs_review": true
   },
   {
@@ -2096,7 +2096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368028",
     "needs_review": true
   },
   {
@@ -2121,7 +2121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368035",
     "needs_review": true
   },
   {
@@ -2146,7 +2146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368039",
     "needs_review": true
   },
   {
@@ -2171,7 +2171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368044",
     "needs_review": true
   },
   {
@@ -2196,7 +2196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368048",
     "needs_review": true
   },
   {
@@ -2221,7 +2221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368052",
     "needs_review": true
   },
   {
@@ -2246,7 +2246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368056",
     "needs_review": true
   },
   {
@@ -2271,7 +2271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368062",
     "needs_review": true
   },
   {
@@ -2296,7 +2296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368067",
     "needs_review": true
   },
   {
@@ -2321,7 +2321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368070",
     "needs_review": true
   },
   {
@@ -2346,7 +2346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368075",
     "needs_review": true
   },
   {
@@ -2371,7 +2371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368081",
     "needs_review": true
   },
   {
@@ -2396,7 +2396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368086",
     "needs_review": true
   },
   {
@@ -2421,7 +2421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368090",
     "needs_review": true
   },
   {
@@ -2446,7 +2446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368094",
     "needs_review": true
   },
   {
@@ -2471,7 +2471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368098",
     "needs_review": true
   },
   {
@@ -2496,7 +2496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368103",
     "needs_review": true
   },
   {
@@ -2521,7 +2521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368107",
     "needs_review": true
   },
   {
@@ -2546,7 +2546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368111",
     "needs_review": true
   },
   {
@@ -2571,7 +2571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368115",
     "needs_review": true
   },
   {
@@ -2596,7 +2596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368119",
     "needs_review": true
   },
   {
@@ -2621,7 +2621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368125",
     "needs_review": true
   },
   {
@@ -2646,7 +2646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368129",
     "needs_review": true
   },
   {
@@ -2671,7 +2671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368133",
     "needs_review": true
   },
   {
@@ -2696,7 +2696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368137",
     "needs_review": true
   },
   {
@@ -2721,7 +2721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368142",
     "needs_review": true
   },
   {
@@ -2746,7 +2746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368149",
     "needs_review": true
   },
   {
@@ -2771,7 +2771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368156",
     "needs_review": true
   },
   {
@@ -2796,7 +2796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368160",
     "needs_review": true
   },
   {
@@ -2821,7 +2821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368163",
     "needs_review": true
   },
   {
@@ -2846,7 +2846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368168",
     "needs_review": true
   },
   {
@@ -2871,7 +2871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368183",
     "needs_review": true
   },
   {
@@ -2896,7 +2896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368187",
     "needs_review": true
   },
   {
@@ -2921,7 +2921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368190",
     "needs_review": true
   },
   {
@@ -2946,7 +2946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368194",
     "needs_review": true
   },
   {
@@ -2971,7 +2971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368198",
     "needs_review": true
   },
   {
@@ -2996,7 +2996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368206",
     "needs_review": true
   },
   {
@@ -3021,7 +3021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368210",
     "needs_review": true
   },
   {
@@ -3046,7 +3046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368214",
     "needs_review": true
   },
   {
@@ -3071,7 +3071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368219",
     "needs_review": true
   },
   {
@@ -3096,7 +3096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368222",
     "needs_review": true
   },
   {
@@ -3121,7 +3121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368226",
     "needs_review": true
   },
   {
@@ -3146,7 +3146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368232",
     "needs_review": true
   },
   {
@@ -3171,7 +3171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368236",
     "needs_review": true
   },
   {
@@ -3196,7 +3196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368240",
     "needs_review": true
   },
   {
@@ -3221,7 +3221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368267",
     "needs_review": true
   },
   {
@@ -3246,7 +3246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368277",
     "needs_review": true
   },
   {
@@ -3271,7 +3271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368281",
     "needs_review": true
   },
   {
@@ -3296,7 +3296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368285",
     "needs_review": true
   },
   {
@@ -3321,7 +3321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368289",
     "needs_review": true
   },
   {
@@ -3346,7 +3346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368293",
     "needs_review": true
   },
   {
@@ -3371,7 +3371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368297",
     "needs_review": true
   },
   {
@@ -3396,7 +3396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368304",
     "needs_review": true
   },
   {
@@ -3421,7 +3421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368307",
     "needs_review": true
   },
   {
@@ -3446,7 +3446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368311",
     "needs_review": true
   },
   {
@@ -3471,7 +3471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368315",
     "needs_review": true
   },
   {
@@ -3496,7 +3496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368319",
     "needs_review": true
   },
   {
@@ -3521,7 +3521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368325",
     "needs_review": true
   },
   {
@@ -3546,7 +3546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368330",
     "needs_review": true
   },
   {
@@ -3571,7 +3571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368334",
     "needs_review": true
   },
   {
@@ -3596,7 +3596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368338",
     "needs_review": true
   },
   {
@@ -3621,7 +3621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368342",
     "needs_review": true
   },
   {
@@ -3646,7 +3646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368348",
     "needs_review": true
   },
   {
@@ -3671,7 +3671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368352",
     "needs_review": true
   },
   {
@@ -3696,7 +3696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368355",
     "needs_review": true
   },
   {
@@ -3721,7 +3721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368359",
     "needs_review": true
   },
   {
@@ -3746,7 +3746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368363",
     "needs_review": true
   },
   {
@@ -3771,7 +3771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368371",
     "needs_review": true
   },
   {
@@ -3796,7 +3796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368375",
     "needs_review": true
   },
   {
@@ -3821,7 +3821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368379",
     "needs_review": true
   },
   {
@@ -3846,7 +3846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368383",
     "needs_review": true
   },
   {
@@ -3871,7 +3871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368387",
     "needs_review": true
   },
   {
@@ -3896,7 +3896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368393",
     "needs_review": true
   },
   {
@@ -3921,7 +3921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368397",
     "needs_review": true
   },
   {
@@ -3946,7 +3946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368402",
     "needs_review": true
   },
   {
@@ -3971,7 +3971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368405",
     "needs_review": true
   },
   {
@@ -3996,7 +3996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368408",
     "needs_review": true
   },
   {
@@ -4021,7 +4021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368415",
     "needs_review": true
   },
   {
@@ -4046,7 +4046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368419",
     "needs_review": true
   },
   {
@@ -4071,7 +4071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368423",
     "needs_review": true
   },
   {
@@ -4096,7 +4096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368426",
     "needs_review": true
   },
   {
@@ -4121,7 +4121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368429",
     "needs_review": true
   },
   {
@@ -4146,7 +4146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368436",
     "needs_review": true
   },
   {
@@ -4171,7 +4171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368439",
     "needs_review": true
   },
   {
@@ -4196,7 +4196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368443",
     "needs_review": true
   },
   {
@@ -4221,7 +4221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368446",
     "needs_review": true
   },
   {
@@ -4246,7 +4246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368450",
     "needs_review": true
   },
   {
@@ -4271,7 +4271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368455",
     "needs_review": true
   },
   {
@@ -4296,7 +4296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368459",
     "needs_review": true
   },
   {
@@ -4321,7 +4321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368462",
     "needs_review": true
   },
   {
@@ -4346,7 +4346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368468",
     "needs_review": true
   },
   {
@@ -4371,7 +4371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368472",
     "needs_review": true
   },
   {
@@ -4396,7 +4396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368478",
     "needs_review": true
   },
   {
@@ -4421,7 +4421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368482",
     "needs_review": true
   },
   {
@@ -4446,7 +4446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368486",
     "needs_review": true
   },
   {
@@ -4471,7 +4471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368490",
     "needs_review": true
   },
   {
@@ -4496,7 +4496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368493",
     "needs_review": true
   },
   {
@@ -4521,7 +4521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368503",
     "needs_review": true
   },
   {
@@ -4546,7 +4546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368507",
     "needs_review": true
   },
   {
@@ -4571,7 +4571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368511",
     "needs_review": true
   },
   {
@@ -4596,7 +4596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368514",
     "needs_review": true
   },
   {
@@ -4621,7 +4621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368518",
     "needs_review": true
   },
   {
@@ -4646,7 +4646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368523",
     "needs_review": true
   },
   {
@@ -4671,7 +4671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368527",
     "needs_review": true
   },
   {
@@ -4696,7 +4696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368530",
     "needs_review": true
   },
   {
@@ -4721,7 +4721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368534",
     "needs_review": true
   },
   {
@@ -4746,7 +4746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368537",
     "needs_review": true
   },
   {
@@ -4771,7 +4771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368544",
     "needs_review": true
   },
   {
@@ -4796,7 +4796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368547",
     "needs_review": true
   },
   {
@@ -4821,7 +4821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368551",
     "needs_review": true
   },
   {
@@ -4846,7 +4846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368554",
     "needs_review": true
   },
   {
@@ -4871,7 +4871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368558",
     "needs_review": true
   },
   {
@@ -4896,7 +4896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368563",
     "needs_review": true
   },
   {
@@ -4921,7 +4921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368567",
     "needs_review": true
   },
   {
@@ -4946,7 +4946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368570",
     "needs_review": true
   },
   {
@@ -4971,7 +4971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368573",
     "needs_review": true
   },
   {
@@ -4996,7 +4996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368577",
     "needs_review": true
   },
   {
@@ -5021,7 +5021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368580",
     "needs_review": true
   },
   {
@@ -5046,7 +5046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368586",
     "needs_review": true
   },
   {
@@ -5071,7 +5071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368589",
     "needs_review": true
   },
   {
@@ -5096,7 +5096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368593",
     "needs_review": true
   },
   {
@@ -5121,7 +5121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368599",
     "needs_review": true
   },
   {
@@ -5146,7 +5146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368605",
     "needs_review": true
   },
   {
@@ -5171,7 +5171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368608",
     "needs_review": true
   },
   {
@@ -5196,7 +5196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368611",
     "needs_review": true
   },
   {
@@ -5221,7 +5221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368615",
     "needs_review": true
   },
   {
@@ -5246,7 +5246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368618",
     "needs_review": true
   },
   {
@@ -5271,7 +5271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368621",
     "needs_review": true
   },
   {
@@ -5296,7 +5296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368627",
     "needs_review": true
   },
   {
@@ -5321,7 +5321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368630",
     "needs_review": true
   },
   {
@@ -5346,7 +5346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368633",
     "needs_review": true
   },
   {
@@ -5371,7 +5371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368637",
     "needs_review": true
   },
   {
@@ -5396,7 +5396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368640",
     "needs_review": true
   },
   {
@@ -5421,7 +5421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368646",
     "needs_review": true
   },
   {
@@ -5446,7 +5446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368650",
     "needs_review": true
   },
   {
@@ -5471,7 +5471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368653",
     "needs_review": true
   },
   {
@@ -5496,7 +5496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368657",
     "needs_review": true
   },
   {
@@ -5521,7 +5521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368660",
     "needs_review": true
   },
   {
@@ -5546,7 +5546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368666",
     "needs_review": true
   },
   {
@@ -5571,7 +5571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368670",
     "needs_review": true
   },
   {
@@ -5596,7 +5596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368673",
     "needs_review": true
   },
   {
@@ -5621,7 +5621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368676",
     "needs_review": true
   },
   {
@@ -5646,7 +5646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368680",
     "needs_review": true
   },
   {
@@ -5671,7 +5671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368685",
     "needs_review": true
   },
   {
@@ -5696,7 +5696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368689",
     "needs_review": true
   },
   {
@@ -5721,7 +5721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368692",
     "needs_review": true
   },
   {
@@ -5746,7 +5746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368695",
     "needs_review": true
   },
   {
@@ -5771,7 +5771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368699",
     "needs_review": true
   },
   {
@@ -5796,7 +5796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368702",
     "needs_review": true
   },
   {
@@ -5821,7 +5821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368711",
     "needs_review": true
   },
   {
@@ -5846,7 +5846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368715",
     "needs_review": true
   },
   {
@@ -5871,7 +5871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368721",
     "needs_review": true
   },
   {
@@ -5896,7 +5896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368724",
     "needs_review": true
   },
   {
@@ -5921,7 +5921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368731",
     "needs_review": true
   },
   {
@@ -5946,7 +5946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368735",
     "needs_review": true
   },
   {
@@ -5971,7 +5971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368738",
     "needs_review": true
   },
   {
@@ -5996,7 +5996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368741",
     "needs_review": true
   },
   {
@@ -6021,7 +6021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368745",
     "needs_review": true
   },
   {
@@ -6046,7 +6046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368751",
     "needs_review": true
   },
   {
@@ -6071,7 +6071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368754",
     "needs_review": true
   },
   {
@@ -6096,7 +6096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368758",
     "needs_review": true
   },
   {
@@ -6121,7 +6121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368761",
     "needs_review": true
   },
   {
@@ -6146,7 +6146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368764",
     "needs_review": true
   },
   {
@@ -6171,7 +6171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368768",
     "needs_review": true
   },
   {
@@ -6196,7 +6196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368775",
     "needs_review": true
   },
   {
@@ -6221,7 +6221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368778",
     "needs_review": true
   },
   {
@@ -6246,7 +6246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368781",
     "needs_review": true
   },
   {
@@ -6271,7 +6271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368785",
     "needs_review": true
   },
   {
@@ -6296,7 +6296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368788",
     "needs_review": true
   },
   {
@@ -6321,7 +6321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368794",
     "needs_review": true
   },
   {
@@ -6346,7 +6346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368798",
     "needs_review": true
   },
   {
@@ -6371,7 +6371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368801",
     "needs_review": true
   },
   {
@@ -6396,7 +6396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368805",
     "needs_review": true
   },
   {
@@ -6421,7 +6421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368808",
     "needs_review": true
   },
   {
@@ -6446,7 +6446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368814",
     "needs_review": true
   },
   {
@@ -6471,7 +6471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368817",
     "needs_review": true
   },
   {
@@ -6496,7 +6496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368820",
     "needs_review": true
   },
   {
@@ -6521,7 +6521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368824",
     "needs_review": true
   },
   {
@@ -6546,7 +6546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368827",
     "needs_review": true
   },
   {
@@ -6571,7 +6571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368833",
     "needs_review": true
   },
   {
@@ -6596,7 +6596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368836",
     "needs_review": true
   },
   {
@@ -6621,7 +6621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368841",
     "needs_review": true
   },
   {
@@ -6646,7 +6646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368845",
     "needs_review": true
   },
   {
@@ -6671,7 +6671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368848",
     "needs_review": true
   },
   {
@@ -6696,7 +6696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368854",
     "needs_review": true
   },
   {
@@ -6721,7 +6721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368857",
     "needs_review": true
   },
   {
@@ -6746,7 +6746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368861",
     "needs_review": true
   },
   {
@@ -6771,7 +6771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368864",
     "needs_review": true
   },
   {
@@ -6796,7 +6796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368870",
     "needs_review": true
   },
   {
@@ -6821,7 +6821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368873",
     "needs_review": true
   },
   {
@@ -6846,7 +6846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368877",
     "needs_review": true
   },
   {
@@ -6871,7 +6871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368880",
     "needs_review": true
   },
   {
@@ -6896,7 +6896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368883",
     "needs_review": true
   },
   {
@@ -6921,7 +6921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368886",
     "needs_review": true
   },
   {
@@ -6946,7 +6946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368892",
     "needs_review": true
   },
   {
@@ -6971,7 +6971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368896",
     "needs_review": true
   },
   {
@@ -6996,7 +6996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368899",
     "needs_review": true
   },
   {
@@ -7021,7 +7021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.988434",
+    "extraction_date": "2026-02-07T20:19:29.368902",
     "needs_review": true
   },
   {
@@ -7046,7 +7046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368906",
     "needs_review": true
   },
   {
@@ -7071,7 +7071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368917",
     "needs_review": true
   },
   {
@@ -7096,7 +7096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368921",
     "needs_review": true
   },
   {
@@ -7121,7 +7121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368924",
     "needs_review": true
   },
   {
@@ -7146,7 +7146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368927",
     "needs_review": true
   },
   {
@@ -7171,7 +7171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368931",
     "needs_review": true
   },
   {
@@ -7196,7 +7196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368937",
     "needs_review": true
   },
   {
@@ -7221,7 +7221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368940",
     "needs_review": true
   },
   {
@@ -7246,7 +7246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368944",
     "needs_review": true
   },
   {
@@ -7271,7 +7271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368947",
     "needs_review": true
   },
   {
@@ -7296,7 +7296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368951",
     "needs_review": true
   },
   {
@@ -7321,7 +7321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368956",
     "needs_review": true
   },
   {
@@ -7346,7 +7346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368961",
     "needs_review": true
   },
   {
@@ -7371,7 +7371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368965",
     "needs_review": true
   },
   {
@@ -7396,7 +7396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368968",
     "needs_review": true
   },
   {
@@ -7421,7 +7421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368972",
     "needs_review": true
   },
   {
@@ -7446,7 +7446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368975",
     "needs_review": true
   },
   {
@@ -7471,7 +7471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368991",
     "needs_review": true
   },
   {
@@ -7496,7 +7496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368995",
     "needs_review": true
   },
   {
@@ -7521,7 +7521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.368998",
     "needs_review": true
   },
   {
@@ -7546,7 +7546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369001",
     "needs_review": true
   },
   {
@@ -7571,7 +7571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369005",
     "needs_review": true
   },
   {
@@ -7596,7 +7596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369010",
     "needs_review": true
   },
   {
@@ -7621,7 +7621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369014",
     "needs_review": true
   },
   {
@@ -7646,7 +7646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369017",
     "needs_review": true
   },
   {
@@ -7671,7 +7671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369021",
     "needs_review": true
   },
   {
@@ -7696,7 +7696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369024",
     "needs_review": true
   },
   {
@@ -7721,7 +7721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369030",
     "needs_review": true
   },
   {
@@ -7746,7 +7746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369034",
     "needs_review": true
   },
   {
@@ -7771,7 +7771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369038",
     "needs_review": true
   },
   {
@@ -7796,7 +7796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369041",
     "needs_review": true
   },
   {
@@ -7821,7 +7821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369045",
     "needs_review": true
   },
   {
@@ -7846,7 +7846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369050",
     "needs_review": true
   },
   {
@@ -7871,7 +7871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369054",
     "needs_review": true
   },
   {
@@ -7896,7 +7896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369057",
     "needs_review": true
   },
   {
@@ -7921,7 +7921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369060",
     "needs_review": true
   },
   {
@@ -7946,7 +7946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369064",
     "needs_review": true
   },
   {
@@ -7971,7 +7971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369069",
     "needs_review": true
   },
   {
@@ -7996,7 +7996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369073",
     "needs_review": true
   },
   {
@@ -8021,7 +8021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369076",
     "needs_review": true
   },
   {
@@ -8046,7 +8046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369079",
     "needs_review": true
   },
   {
@@ -8071,7 +8071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369083",
     "needs_review": true
   },
   {
@@ -8096,7 +8096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369091",
     "needs_review": true
   },
   {
@@ -8121,7 +8121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369095",
     "needs_review": true
   },
   {
@@ -8146,7 +8146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369098",
     "needs_review": true
   },
   {
@@ -8171,7 +8171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369102",
     "needs_review": true
   },
   {
@@ -8196,7 +8196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369105",
     "needs_review": true
   },
   {
@@ -8221,7 +8221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369110",
     "needs_review": true
   },
   {
@@ -8246,7 +8246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369114",
     "needs_review": true
   },
   {
@@ -8271,7 +8271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369117",
     "needs_review": true
   },
   {
@@ -8296,7 +8296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369120",
     "needs_review": true
   },
   {
@@ -8321,7 +8321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369124",
     "needs_review": true
   },
   {
@@ -8346,7 +8346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369129",
     "needs_review": true
   },
   {
@@ -8371,7 +8371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369135",
     "needs_review": true
   },
   {
@@ -8396,7 +8396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369138",
     "needs_review": true
   },
   {
@@ -8421,7 +8421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369142",
     "needs_review": true
   },
   {
@@ -8446,7 +8446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369145",
     "needs_review": true
   },
   {
@@ -8471,7 +8471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369148",
     "needs_review": true
   },
   {
@@ -8496,7 +8496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369154",
     "needs_review": true
   },
   {
@@ -8521,7 +8521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369157",
     "needs_review": true
   },
   {
@@ -8546,7 +8546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369161",
     "needs_review": true
   },
   {
@@ -8571,7 +8571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369164",
     "needs_review": true
   },
   {
@@ -8596,7 +8596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369167",
     "needs_review": true
   },
   {
@@ -8621,7 +8621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369173",
     "needs_review": true
   },
   {
@@ -8646,7 +8646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369176",
     "needs_review": true
   },
   {
@@ -8671,7 +8671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369179",
     "needs_review": true
   },
   {
@@ -8696,7 +8696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369183",
     "needs_review": true
   },
   {
@@ -8721,7 +8721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369186",
     "needs_review": true
   },
   {
@@ -8746,7 +8746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369191",
     "needs_review": true
   },
   {
@@ -8771,7 +8771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369194",
     "needs_review": true
   },
   {
@@ -8796,7 +8796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369198",
     "needs_review": true
   },
   {
@@ -8821,7 +8821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369201",
     "needs_review": true
   },
   {
@@ -8846,7 +8846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369207",
     "needs_review": true
   },
   {
@@ -8871,7 +8871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369211",
     "needs_review": true
   },
   {
@@ -8896,7 +8896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369217",
     "needs_review": true
   },
   {
@@ -8921,7 +8921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369220",
     "needs_review": true
   },
   {
@@ -8946,7 +8946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369224",
     "needs_review": true
   },
   {
@@ -8971,7 +8971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369227",
     "needs_review": true
   },
   {
@@ -8996,7 +8996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369233",
     "needs_review": true
   },
   {
@@ -9021,7 +9021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369237",
     "needs_review": true
   },
   {
@@ -9046,7 +9046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369240",
     "needs_review": true
   },
   {
@@ -9071,7 +9071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369254",
     "needs_review": true
   },
   {
@@ -9096,7 +9096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369258",
     "needs_review": true
   },
   {
@@ -9121,7 +9121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369264",
     "needs_review": true
   },
   {
@@ -9146,7 +9146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369267",
     "needs_review": true
   },
   {
@@ -9171,7 +9171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369271",
     "needs_review": true
   },
   {
@@ -9196,7 +9196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369274",
     "needs_review": true
   },
   {
@@ -9221,7 +9221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369277",
     "needs_review": true
   },
   {
@@ -9246,7 +9246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369283",
     "needs_review": true
   },
   {
@@ -9271,7 +9271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369287",
     "needs_review": true
   },
   {
@@ -9296,7 +9296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369290",
     "needs_review": true
   },
   {
@@ -9321,7 +9321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369293",
     "needs_review": true
   },
   {
@@ -9346,7 +9346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369297",
     "needs_review": true
   },
   {
@@ -9371,7 +9371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369302",
     "needs_review": true
   },
   {
@@ -9396,7 +9396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369305",
     "needs_review": true
   },
   {
@@ -9421,7 +9421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369309",
     "needs_review": true
   },
   {
@@ -9446,7 +9446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369312",
     "needs_review": true
   },
   {
@@ -9471,7 +9471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369316",
     "needs_review": true
   },
   {
@@ -9496,7 +9496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369321",
     "needs_review": true
   },
   {
@@ -9521,7 +9521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369324",
     "needs_review": true
   },
   {
@@ -9546,7 +9546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369328",
     "needs_review": true
   },
   {
@@ -9571,7 +9571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369331",
     "needs_review": true
   },
   {
@@ -9596,7 +9596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369334",
     "needs_review": true
   },
   {
@@ -9621,7 +9621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369340",
     "needs_review": true
   },
   {
@@ -9646,7 +9646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369345",
     "needs_review": true
   },
   {
@@ -9671,7 +9671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369351",
     "needs_review": true
   },
   {
@@ -9696,7 +9696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369355",
     "needs_review": true
   },
   {
@@ -9721,7 +9721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369358",
     "needs_review": true
   },
   {
@@ -9746,7 +9746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369361",
     "needs_review": true
   },
   {
@@ -9771,7 +9771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369367",
     "needs_review": true
   },
   {
@@ -9796,7 +9796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369370",
     "needs_review": true
   },
   {
@@ -9821,7 +9821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369374",
     "needs_review": true
   },
   {
@@ -9846,7 +9846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369377",
     "needs_review": true
   },
   {
@@ -9871,7 +9871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369380",
     "needs_review": true
   },
   {
@@ -9896,7 +9896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369386",
     "needs_review": true
   },
   {
@@ -9921,7 +9921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369389",
     "needs_review": true
   },
   {
@@ -9946,7 +9946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369392",
     "needs_review": true
   },
   {
@@ -9971,7 +9971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369396",
     "needs_review": true
   },
   {
@@ -9996,7 +9996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369399",
     "needs_review": true
   },
   {
@@ -10021,7 +10021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369405",
     "needs_review": true
   },
   {
@@ -10046,7 +10046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369408",
     "needs_review": true
   },
   {
@@ -10071,7 +10071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369412",
     "needs_review": true
   },
   {
@@ -10096,7 +10096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369415",
     "needs_review": true
   },
   {
@@ -10121,7 +10121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369422",
     "needs_review": true
   },
   {
@@ -10146,7 +10146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369425",
     "needs_review": true
   },
   {
@@ -10171,7 +10171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369429",
     "needs_review": true
   },
   {
@@ -10196,7 +10196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369432",
     "needs_review": true
   },
   {
@@ -10221,7 +10221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369435",
     "needs_review": true
   },
   {
@@ -10246,7 +10246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369439",
     "needs_review": true
   },
   {
@@ -10271,7 +10271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369444",
     "needs_review": true
   },
   {
@@ -10296,7 +10296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369447",
     "needs_review": true
   },
   {
@@ -10321,7 +10321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369451",
     "needs_review": true
   },
   {
@@ -10346,7 +10346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369454",
     "needs_review": true
   },
   {
@@ -10371,7 +10371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369458",
     "needs_review": true
   },
   {
@@ -10396,7 +10396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369463",
     "needs_review": true
   },
   {
@@ -10421,7 +10421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369467",
     "needs_review": true
   },
   {
@@ -10446,7 +10446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369472",
     "needs_review": true
   },
   {
@@ -10471,7 +10471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369476",
     "needs_review": true
   },
   {
@@ -10496,7 +10496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369479",
     "needs_review": true
   },
   {
@@ -10521,7 +10521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369483",
     "needs_review": true
   },
   {
@@ -10546,7 +10546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369490",
     "needs_review": true
   },
   {
@@ -10571,7 +10571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369493",
     "needs_review": true
   },
   {
@@ -10596,7 +10596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369497",
     "needs_review": true
   },
   {
@@ -10621,7 +10621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369500",
     "needs_review": true
   },
   {
@@ -10646,7 +10646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369503",
     "needs_review": true
   },
   {
@@ -10671,7 +10671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369509",
     "needs_review": true
   },
   {
@@ -10696,7 +10696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369512",
     "needs_review": true
   },
   {
@@ -10721,7 +10721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369516",
     "needs_review": true
   },
   {
@@ -10746,7 +10746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369519",
     "needs_review": true
   },
   {
@@ -10771,7 +10771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369522",
     "needs_review": true
   },
   {
@@ -10796,7 +10796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369527",
     "needs_review": true
   },
   {
@@ -10821,7 +10821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369531",
     "needs_review": true
   },
   {
@@ -10846,7 +10846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369534",
     "needs_review": true
   },
   {
@@ -10871,7 +10871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369538",
     "needs_review": true
   },
   {
@@ -10896,7 +10896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369541",
     "needs_review": true
   },
   {
@@ -10921,7 +10921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369548",
     "needs_review": true
   },
   {
@@ -10946,7 +10946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369552",
     "needs_review": true
   },
   {
@@ -10971,7 +10971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369555",
     "needs_review": true
   },
   {
@@ -10996,7 +10996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369559",
     "needs_review": true
   },
   {
@@ -11021,7 +11021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369562",
     "needs_review": true
   },
   {
@@ -11046,7 +11046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369567",
     "needs_review": true
   },
   {
@@ -11071,7 +11071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369571",
     "needs_review": true
   },
   {
@@ -11096,7 +11096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369574",
     "needs_review": true
   },
   {
@@ -11121,7 +11121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369577",
     "needs_review": true
   },
   {
@@ -11146,7 +11146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369581",
     "needs_review": true
   },
   {
@@ -11171,7 +11171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369584",
     "needs_review": true
   },
   {
@@ -11196,7 +11196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369592",
     "needs_review": true
   },
   {
@@ -11221,7 +11221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369595",
     "needs_review": true
   },
   {
@@ -11246,7 +11246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369599",
     "needs_review": true
   },
   {
@@ -11271,7 +11271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369602",
     "needs_review": true
   },
   {
@@ -11296,7 +11296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369606",
     "needs_review": true
   },
   {
@@ -11321,7 +11321,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369614",
     "needs_review": true
   },
   {
@@ -11346,7 +11346,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369617",
     "needs_review": true
   },
   {
@@ -11371,7 +11371,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369621",
     "needs_review": true
   },
   {
@@ -11396,7 +11396,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369624",
     "needs_review": true
   },
   {
@@ -11421,7 +11421,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369628",
     "needs_review": true
   },
   {
@@ -11446,7 +11446,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369633",
     "needs_review": true
   },
   {
@@ -11471,7 +11471,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369637",
     "needs_review": true
   },
   {
@@ -11496,7 +11496,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369641",
     "needs_review": true
   },
   {
@@ -11521,7 +11521,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369644",
     "needs_review": true
   },
   {
@@ -11546,7 +11546,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369649",
     "needs_review": true
   },
   {
@@ -11571,7 +11571,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369654",
     "needs_review": true
   },
   {
@@ -11596,7 +11596,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369658",
     "needs_review": true
   },
   {
@@ -11621,7 +11621,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369662",
     "needs_review": true
   },
   {
@@ -11646,7 +11646,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369665",
     "needs_review": true
   },
   {
@@ -11671,7 +11671,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369671",
     "needs_review": true
   },
   {
@@ -11696,7 +11696,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369675",
     "needs_review": true
   },
   {
@@ -11721,7 +11721,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369678",
     "needs_review": true
   },
   {
@@ -11746,7 +11746,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369681",
     "needs_review": true
   },
   {
@@ -11771,7 +11771,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369685",
     "needs_review": true
   },
   {
@@ -11796,7 +11796,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369688",
     "needs_review": true
   },
   {
@@ -11821,7 +11821,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369694",
     "needs_review": true
   },
   {
@@ -11846,7 +11846,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369697",
     "needs_review": true
   },
   {
@@ -11871,7 +11871,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369701",
     "needs_review": true
   },
   {
@@ -11896,7 +11896,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369704",
     "needs_review": true
   },
   {
@@ -11921,7 +11921,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369707",
     "needs_review": true
   },
   {
@@ -11946,7 +11946,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369713",
     "needs_review": true
   },
   {
@@ -11971,7 +11971,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369719",
     "needs_review": true
   },
   {
@@ -11996,7 +11996,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369722",
     "needs_review": true
   },
   {
@@ -12021,7 +12021,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369726",
     "needs_review": true
   },
   {
@@ -12046,7 +12046,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369730",
     "needs_review": true
   },
   {
@@ -12071,7 +12071,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369738",
     "needs_review": true
   },
   {
@@ -12096,7 +12096,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369741",
     "needs_review": true
   },
   {
@@ -12121,7 +12121,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369745",
     "needs_review": true
   },
   {
@@ -12146,7 +12146,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369748",
     "needs_review": true
   },
   {
@@ -12171,7 +12171,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369754",
     "needs_review": true
   },
   {
@@ -12196,7 +12196,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369760",
     "needs_review": true
   },
   {
@@ -12221,7 +12221,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369763",
     "needs_review": true
   },
   {
@@ -12246,7 +12246,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369767",
     "needs_review": true
   },
   {
@@ -12271,7 +12271,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369770",
     "needs_review": true
   },
   {
@@ -12296,7 +12296,7 @@
     "form_outcome": "",
     "form_fol_statement": "",
     "form_confidence": "",
-    "extraction_date": "2026-01-29T12:23:34.990012",
+    "extraction_date": "2026-02-07T20:19:29.369773",
     "needs_review": true
   }
 ]

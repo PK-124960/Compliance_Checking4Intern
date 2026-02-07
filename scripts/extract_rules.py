@@ -29,7 +29,7 @@ except ImportError:
 
 # Project paths
 PROJECT_ROOT = Path(__file__).parent.parent
-DOCS_DIR = PROJECT_ROOT / "docs" / "AIT P&P"
+DOCS_DIR = PROJECT_ROOT / "AIT_P&P"
 RESEARCH_DIR = PROJECT_ROOT / "research"
 
 # Deontic markers that indicate policy rules

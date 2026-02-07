@@ -1,130 +1,7 @@
 # Extracted Policy Rules
-Generated: 2026-01-29 12:23
+Generated: 2026-02-07 20:19
 
 Total Rules Found: 492
-
----
-
-
-## AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf
-
-Rules found: 9
-
-### AA-4-1-1-R001 (Page 1)
-
-**Original Text:**
-> Research may be
-sponsored by a government agency, private or non-government organization,
-foundation, or individual.
-
-**Deontic Markers:** may
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R002 (Page 1)
-
-**Original Text:**
-> Contracted research may
-entail confidentiality and restriction on publication.
-
-**Deontic Markers:** may
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R003 (Page 2)
-
-**Original Text:**
-> Authors must be
-responsible for what has been written in return for the credit and recognition that
-authorship brings.
-
-**Deontic Markers:** must
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R004 (Page 2)
-
-**Original Text:**
-> For any multi-authored article based on a student thesis, research study or
-dissertation, the student should normally be the first author, unless there is
-documented evidence that the journal required that the authorship should be
-written in a different order.
-
-**Deontic Markers:** should, should
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R005 (Page 2)
-
-**Original Text:**
-> However, the Chair of the student’s Program
-Committee should serve as the corresponding author with any journal.
-
-**Deontic Markers:** should
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R006 (Page 3)
-
-**Original Text:**
-> Use of data of a confidential nature, particularly that of a contracted research
-where secrecy may be necessary for a limited period, for one’s personal advantage
-or that of a third party.
-
-**Deontic Markers:** may
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R007 (Page 4)
-
-**Original Text:**
-> DISCIPLINARY ACTION
-Any member of the AIT community who is aware of academic misconduct in
-research or publication may report the incident or practice to the School Dean or
-directly to the Vice President for Academic Affairs.
-
-**Deontic Markers:** may
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R008 (Page 4)
-
-**Original Text:**
-> The procedures for disciplinary actions shall be according to the Institute Policy and
-Procedures on Employment of Faculty and of Staff: General Work Regulations and
-Student Handbook (section on Student Code of Conduct).
-
-**Deontic Markers:** shall
-
-**Needs Review:** ✅
-
----
-
-### AA-4-1-1-R009 (Page 4)
-
-**Original Text:**
-> • (19 Nov 2010) For a multi-authored article, the Chair of the student’s Program
-Committee should serve as the corresponding author with any journal;
-Transferred management of the electronic plagiarism checking to the IT
-Services Unit (from the Library).
-
-**Deontic Markers:** should
-
-**Needs Review:** ✅
 
 ---
 
@@ -626,6 +503,129 @@ Rationale for Revisions: 8 June 2022
 • II.
 
 **Deontic Markers:** May, May
+
+**Needs Review:** ✅
+
+---
+
+
+## AA-4-1-1 Academic Integrity in Research and Publication rev18Mar2022.pdf
+
+Rules found: 9
+
+### AA-4-1-1-R001 (Page 1)
+
+**Original Text:**
+> Research may be
+sponsored by a government agency, private or non-government organization,
+foundation, or individual.
+
+**Deontic Markers:** may
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R002 (Page 1)
+
+**Original Text:**
+> Contracted research may
+entail confidentiality and restriction on publication.
+
+**Deontic Markers:** may
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R003 (Page 2)
+
+**Original Text:**
+> Authors must be
+responsible for what has been written in return for the credit and recognition that
+authorship brings.
+
+**Deontic Markers:** must
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R004 (Page 2)
+
+**Original Text:**
+> For any multi-authored article based on a student thesis, research study or
+dissertation, the student should normally be the first author, unless there is
+documented evidence that the journal required that the authorship should be
+written in a different order.
+
+**Deontic Markers:** should, should
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R005 (Page 2)
+
+**Original Text:**
+> However, the Chair of the student’s Program
+Committee should serve as the corresponding author with any journal.
+
+**Deontic Markers:** should
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R006 (Page 3)
+
+**Original Text:**
+> Use of data of a confidential nature, particularly that of a contracted research
+where secrecy may be necessary for a limited period, for one’s personal advantage
+or that of a third party.
+
+**Deontic Markers:** may
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R007 (Page 4)
+
+**Original Text:**
+> DISCIPLINARY ACTION
+Any member of the AIT community who is aware of academic misconduct in
+research or publication may report the incident or practice to the School Dean or
+directly to the Vice President for Academic Affairs.
+
+**Deontic Markers:** may
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R008 (Page 4)
+
+**Original Text:**
+> The procedures for disciplinary actions shall be according to the Institute Policy and
+Procedures on Employment of Faculty and of Staff: General Work Regulations and
+Student Handbook (section on Student Code of Conduct).
+
+**Deontic Markers:** shall
+
+**Needs Review:** ✅
+
+---
+
+### AA-4-1-1-R009 (Page 4)
+
+**Original Text:**
+> • (19 Nov 2010) For a multi-authored article, the Chair of the student’s Program
+Committee should serve as the corresponding author with any journal;
+Transferred management of the electronic plagiarism checking to the IT
+Services Unit (from the Library).
+
+**Deontic Markers:** should
 
 **Needs Review:** ✅
 
