@@ -107,29 +107,125 @@ def test_ollama_connection(host: str = OLLAMA_HOST) -> bool:
         return False
 
 
+def post_process_classification(result: dict, text: str) -> dict:
+    """
+    Post-process LLM classification to fix common errors.
+    
+    Fixes:
+    1. Null rule_type when is_rule=True → infer from deontic marker
+    2. "should" false positives → downgrade confidence, mark as not-rule if advisory
+    3. Consequence statements → map to prohibition
+    """
+    import re
+    text_lower = text.lower()
+    
+    # Fix 1: Resolve null rule_type
+    if result.get("is_rule") and result.get("rule_type") is None:
+        marker = result.get("deontic_marker", "").lower() if result.get("deontic_marker") else ""
+        if not marker:
+            # Try to find marker in text
+            for m in ["must", "shall", "required", "have to", "has to"]:
+                if m in text_lower:
+                    marker = m
+                    break
+            for m in ["may not", "cannot", "shall not", "prohibited"]:
+                if m in text_lower:
+                    marker = m
+                    break
+            for m in ["may", "can"]:
+                if m in text_lower:
+                    marker = m
+                    break
+        
+        if marker in ["may not", "cannot", "shall not", "prohibited", "must not"]:
+            result["rule_type"] = "prohibition"
+        elif marker in ["may", "can"]:
+            # Check if consequence pattern: "may result in", "may be fined"
+            if re.search(r'may\s+(result|lead|be\s+(fined|locked|dismissed|cancelled|terminated))', text_lower):
+                result["rule_type"] = "prohibition"
+            else:
+                result["rule_type"] = "permission"
+        else:
+            result["rule_type"] = "obligation"
+        result["post_processed"] = "null_type_resolved"
+    
+    # Fix 2: "should" false positive detection
+    if result.get("is_rule") and "should" in text_lower:
+        # Patterns that indicate advisory/recommendation (NOT binding rules)
+        advisory_patterns = [
+            r'should\s+consider',
+            r'should\s+be\s+available',
+            r'should\s+normally',
+            r'should\s+proceed\s+to',
+            r'should\s+seek',
+            r'should\s+be\s+(agreed|supported|completed|reported|directed|held)',
+        ]
+        
+        is_advisory = any(re.search(p, text_lower) for p in advisory_patterns)
+        
+        # Also check: "should not" is more likely a real prohibition
+        has_should_not = "should not" in text_lower or "shouldn't" in text_lower
+        
+        if is_advisory and not has_should_not:
+            result["is_rule"] = False
+            result["rule_type"] = None
+            result["confidence"] = max(result.get("confidence", 0) - 0.3, 0.3)
+            result["post_processed"] = "should_advisory_filtered"
+    
+    # Fix 3: Consequence statements → prohibition
+    if result.get("is_rule"):
+        consequence_patterns = [
+            r'may\s+result\s+in',
+            r'will\s+be\s+fined',
+            r'may\s+face\s+a\s+fine',
+            r'shall\s+be\s+recommended\s+for\s+dismissal',
+        ]
+        if any(re.search(p, text_lower) for p in consequence_patterns):
+            if result.get("rule_type") != "prohibition":
+                result["rule_type"] = "prohibition"
+                result["post_processed"] = "consequence_to_prohibition"
+    
+    return result
+
+
 def classify_rule_strict(text: str, model: str = MODEL) -> dict:
     """
     Classify a text as a policy rule using LLM.
     STRICT MODE: Raises exception if LLM is not available (no fallback).
+    Includes improved prompt with better "should" handling and post-processing.
     """
     prompt = f"""Analyze the following text from an academic policy document.
 
-TASK: Determine if this is a policy RULE or not.
+TASK: Determine if this is a policy RULE (normative statement) or not.
 
 DEFINITION of a Policy Rule:
-- Contains a DEONTIC operator (must, shall, may, should, required, prohibited, cannot)
+- Contains a DEONTIC operator (must, shall, may, required, prohibited, cannot)
 - Specifies an OBLIGATION (what must be done), PERMISSION (what may be done), or PROHIBITION (what cannot be done)
 - Has a clear SUBJECT (who the rule applies to)
-- Has actionable REQUIREMENTS (specific actions)
+- Has actionable REQUIREMENTS (specific actions or behaviors)
 
-IMPORTANT: "Should" statements are OFTEN recommendations, not binding rules. Only classify as rule if there's clear mandatory intent.
+CRITICAL GUIDANCE on "should":
+- "Should" is OFTEN advisory/recommendatory, NOT a binding rule
+- "Should" IS a rule ONLY when combined with strong enforcement language (penalties, consequences)
+- "Should not" with clear prohibition intent IS a rule (prohibition)
+- When in doubt about "should" statements, classify as NOT a rule
 
 EXAMPLES:
-1. "Students must submit their thesis by May 15th" → obligation, subject: students, marker: must
-2. "Faculty may request additional office space" → permission, subject: faculty, marker: may  
-3. "Plagiarism is strictly prohibited" → prohibition, subject: all, marker: prohibited
-4. "The university provides library resources" → NOT a rule (just a statement of fact)
-5. "Students should consider attending workshops" → NOT a rule (recommendation, not mandatory)
+1. "Students must submit their thesis by May 15th" → is_rule: true, obligation (strong "must")
+2. "Faculty may request additional office space" → is_rule: true, permission (grants right)
+3. "Students shall not disturb fellow students" → is_rule: true, prohibition (clear "shall not")
+4. "Plagiarism is strictly prohibited" → is_rule: true, prohibition
+5. "Students should consider attending workshops" → is_rule: false (recommendation only)
+6. "Hearings should normally be held within ten days" → is_rule: false (advisory "should normally")
+7. "The settlement should be supported by receipts" → is_rule: false (recommendation, not mandatory)
+8. "The appeal should be addressed to the VP" → is_rule: false (guidance, not binding)
+9. "The university provides library resources" → is_rule: false (factual description)
+
+RULE TYPE must always be specified when is_rule is true. Never leave rule_type as null:
+- If text uses "must/shall/required/have to" → obligation
+- If text uses "may/can" (granting ability) → permission
+- If text uses "shall not/cannot/may not/prohibited" → prohibition
+- If text describes consequences ("may result in", "will be fined") → prohibition
 
 Text to analyze:
 "{text}"
@@ -172,12 +268,15 @@ JSON:"""
         if json_match:
             try:
                 result = json.loads(json_match.group())
+                # Apply post-processing fixes
+                result = post_process_classification(result, text)
                 return result
             except json.JSONDecodeError:
                 # If full match fails, try simpler pattern
                 json_match = re.search(r'\{[^{}]*\}', result_text, re.DOTALL)
                 if json_match:
                     result = json.loads(json_match.group())
+                    result = post_process_classification(result, text)
                     return result
         
         # If no JSON found, show more of the response for debugging
