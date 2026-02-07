@@ -278,7 +278,7 @@ ait:Gs033Shape a sh:NodeShape ;
 ait:Gs034Shape a sh:NodeShape ;
     sh:targetClass ait:Examination ;
     rdfs:label "GS-034" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "This is an area where our cultural differences can lead to additional misunderstanding; for example, certain conduct and communication may be construe" .
 
@@ -334,15 +334,15 @@ ait:Gs040Shape a sh:NodeShape ;
 ait:Gs041Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-041" ;
-    deontic:type deontic:obligation ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "This linen set and pillow may be kept when leaving AIT." .
 
 # Rule: GS-042
 ait:Gs042Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-042" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Upon receipt of the retake, the School Dean may decide to: ● Downgrade by 1 step the grade the student will receive upon repetition of the exam or res" .
 
@@ -502,15 +502,15 @@ ait:Gs061Shape a sh:NodeShape ;
 ait:Gs062Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-062" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "Student Assistants shall be students in good standing on the effective dates of their appointment." .
 
 # Rule: GS-063
 ait:Gs063Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-063" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "Expulsion shall be imposed for drug abuse." .
 
@@ -558,8 +558,8 @@ ait:Gs068Shape a sh:NodeShape ;
 ait:Gs069Shape a sh:NodeShape ;
     sh:targetClass ait:Course ;
     rdfs:label "GS-069" ;
-    deontic:type deontic:permission ;
-    sh:severity sh:Info ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
     rdfs:comment "2.2 Consultation refers, in this context, to discussion of problems or potential problems before recourse to remedial action, informal or formal, but " .
 
 # Rule: GS-070

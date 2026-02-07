@@ -246,8 +246,8 @@ ait:Gs029Shape a sh:NodeShape ;
 ait:Gs030Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-030" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "39 up to Rangsit and from there may ride a pick-up, popularly known as 'Luth'." .
 
 # Rule: GS-031
@@ -342,7 +342,7 @@ ait:Gs041Shape a sh:NodeShape ;
 ait:Gs042Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-042" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Upon receipt of the retake, the School Dean may decide to: ● Downgrade by 1 step the grade the student will receive upon repetition of the exam or res" .
 
@@ -430,8 +430,8 @@ ait:Gs052Shape a sh:NodeShape ;
 ait:Gs053Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-053" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "OFAM is authorized to undertake random inspections and may lay sanctions if the unit is found to be dirty and unhygienic." .
 
 # Rule: GS-054
@@ -502,8 +502,8 @@ ait:Gs061Shape a sh:NodeShape ;
 ait:Gs062Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-062" ;
-    deontic:type deontic:prohibition ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "Student Assistants shall be students in good standing on the effective dates of their appointment." .
 
 # Rule: GS-063
@@ -606,7 +606,7 @@ ait:Gs074Shape a sh:NodeShape ;
 ait:Gs075Shape a sh:NodeShape ;
     sh:targetClass ait:RegistrationFee ;
     rdfs:label "GS-075" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Students within the normal study period must pay the semester fee of Baht 188,000 for 12 credits Tuition Fee and Registration Fee in advance and/or fu" .
 
@@ -662,7 +662,7 @@ ait:Gs081Shape a sh:NodeShape ;
 ait:Gs082Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-082" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "Questions about the plan, enrollment, claim should be directed to Generali Life Assurance (Thailand) Co., Ltd." .
 
@@ -678,7 +678,7 @@ ait:Gs083Shape a sh:NodeShape ;
 ait:Gs084Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-084" ;
-    deontic:type deontic:obligation ;
+    deontic:type deontic:prohibition ;
     sh:severity sh:Violation ;
     rdfs:comment "A student found guilty of grave cheating by the School Dean, the Vice President for Academic Affairs and the Academic Senate may be dismissed." .
 

@@ -190,7 +190,7 @@ ait:Gs022Shape a sh:NodeShape ;
 ait:Gs023Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-023" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "The accomplishments, activities and individual differences of other people must be respected." .
 
@@ -342,7 +342,7 @@ ait:Gs041Shape a sh:NodeShape ;
 ait:Gs042Shape a sh:NodeShape ;
     sh:targetClass ait:Student ;
     rdfs:label "GS-042" ;
-    deontic:type deontic:prohibition ;
+    deontic:type deontic:obligation ;
     sh:severity sh:Violation ;
     rdfs:comment "Upon receipt of the retake, the School Dean may decide to: ● Downgrade by 1 step the grade the student will receive upon repetition of the exam or res" .
 
@@ -566,8 +566,8 @@ ait:Gs069Shape a sh:NodeShape ;
 ait:Gs070Shape a sh:NodeShape ;
     sh:targetClass ait:Accommodation ;
     rdfs:label "GS-070" ;
-    deontic:type deontic:direction ;
-    sh:severity sh:Warning ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
     rdfs:comment "The appeal should be addressed to the Vice President for Academic Affairs." .
 
 # Rule: GS-071
@@ -662,8 +662,8 @@ ait:Gs081Shape a sh:NodeShape ;
 ait:Gs082Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-082" ;
-    deontic:type deontic:permission ;
-    sh:severity sh:Info ;
+    deontic:type deontic:prohibition ;
+    sh:severity sh:Violation ;
     rdfs:comment "Questions about the plan, enrollment, claim should be directed to Generali Life Assurance (Thailand) Co., Ltd." .
 
 # Rule: GS-083
@@ -758,16 +758,16 @@ ait:Gs093Shape a sh:NodeShape ;
 ait:Gs094Shape a sh:NodeShape ;
     sh:targetClass ait:Faculty ;
     rdfs:label "GS-094" ;
-    deontic:type deontic:permission ;
-    sh:severity sh:Info ;
+    deontic:type deontic:obligation ;
+    sh:severity sh:Violation ;
     rdfs:comment "The duties of non- instructional teaching assistants may include assisting faculty in preparing materials for lectures, grading assignments and quizze" .
 
 # Rule: GS-095
 ait:Gs095Shape a sh:NodeShape ;
     sh:targetClass ait:Person ;
     rdfs:label "GS-095" ;
-    deontic:type deontic:obligation ;
-    sh:severity sh:Violation ;
+    deontic:type deontic:permission ;
+    sh:severity sh:Info ;
     rdfs:comment "2.3 Preliminary consultation should be available to any member of the Institute community who wishes to discuss issues related to problem areas." .
 
 # Rule: GS-096
