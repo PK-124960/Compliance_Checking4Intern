@@ -252,7 +252,7 @@ def save_rules(rules):
 
 def load_fol_results():
     """Load FOL formalization results."""
-    fol_file = RESEARCH_DIR / "fol_formalization_v2_results.json"
+    fol_file = RESEARCH_DIR / "fol_formalization_v4_results.json"
     if fol_file.exists():
         with open(fol_file, 'r', encoding='utf-8') as f:
             return json.load(f)

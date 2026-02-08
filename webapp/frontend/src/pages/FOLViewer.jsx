@@ -27,7 +27,7 @@ export default function FOLViewer() {
     }
 
     const loadLocalData = () => {
-        axios.get('/research/fol_formalization_v2_results.json')
+        axios.get('/research/fol_formalization_v4_results.json')
             .then(res => {
                 console.log('Loaded local FOL data:', res.data)
                 setFolData(res.data)
