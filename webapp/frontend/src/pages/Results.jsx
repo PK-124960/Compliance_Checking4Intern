@@ -12,7 +12,7 @@ export default function Results() {
         recall: 97.53,
         f1: 97.53,
         totalSentences: 97,  // Candidate sentences extracted
-        validatedRules: 83,  // Confirmed as policy rules
+        validatedRules: 81,  // Confirmed as policy rules (TP+FN = 79+2)
         matrix: { tp: 79, tn: 14, fp: 2, fn: 2 },  // tn=14 are non-rules
         thresholdMet: true
     }

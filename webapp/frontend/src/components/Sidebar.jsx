@@ -8,7 +8,7 @@ const researchNavItems = [
 ]
 
 const dataNavItems = [
-    { path: '/rules', icon: FileText, label: 'Rules Browser', description: '97 sentences (83 rules)' },
+    { path: '/rules', icon: FileText, label: 'Rules Browser', description: '97 sentences (81 rules)' },
     { path: '/fol', icon: Code, label: 'FOL Formulas', description: 'Logic representations' }
 ]
 

@@ -110,7 +110,7 @@ export default function Dashboard() {
                     <div className="card text-center hover:transform hover:scale-105 transition-transform">
                         <div className="text-4xl font-bold text-blue-600 mb-2">{stats?.total_rules || 97}</div>
                         <div className="text-sm text-gray-600 font-medium uppercase tracking-wide">Candidates</div>
-                        <div className="text-xs text-gray-500 mt-1">83 validated as rules</div>
+                        <div className="text-xs text-gray-500 mt-1">81 validated as rules</div>
                     </div>
                     <div className="card text-center hover:transform hover:scale-105 transition-transform">
                         <div className="text-4xl font-bold text-purple-600 mb-2">95.88%</div>
