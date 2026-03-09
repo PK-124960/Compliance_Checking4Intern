@@ -28,10 +28,7 @@
       "annotation_date": "2026-02-07T20:52:16.537271",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-002",
@@ -62,10 +59,7 @@
       "annotation_date": "2026-02-07T20:52:17.052423",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-003",
@@ -96,10 +90,7 @@
       "annotation_date": "2026-02-07T20:52:17.550402",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-004",
@@ -130,10 +121,7 @@
       "annotation_date": "2026-02-07T20:52:18.094228",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-005",
@@ -164,10 +152,7 @@
       "annotation_date": "2026-02-07T20:52:18.612828",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-006",
@@ -198,10 +183,7 @@
       "annotation_date": "2026-02-07T20:52:19.102450",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-007",
@@ -232,10 +214,7 @@
       "annotation_date": "2026-02-07T20:52:19.610869",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-008",
@@ -266,10 +245,7 @@
       "annotation_date": "2026-02-07T20:52:20.074751",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-009",
@@ -300,10 +276,7 @@
       "annotation_date": "2026-02-07T20:52:20.504912",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-010",
@@ -334,10 +307,7 @@
       "annotation_date": "2026-02-07T20:52:21.102194",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-011",
@@ -368,10 +338,7 @@
       "annotation_date": "2026-02-07T20:52:21.506747",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-012",
@@ -402,10 +369,7 @@
       "annotation_date": "2026-02-07T20:52:22.037980",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-013",
@@ -436,10 +400,7 @@
       "annotation_date": "2026-02-07T20:52:22.452090",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-014",
@@ -470,10 +431,7 @@
       "annotation_date": "2026-02-07T20:52:22.879439",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-015",
@@ -504,10 +462,7 @@
       "annotation_date": "2026-02-07T20:52:23.333378",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-016",
@@ -538,10 +493,7 @@
       "annotation_date": "2026-02-07T20:52:23.758681",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-017",
@@ -572,10 +524,7 @@
       "annotation_date": "2026-02-07T20:52:24.257464",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-018",
@@ -606,10 +555,7 @@
       "annotation_date": "2026-02-07T20:52:24.757357",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-019",
@@ -640,10 +586,7 @@
       "annotation_date": "2026-02-07T20:52:25.204363",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-020",
@@ -674,10 +617,7 @@
       "annotation_date": "2026-02-07T20:52:25.657063",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-021",
@@ -708,10 +648,7 @@
       "annotation_date": "2026-02-07T20:52:26.121601",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-022",
@@ -742,10 +679,7 @@
       "annotation_date": "2026-02-07T20:52:26.673822",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-023",
@@ -776,10 +710,7 @@
       "annotation_date": "2026-02-07T20:52:27.152233",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-024",
@@ -810,10 +741,7 @@
       "annotation_date": "2026-02-07T20:52:27.621809",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-025",
@@ -844,10 +772,7 @@
       "annotation_date": "2026-02-07T20:52:28.079612",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-026",
@@ -878,10 +803,7 @@
       "annotation_date": "2026-02-07T20:52:28.554818",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-027",
@@ -912,10 +834,7 @@
       "annotation_date": "2026-02-07T20:52:28.982994",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-028",
@@ -946,10 +865,7 @@
       "annotation_date": "2026-02-07T20:52:29.455985",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-029",
@@ -980,10 +896,7 @@
       "annotation_date": "2026-02-07T20:52:29.860342",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-030",
@@ -1014,10 +927,7 @@
       "annotation_date": "2026-02-07T20:52:30.295347",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-031",
@@ -1048,10 +958,7 @@
       "annotation_date": "2026-02-07T20:52:30.757946",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-032",
@@ -1082,10 +989,7 @@
       "annotation_date": "2026-02-07T20:52:31.232090",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-033",
@@ -1116,10 +1020,7 @@
       "annotation_date": "2026-02-07T20:52:31.644089",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-034",
@@ -1150,10 +1051,7 @@
       "annotation_date": "2026-02-07T20:52:32.040351",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-035",
@@ -1184,10 +1082,7 @@
       "annotation_date": "2026-02-07T20:52:32.589567",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-036",
@@ -1218,10 +1113,7 @@
       "annotation_date": "2026-02-07T20:52:33.046468",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-037",
@@ -1252,10 +1144,7 @@
       "annotation_date": "2026-02-07T20:52:33.499607",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-038",
@@ -1286,10 +1175,7 @@
       "annotation_date": "2026-02-07T20:52:33.930955",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-039",
@@ -1320,10 +1206,7 @@
       "annotation_date": "2026-02-07T20:52:34.449872",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-040",
@@ -1354,10 +1237,7 @@
       "annotation_date": "2026-02-07T20:52:34.997546",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-041",
@@ -1388,10 +1268,7 @@
       "annotation_date": "2026-02-07T20:52:35.406562",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-042",
@@ -1422,10 +1299,7 @@
       "annotation_date": "2026-02-07T20:52:35.887380",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-043",
@@ -1456,10 +1330,7 @@
       "annotation_date": "2026-02-07T20:52:36.423379",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-044",
@@ -1490,10 +1361,7 @@
       "annotation_date": "2026-02-07T20:52:36.880445",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-045",
@@ -1524,10 +1392,7 @@
       "annotation_date": "2026-02-07T20:52:37.383320",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-046",
@@ -1559,10 +1424,7 @@
       "annotation_date": "2026-02-07T20:52:37.895065",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-047",
@@ -1593,10 +1455,7 @@
       "annotation_date": "2026-02-07T20:52:38.362297",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-048",
@@ -1627,10 +1486,7 @@
       "annotation_date": "2026-02-07T20:52:38.814311",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-049",
@@ -1661,10 +1517,7 @@
       "annotation_date": "2026-02-07T20:52:39.289312",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-050",
@@ -1695,10 +1548,7 @@
       "annotation_date": "2026-02-07T20:52:39.710889",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-051",
@@ -1729,10 +1579,7 @@
       "annotation_date": "2026-02-07T20:52:40.215880",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-052",
@@ -1763,10 +1610,7 @@
       "annotation_date": "2026-02-07T20:52:40.678237",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-053",
@@ -1797,10 +1641,7 @@
       "annotation_date": "2026-02-07T20:52:41.217711",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-054",
@@ -1831,10 +1672,7 @@
       "annotation_date": "2026-02-07T20:52:41.820349",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-055",
@@ -1866,10 +1704,7 @@
       "annotation_date": "2026-02-07T20:52:42.264859",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-056",
@@ -1900,10 +1735,7 @@
       "annotation_date": "2026-02-07T20:52:42.690553",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-057",
@@ -1934,10 +1766,7 @@
       "annotation_date": "2026-02-07T20:52:43.146236",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-058",
@@ -1968,10 +1797,7 @@
       "annotation_date": "2026-02-07T20:52:43.597677",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-059",
@@ -2002,10 +1828,7 @@
       "annotation_date": "2026-02-07T20:52:44.101166",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-060",
@@ -2036,10 +1859,7 @@
       "annotation_date": "2026-02-07T20:52:44.571211",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-061",
@@ -2070,10 +1890,7 @@
       "annotation_date": "2026-02-07T20:52:45.008514",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-062",
@@ -2104,10 +1921,7 @@
       "annotation_date": "2026-02-07T20:52:45.434087",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-063",
@@ -2138,10 +1952,7 @@
       "annotation_date": "2026-02-07T20:52:45.954229",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-064",
@@ -2172,10 +1983,7 @@
       "annotation_date": "2026-02-07T20:52:46.401789",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-065",
@@ -2206,10 +2014,7 @@
       "annotation_date": "2026-02-07T20:52:46.829942",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-066",
@@ -2240,10 +2045,7 @@
       "annotation_date": "2026-02-07T20:52:47.249638",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-067",
@@ -2274,10 +2076,7 @@
       "annotation_date": "2026-02-07T20:52:47.651804",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-068",
@@ -2309,10 +2108,7 @@
       "annotation_date": "2026-02-07T20:52:48.044539",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-069",
@@ -2344,10 +2140,7 @@
       "annotation_date": "2026-02-07T20:52:48.480863",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-070",
@@ -2378,10 +2171,7 @@
       "annotation_date": "2026-02-07T20:52:48.954696",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-071",
@@ -2412,10 +2202,7 @@
       "annotation_date": "2026-02-07T20:52:49.407932",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-072",
@@ -2446,10 +2233,7 @@
       "annotation_date": "2026-02-07T20:52:49.830872",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-073",
@@ -2480,10 +2264,7 @@
       "annotation_date": "2026-02-07T20:52:50.323790",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-074",
@@ -2514,10 +2295,7 @@
       "annotation_date": "2026-02-07T20:52:50.748363",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-075",
@@ -2548,10 +2326,7 @@
       "annotation_date": "2026-02-07T20:52:51.245777",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-076",
@@ -2582,10 +2357,7 @@
       "annotation_date": "2026-02-07T20:52:51.726954",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-077",
@@ -2616,10 +2388,7 @@
       "annotation_date": "2026-02-07T20:52:52.230370",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-078",
@@ -2650,10 +2419,7 @@
       "annotation_date": "2026-02-07T20:52:52.709534",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-079",
@@ -2684,10 +2450,7 @@
       "annotation_date": "2026-02-07T20:52:53.172360",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-080",
@@ -2718,10 +2481,7 @@
       "annotation_date": "2026-02-07T20:52:53.680563",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-081",
@@ -2752,10 +2512,7 @@
       "annotation_date": "2026-02-07T20:52:54.125984",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-082",
@@ -2786,10 +2543,7 @@
       "annotation_date": "2026-02-07T20:52:54.544056",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-083",
@@ -2820,10 +2574,7 @@
       "annotation_date": "2026-02-07T20:52:54.979343",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-084",
@@ -2854,10 +2605,7 @@
       "annotation_date": "2026-02-07T20:52:55.461193",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-085",
@@ -2888,10 +2636,7 @@
       "annotation_date": "2026-02-07T20:52:55.931352",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-086",
@@ -2922,10 +2667,7 @@
       "annotation_date": "2026-02-07T20:52:56.401426",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-087",
@@ -2956,10 +2698,7 @@
       "annotation_date": "2026-02-07T20:52:56.879997",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-088",
@@ -2990,10 +2729,7 @@
       "annotation_date": "2026-02-07T20:52:57.385688",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-089",
@@ -3024,10 +2760,7 @@
       "annotation_date": "2026-02-07T20:52:57.927136",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-090",
@@ -3058,10 +2791,7 @@
       "annotation_date": "2026-02-07T20:52:58.344272",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-091",
@@ -3092,10 +2822,7 @@
       "annotation_date": "2026-02-07T20:52:58.761389",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-092",
@@ -3126,10 +2853,7 @@
       "annotation_date": "2026-02-07T20:52:59.276934",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-093",
@@ -3160,10 +2884,7 @@
       "annotation_date": "2026-02-07T20:52:59.806170",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": false,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-094",
@@ -3194,10 +2915,7 @@
       "annotation_date": "2026-02-07T20:53:00.267738",
       "method": "llm"
     },
-    "human_llm_agreement": false,
-    "human_llm_agreement_detection": false,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": false
+    "human_llm_agreement": false
   },
   {
     "id": "GS-095",
@@ -3228,10 +2946,7 @@
       "annotation_date": "2026-02-07T20:53:00.711526",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": "N/A",
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-096",
@@ -3262,10 +2977,7 @@
       "annotation_date": "2026-02-07T20:53:01.119520",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   },
   {
     "id": "GS-097",
@@ -3296,9 +3008,6 @@
       "annotation_date": "2026-02-07T20:53:01.617904",
       "method": "llm"
     },
-    "human_llm_agreement": true,
-    "human_llm_agreement_detection": true,
-    "human_llm_agreement_type": true,
-    "human_llm_agreement_original": true
+    "human_llm_agreement": true
   }
 ]
