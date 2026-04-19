@@ -97,7 +97,6 @@ def _fol_to_turtle(fol: FOLItem) -> tuple[str, str, bool]:
 
 def shacl_node(state: PipelineState) -> PipelineState:
     fol_formulas: List[FOLItem] = state["fol_formulas"]
-    existing_shapes: List[SHACLShape] = list(state.get("shacl_shapes", []))
     errors: List[str] = []
 
     new_shapes: List[SHACLShape] = []
@@ -126,7 +125,7 @@ def shacl_node(state: PipelineState) -> PipelineState:
 
     return {
         **state,
-        "shacl_shapes": existing_shapes + new_shapes,
+        "shacl_shapes": new_shapes,
         "shacl_output_path": output_path,
         "current_step": "shacl",
         "errors": errors,

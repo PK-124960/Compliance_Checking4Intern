@@ -55,7 +55,6 @@ def _validate_turtle(text: str) -> bool:
 
 def direct_shacl_node(state: PipelineState) -> PipelineState:
     failed_rules: List[RuleItem] = state.get("fol_failed", [])
-    existing_shapes: List[SHACLShape] = list(state.get("shacl_shapes", []))
     model = DEFAULT_MODEL
     errors: List[str] = []
 
@@ -100,7 +99,7 @@ def direct_shacl_node(state: PipelineState) -> PipelineState:
 
     return {
         **state,
-        "shacl_shapes": existing_shapes + new_shapes,
+        "shacl_shapes": new_shapes,
         "current_step": "direct_shacl",
         "errors": errors,
     }

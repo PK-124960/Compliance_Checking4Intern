@@ -57,7 +57,7 @@ class PipelineState(TypedDict):
     fol_failed: List[RuleItem]       # rules where FOL generation failed
 
     # Step 4 — SHACL
-    shacl_shapes: List[SHACLShape]
+    shacl_shapes: Annotated[List[SHACLShape], operator.add]
     shacl_output_path: str
 
     # Step 5 — validation

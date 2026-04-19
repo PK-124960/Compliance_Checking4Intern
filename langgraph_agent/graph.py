@@ -4,7 +4,6 @@ from langgraph.graph import END, StateGraph
 
 from langgraph_agent.state import PipelineState
 from langgraph_agent.edges.route_classify import route_classify
-from langgraph_agent.edges.route_fol import route_fol
 
 # Node imports — replaced one-by-one as each Phase builds them out.
 # Until a real implementation exists the stubs in _stubs.py are used.
@@ -73,8 +72,14 @@ def build_graph() -> StateGraph:
     g.add_edge("extract",      "prefilter")
     g.add_edge("prefilter",    "classify")
     g.add_edge("reclassify",   "fol")       # after second opinion → FOL
+    # fol fans out to BOTH nodes in parallel:
+    #   shacl       → handles the 454 successful FOL formulas
+    #   direct_shacl → handles the N failed FOL formulas (NL fallback)
+    g.add_edge("fol",          "shacl")
+    g.add_edge("fol",          "direct_shacl")
+    # Both converge back to validate
     g.add_edge("shacl",        "validate")
-    g.add_edge("direct_shacl", "validate")  # fallback also feeds validate
+    g.add_edge("direct_shacl", "validate")
     g.add_edge("validate",     "report")
     g.add_edge("report",       END)
 
@@ -86,14 +91,6 @@ def build_graph() -> StateGraph:
             "reclassify": "reclassify",
             "fol":        "fol",
             "end":        END,
-        },
-    )
-    g.add_conditional_edges(
-        "fol",
-        route_fol,
-        {
-            "direct_shacl": "direct_shacl",
-            "shacl":        "shacl",
         },
     )
 

@@ -12,10 +12,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import logging
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+
+# Suppress rdflib's verbose tracebacks for ISO8601 parsing on failed literals
+logging.getLogger("rdflib.term").setLevel(logging.ERROR)
 
 from langgraph_agent.graph import build_graph
 from langgraph_agent.state import PipelineState
