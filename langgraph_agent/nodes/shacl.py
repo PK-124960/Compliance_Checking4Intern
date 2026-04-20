@@ -164,9 +164,9 @@ def _severity_for(rule_type: str, confidence: float = 1.0) -> str:
     return "sh:Info"
 
 
-def _fol_to_turtle(fol: FOLItem, confidence: float = 1.0) -> tuple[str, str, bool]:
+def _fol_to_turtle(fol: FOLItem, confidence: float = 1.0) -> tuple[str, str, str, str, bool]:
     """
-    Returns (turtle_text, target_class, syntax_valid).
+    Returns (turtle_text, target_class, shape_id, prop_path, syntax_valid).
 
     Implements:
     - §4.4: ``sh:targetSubjectsOf`` fallback when target class is Person
@@ -202,7 +202,52 @@ def _fol_to_turtle(fol: FOLItem, confidence: float = 1.0) -> tuple[str, str, boo
         f"    {constraint}\n"
         f"    sh:message \"{message}\" .\n"
     )
-    return turtle, target_class, True
+    return turtle, target_class, shape_id, prop_path, True
+
+
+# ── §5.3 — Permission-as-exception override detection ────────────────────
+
+def _detect_overrides(
+    shapes: list[dict],
+) -> list[tuple[str, str]]:
+    """Detect permission shapes that override obligation shapes.
+
+    A permission *overrides* an obligation when they share:
+    - the same (or compatible) target class, AND
+    - the same property path.
+
+    Returns a list of ``(permission_shape_id, obligation_shape_id)`` pairs.
+    Following Governatori & Rotolo (2010).
+    """
+    # Index obligations by (target_class, prop_path)
+    obligations: dict[tuple[str, str], str] = {}
+    permissions: list[dict] = []
+
+    for s in shapes:
+        key = (s.get("target_class", ""), s.get("prop_path", ""))
+        if s["deontic_type"] == "obligation":
+            obligations[key] = s["shape_id"]
+        elif s["deontic_type"] == "permission":
+            permissions.append(s)
+
+    overrides: list[tuple[str, str]] = []
+    for p in permissions:
+        pkey = (p.get("target_class", ""), p.get("prop_path", ""))
+        if pkey in obligations:
+            overrides.append((p["shape_id"], obligations[pkey]))
+
+    return overrides
+
+
+def _emit_override_triples(overrides: list[tuple[str, str]]) -> str:
+    """Generate Turtle triples for deontic:overrides links."""
+    if not overrides:
+        return ""
+    lines = ["# ── Permission-as-exception overrides (§5.3) ──"]
+    for perm_id, obl_id in overrides:
+        lines.append(f"ait:{perm_id} deontic:overrides ait:{obl_id} .")
+    lines.append("")
+    return "\n".join(lines) + "\n"
 
 
 # ── Inline NL fallback for FOL-to-Turtle failures ────────────────────────
@@ -248,10 +293,12 @@ def shacl_node(state: PipelineState) -> PipelineState:
 
     new_shapes: List[SHACLShape] = []
     ttl_blocks: List[str] = [_TTL_PREFIXES]
+    # Track shape metadata for override detection (§5.3)
+    shape_meta: list[dict] = []
 
     for fol in fol_formulas:
         try:
-            turtle, target_class, valid = _fol_to_turtle(fol)
+            turtle, target_class, shape_id, prop_path, valid = _fol_to_turtle(fol)
             ttl_blocks.append(turtle + "\n")
             new_shapes.append(SHACLShape(
                 rule_id=fol["rule_id"],
@@ -261,6 +308,12 @@ def shacl_node(state: PipelineState) -> PipelineState:
                 syntax_valid=valid,
                 generation_method="fol_mediated",
             ))
+            shape_meta.append({
+                "shape_id": shape_id,
+                "target_class": target_class,
+                "prop_path": prop_path,
+                "deontic_type": fol["deontic_type"],
+            })
         except Exception as exc:
             errors.append(
                 f"shacl[{fol['rule_id']}]: {exc} (attempting NL fallback)"
@@ -271,6 +324,14 @@ def shacl_node(state: PipelineState) -> PipelineState:
                 new_shapes.append(fallback)
                 if fallback["turtle_text"]:
                     ttl_blocks.append(fallback["turtle_text"] + "\n")
+
+    # §5.3 — Detect and emit permission-as-exception overrides
+    overrides = _detect_overrides(shape_meta)
+    if overrides:
+        override_ttl = _emit_override_triples(overrides)
+        ttl_blocks.append(override_ttl)
+        for perm_id, obl_id in overrides:
+            errors.append(f"shacl[override]: ait:{perm_id} deontic:overrides ait:{obl_id}")
 
     # Write combined TTL to output/
     output_dir = PROJECT_ROOT / "output" / state["source"]

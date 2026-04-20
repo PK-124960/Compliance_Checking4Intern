@@ -234,8 +234,13 @@ Transparency about what the pipeline does *not* yet handle well:
 
 ## 🔧 Additional tools
 
-- **MCP server** (`core/mcp_server.py`) — exposes single-rule verification over
-  JSON-RPC for integration with MCP-compatible clients:
+- **MCP server** (`core/mcp_server.py`) — exposes 5 tools over JSON-RPC for
+  MCP-compatible clients:
+  - `verify_rule` — classify a single text as policy rule
+  - `check_status` — check Ollama availability
+  - `list_rules` — browse classified rules from the latest run (filterable by type)
+  - `get_metrics` — return M1–M5 thesis metrics
+  - `run_pipeline` — trigger a full pipeline run with optional ablation
 
   ```bash
   python -m core.mcp_server --mcp          # stdio MCP mode

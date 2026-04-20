@@ -27,6 +27,10 @@ build/
 *.swo
 *~
 
+# Note md
+ARCHITECTURE.md
+POLICYCHECKER_ENHANCEMENT_PLAN.md
+
 # Environment
 .env
 .env.example
@@ -52,13 +56,14 @@ coverage/
 htmlcov/
 .pytest_cache/
 .tox/
+tests/
+
 
 # Docker
 .docker/
 
 # Pipeline runtime outputs
 output/
-tests/
 
 # LLM cache (local, large)
 cache/llm_cache.db

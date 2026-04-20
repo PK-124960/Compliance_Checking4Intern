@@ -1,10 +1,13 @@
 """
-MCP Server — Policy Rule Verification
+MCP Server — Policy Rule Verification & Pipeline Management
 Exposes pipeline tools via JSON-RPC over STDIO for MCP-compatible clients.
 
 Tools:
     verify_rule       — Check if a text is a policy rule via local Ollama
     check_status      — Check Ollama availability and list models
+    list_rules        — List classified rules from the latest pipeline run
+    get_metrics       — Return M1–M5 thesis metrics from the latest run
+    run_pipeline      — Trigger a pipeline run for a given source
 
 Usage:
     python -m core.mcp_server --mcp
@@ -15,12 +18,14 @@ import json
 import os
 import re
 import sys
+from pathlib import Path
 
 import requests
 
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 DEFAULT_MODEL = os.getenv("OLLAMA_MODEL", "mistral")
 JSONRPC_VERSION = "2.0"
+PROJECT_ROOT = Path(__file__).parent.parent
 
 TOOLS = [
     {
@@ -46,6 +51,72 @@ TOOLS = [
         "name": "check_status",
         "description": "Check if Ollama is reachable and list available models.",
         "inputSchema": {"type": "object", "properties": {}},
+    },
+    {
+        "name": "list_rules",
+        "description": (
+            "List classified rules from the latest pipeline run. "
+            "Returns rule_id, text, rule_type, and confidence for each rule."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "description": "Institution source (default: ait)",
+                    "default": "ait",
+                },
+                "rule_type": {
+                    "type": "string",
+                    "description": "Filter by rule type: obligation, permission, prohibition, or all",
+                    "default": "all",
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Max number of rules to return (default: 50)",
+                    "default": 50,
+                },
+            },
+        },
+    },
+    {
+        "name": "get_metrics",
+        "description": (
+            "Return M1–M5 thesis metrics from the latest pipeline run. "
+            "Requires that the evaluation has been run previously."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "description": "Institution source (default: ait)",
+                    "default": "ait",
+                },
+            },
+        },
+    },
+    {
+        "name": "run_pipeline",
+        "description": (
+            "Trigger a full pipeline run for the given source institution. "
+            "Returns the pipeline report on completion."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "description": "Institution source (default: ait)",
+                    "default": "ait",
+                },
+                "ablation": {
+                    "type": "string",
+                    "description": "Ablation study name (default: baseline)",
+                    "default": "baseline",
+                },
+            },
+        },
     },
 ]
 
@@ -95,6 +166,60 @@ def check_status() -> dict:
         return {"ollama_running": False, "available_models": [], "host": OLLAMA_HOST}
 
 
+def list_rules(source: str = "ait", rule_type: str = "all", limit: int = 50) -> dict:
+    """List classified rules from the latest pipeline output."""
+    rules_path = PROJECT_ROOT / "output" / source / "classified_rules.json"
+    if not rules_path.exists():
+        return {"success": False, "error": f"No classified_rules.json found for source '{source}'"}
+    rules = json.loads(rules_path.read_text(encoding="utf-8"))
+    if rule_type != "all":
+        rules = [r for r in rules if r.get("rule_type") == rule_type]
+    total = len(rules)
+    rules = rules[:limit]
+    return {
+        "success": True,
+        "source": source,
+        "filter": rule_type,
+        "total_matching": total,
+        "returned": len(rules),
+        "rules": rules,
+    }
+
+
+def get_metrics(source: str = "ait") -> dict:
+    """Return thesis metrics from the latest run."""
+    metrics_path = PROJECT_ROOT / "output" / source / "thesis_metrics.json"
+    if metrics_path.exists():
+        return {
+            "success": True,
+            "source": source,
+            "metrics": json.loads(metrics_path.read_text(encoding="utf-8")),
+        }
+    # Fall back to computing live if evaluation module is available
+    try:
+        from evaluation.report import build_report, format_console
+        from dataclasses import asdict
+        report = build_report(source)
+        return {
+            "success": True,
+            "source": source,
+            "metrics": asdict(report),
+            "note": "Computed live (not cached)",
+        }
+    except Exception as exc:
+        return {"success": False, "error": str(exc)}
+
+
+def run_pipeline(source: str = "ait", ablation: str = "baseline") -> dict:
+    """Trigger a pipeline run and return the report."""
+    try:
+        from langgraph_agent.run import run
+        report = run(source, verbose=False, ablation=ablation)
+        return {"success": True, "source": source, "ablation": ablation, "report": report}
+    except Exception as exc:
+        return {"success": False, "error": str(exc)}
+
+
 # ---------------------------------------------------------------------------
 # MCP dispatch
 # ---------------------------------------------------------------------------
@@ -107,6 +232,22 @@ def _handle(tool_name: str, arguments: dict) -> dict:
 
     if tool_name == "check_status":
         return {"success": True, **check_status()}
+
+    if tool_name == "list_rules":
+        return list_rules(
+            source=arguments.get("source", "ait"),
+            rule_type=arguments.get("rule_type", "all"),
+            limit=arguments.get("limit", 50),
+        )
+
+    if tool_name == "get_metrics":
+        return get_metrics(source=arguments.get("source", "ait"))
+
+    if tool_name == "run_pipeline":
+        return run_pipeline(
+            source=arguments.get("source", "ait"),
+            ablation=arguments.get("ablation", "baseline"),
+        )
 
     return {"success": False, "error": f"Unknown tool: {tool_name}"}
 
