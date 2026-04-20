@@ -269,8 +269,3 @@ The pipeline design draws on:
 ## 📝 License
 
 Academic research project — AIT Master's Thesis.
-
-## 🔗 Further reading
-
-- [`ARCHITECTURE.md`](ARCHITECTURE.md) — pipeline design, node walkthrough, state schema
-- [`POLICYCHECKER_ENHANCEMENT_PLAN.md`](POLICYCHECKER_ENHANCEMENT_PLAN.md) — enhancement roadmap (completed)
