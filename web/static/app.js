@@ -14,13 +14,16 @@ const state = {
     ruleSearch: '',
     stats: {},
     validating: false,
+    // DB state
+    dbOnline: false,
+    dbEntities: [],
 };
 
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     loadStats();
     loadRules();
-    loadSampleData();
+    checkDbStatus();
     setupTabs();
     setupSearch();
     setupFilters();
@@ -241,22 +244,151 @@ function renderRuleDetail(data) {
 function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ── Sample Data ──────────────────────────────────────────────
-async function loadSampleData() {
-    try {
-        const res = await fetch('/api/sample-data');
-        const data = await res.json();
-        document.getElementById('data-editor').value = data.turtle;
-    } catch (err) {
-        console.error('Failed to load sample data:', err);
-    }
-}
+// ── Data Source Management ────────────────────────────────────
 
 function resetData() {
-    loadSampleData();
+    if (state.dbOnline) {
+        loadFromDatabase();
+    } else {
+        document.getElementById('data-editor').value = '';
+    }
     document.getElementById('results-container').innerHTML = `
         <div class="empty-state"><div class="icon">🛡️</div><p>Submit RDF data to see compliance results</p></div>`;
     document.getElementById('results-timer').textContent = '';
+}
+
+// ── Database Status & Entity Loading ─────────────────────────
+
+async function checkDbStatus() {
+    const statusEl = document.getElementById('db-status');
+    const dot = statusEl.querySelector('.db-dot');
+    const label = statusEl.querySelector('.db-label');
+
+    try {
+        const res = await fetch('/api/db-status');
+        const data = await res.json();
+
+        if (data.ok) {
+            state.dbOnline = true;
+            dot.classList.remove('offline');
+            dot.classList.add('online');
+            const count = data.entities || 0;
+            label.textContent = `DB Connected (${count} entities)`;
+
+            if (count > 0) {
+                await loadDbEntityList();
+            }
+        } else {
+            state.dbOnline = false;
+            dot.classList.remove('online');
+            dot.classList.add('offline');
+            label.textContent = 'DB Offline';
+            document.getElementById('btn-load-db').disabled = true;
+        }
+    } catch (err) {
+        state.dbOnline = false;
+        dot.classList.remove('online');
+        dot.classList.add('offline');
+        label.textContent = 'DB Offline';
+        document.getElementById('btn-load-db').disabled = true;
+    }
+}
+
+async function loadDbEntityList() {
+    try {
+        const res = await fetch('/api/db-entities');
+        const data = await res.json();
+        state.dbEntities = data.entities || [];
+        renderEntityCheckboxes();
+    } catch (err) {
+        console.error('Failed to load DB entities:', err);
+    }
+}
+
+function renderEntityCheckboxes() {
+    const grid = document.getElementById('entity-checkbox-grid');
+    if (state.dbEntities.length === 0) {
+        grid.innerHTML = '<div class="loading-sm">No entities in database</div>';
+        return;
+    }
+
+    const typeIcons = {
+        'Student': '🎓', 'PostgraduateStudent': '🎓',
+        'Faculty': '👨‍🏫', 'Employee': '👔',
+        'Resident': '🏠', 'Committee': '🏛️',
+    };
+
+    grid.innerHTML = state.dbEntities.map(e => {
+        const icon = typeIcons[e.type] || '👤';
+        return `
+            <label class="entity-checkbox" title="${escapeHtml(e.label || e.name)}">
+                <input type="checkbox" value="${escapeHtml(e.name)}" checked
+                       class="entity-cb">
+                <span class="cb-content">
+                    <span class="cb-icon">${icon}</span>
+                    <span class="cb-name">${escapeHtml(e.name)}</span>
+                    <span class="cb-type">${escapeHtml(e.type)}</span>
+                    <span class="cb-props">${e.property_count} props</span>
+                </span>
+            </label>`;
+    }).join('');
+}
+
+function selectAllEntities(checked) {
+    document.querySelectorAll('.entity-cb').forEach(cb => {
+        cb.checked = checked;
+    });
+}
+
+function getSelectedEntityNames() {
+    const checked = document.querySelectorAll('.entity-cb:checked');
+    return Array.from(checked).map(cb => cb.value);
+}
+
+async function loadFromDatabase() {
+    const btn = document.getElementById('btn-load-db');
+    const editor = document.getElementById('data-editor');
+    const selected = getSelectedEntityNames();
+
+    if (selected.length === 0) {
+        editor.value = '# No entities selected. Check some entities above.';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-sm"></span> Loading…';
+
+    try {
+        const allSelected = selected.length === state.dbEntities.length;
+        const body = allSelected
+            ? { entities: 'all' }
+            : { entities: selected };
+
+        const res = await fetch('/api/load-from-db', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        });
+        const data = await res.json();
+
+        if (data.error) {
+            editor.value = `# Error loading from database:\n# ${data.error}`;
+        } else {
+            editor.value = data.turtle;
+            // Flash success on button
+            btn.innerHTML = '✓ Loaded!';
+            setTimeout(() => {
+                btn.innerHTML = '🗄️ Load from Database';
+            }, 1500);
+        }
+    } catch (err) {
+        editor.value = `# Failed to load from database:\n# ${err.message}`;
+    } finally {
+        btn.disabled = false;
+        if (btn.innerHTML.includes('Loading')) {
+            btn.innerHTML = '🗄️ Load from Database';
+        }
+    }
 }
 
 // ── Compliance Validation ────────────────────────────────────

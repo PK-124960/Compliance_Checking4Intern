@@ -120,6 +120,11 @@ Compliance_Checking4Intern/
 │   ├── prefilter.py          # Heuristic filter (600+ lines, may disambiguation)
 │   ├── llm_cache.py          # SQLite cache with prompt versioning
 │   └── mcp_server.py         # JSON-RPC MCP compatibility layer
+├── db/                       # PostgreSQL data layer
+│   ├── connection.py         # Connection manager (psycopg2)
+│   ├── schema.sql            # Relational table definitions (students, fees, etc.)
+│   ├── seed.py               # Populate DB with realistic AIT demo data
+│   └── rdf_converter.py      # Relational DB → Turtle RDF converter
 ├── evaluation/               # Gold-standard alignment & thesis metrics
 │   ├── align.py              # Multi-signal GS ↔ AIT alignment (M1)
 │   ├── per_rule_eval.py      # Per-rule pyshacl evaluation (M4)
@@ -146,7 +151,7 @@ Compliance_Checking4Intern/
 │   ├── ontology/             # Domain ontology (Person, Student, Faculty, …)
 │   └── test_data/            # 180 Pos/Neg test entities per rule
 ├── output/                   # Pipeline reports & intermediate artifacts
-├── demo/                     # Compliance Dashboard (FastAPI + HTML)
+├── web/                     # Compliance Dashboard (FastAPI + HTML)
 │   ├── app.py                # FastAPI backend with pyshacl validation
 │   ├── templates/index.html  # Dashboard UI
 │   └── static/               # CSS + JS
@@ -158,6 +163,8 @@ Compliance_Checking4Intern/
 │   ├── test_align.py               # Alignment algorithm tests
 │   ├── test_per_rule_eval.py       # Per-rule eval verdict tests
 │   └── test_graph.py               # Graph structure tests
+├── docker-compose.yml        # Postgres + App + optional GraphDB/Ollama
+├── Dockerfile                # App container build
 ├── .env.example              # Environment configuration template
 ├── ARCHITECTURE.md           # Pipeline design & node walkthrough
 └── POLICYCHECKER_ENHANCEMENT_PLAN.md   # Enhancement roadmap (completed)
@@ -222,14 +229,19 @@ pytest tests/test_may_disambiguation.py  # May disambiguation eval set
 
 An interactive web dashboard for demonstrating the practical application of the
 generated SHACL shapes. Browse extracted rules, inspect FOL formulas and SHACL
-shapes, submit sample RDF data, and visualize compliance violations in real-time.
+shapes, load entity data from PostgreSQL, and visualize compliance violations
+in real-time.
 
 ### Running the demo
 
 ```bash
-pip install fastapi uvicorn jinja2 python-multipart
-python demo/app.py
+# Option 1: Docker (recommended — starts Postgres + App together)
+docker compose up -d
 # Open http://localhost:8000
+
+# Option 2: Local (requires Postgres already running)
+pip install fastapi uvicorn jinja2 python-multipart
+python web/app.py
 ```
 
 ### Features
@@ -239,12 +251,94 @@ python demo/app.py
 | **Pipeline Stats** | Real-time display of extraction, classification, and shape generation metrics |
 | **Rule Browser** | Search and filter 484 classified rules by type (obligation/prohibition/permission) |
 | **Rule Detail** | Click any rule to see its text, FOL formula, and generated SHACL shape |
-| **Compliance Check** | Paste or edit RDF data in Turtle format and run `pyshacl` validation |
-| **Violation Report** | Severity-coded violations with affected entities, source shapes, and messages |
+| **DB Entity Selector** | Select individual students, faculty, staff, and committees from the database |
+| **Load from Database** | Convert selected DB entities to RDF Turtle with one click |
+| **Compliance Check** | Submit RDF data (from DB or pasted) and run `pyshacl` validation |
+| **Violation Report** | Entity-centric result cards with severity-coded violations and property details |
 
 The dashboard loads pipeline outputs from `output/ait/` and validates against
 all syntactically valid SHACL shapes. Invalid shape blocks (from the NL fallback)
 are automatically skipped during parsing.
+
+## 🗄️ Database Integration (PostgreSQL → RDF)
+
+The dashboard supports loading entity data from a **PostgreSQL database** and
+automatically converting it to RDF Turtle format for compliance validation. This
+replaces the hardcoded sample data with live, editable data.
+
+### Quick start with Docker
+
+```bash
+# Start PostgreSQL (and optionally the full stack)
+docker compose up -d postgres
+
+# Seed the database with demo entities (6 students, 3 faculty, 2 staff, 2 committees)
+python -m db.seed
+
+# Verify the data
+python -m db.rdf_converter    # prints generated Turtle to stdout
+```
+
+To run the entire stack (Postgres + Web App):
+
+```bash
+docker compose up -d          # starts postgres + app
+# Open http://localhost:8000
+```
+
+Optional services (GraphDB, Ollama) are available via profiles:
+
+```bash
+docker compose --profile graphdb up -d     # includes GraphDB
+docker compose --profile ollama up -d      # includes Ollama (GPU)
+```
+
+### Without Docker
+
+If you already have PostgreSQL running locally:
+
+1. Set connection details in `.env`:
+   ```env
+   POSTGRES_HOST=localhost
+   POSTGRES_PORT=5432
+   POSTGRES_DB=ait_database
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=mysecretpassword
+   ```
+
+2. Seed the database:
+   ```bash
+   python -m db.seed          # create tables + insert demo data
+   python -m db.seed --reset  # clear existing data first
+   ```
+
+### How it works
+
+1. **Entity data** is stored in proper relational tables: `students`, `fee_records`,
+   `accommodations`, `conduct_records`, `student_conduct`, `academic_records`,
+   `faculty`, `staff`, and `committees`
+2. The **`db.rdf_converter`** module queries these tables via `LEFT JOIN`s and
+   maps relational fields to `ait:` ontology predicates (e.g., `payment_status = 'Paid'`
+   → `ait:payFee true`)
+3. The web dashboard's **"Load from Database"** button calls `/api/load-from-db`,
+   which runs the converter and populates the Turtle editor
+4. Users can **select specific entities** via checkboxes before loading
+5. The converted RDF is validated against SHACL shapes as usual
+
+### Database schema
+
+```
+students (PK: student_id)
+  ├── fee_records        (FK → students, per-semester fees & payment status)
+  ├── accommodations     (FK → students, dorm assignment & cleanliness flags)
+  ├── conduct_records    (FK → students, incident log: cooking, noise, pet, cheating)
+  ├── student_conduct    (FK → students, behavioral boolean flags)
+  └── academic_records   (FK → students, registration & authorship flags)
+
+faculty      (faculty_id, grading/disciplinary/disclosure flags)
+staff        (staff_id, gifts/settlements/ethics flags)
+committees   (committee_name, grievance/tribunal flags)
+```
 
 ## ⚠️ Current limitations
 

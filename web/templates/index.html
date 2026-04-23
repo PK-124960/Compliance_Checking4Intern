@@ -112,8 +112,33 @@
             <div class="panel">
                 <div class="panel-header">
                     <div class="panel-title">📝 RDF Data (Turtle)</div>
+                    <div class="db-status" id="db-status">
+                        <span class="db-dot offline"></span>
+                        <span class="db-label">Checking DB…</span>
+                    </div>
                 </div>
                 <div class="panel-body">
+
+                    <!-- Entity Selector -->
+                    <div class="data-source-panel" id="data-source-panel">
+                        <div class="entity-selector" id="entity-selector">
+                            <div class="entity-selector-header">
+                                <span class="entity-selector-title">Select Entities</span>
+                                <div class="entity-selector-actions">
+                                    <button class="btn-link" onclick="selectAllEntities(true)">Select All</button>
+                                    <span class="divider">|</span>
+                                    <button class="btn-link" onclick="selectAllEntities(false)">Deselect All</button>
+                                </div>
+                            </div>
+                            <div class="entity-checkbox-grid" id="entity-checkbox-grid">
+                                <div class="loading-sm">Loading entities…</div>
+                            </div>
+                            <button class="btn btn-db-load" id="btn-load-db" onclick="loadFromDatabase()">
+                                🗄️ Load from Database
+                            </button>
+                        </div>
+                    </div>
+
                     <textarea id="data-editor" class="data-editor" spellcheck="false"
                         placeholder="Paste your RDF data in Turtle format here..."></textarea>
                     <div class="btn-row">

@@ -135,265 +135,6 @@ def _get_shapes_for_rule(rule_id: str) -> str:
     return shapes_text[start:next_marker].strip()
 
 
-# ── Sample data for demo ─────────────────────────────────────────────────
-SAMPLE_DATA = """\
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-@prefix ait:  <http://example.org/ait-policy#> .
-
-# ═══════════════════════════════════════════════════════════════
-# Sample University Data — AIT Compliance Checking Demo
-# ═══════════════════════════════════════════════════════════════
-# Each entity represents a realistic member of the AIT community.
-# Properties align with SHACL shapes generated from AIT policy
-# documents (Credit Policy, Campus Accommodation, Ethical
-# Behavior, Student Handbook, Academic Integrity).
-# ═══════════════════════════════════════════════════════════════
-
-# ── 1. Somchai — Master's Student, Fully Compliant ────────────
-# Scenario: A self-funded Thai M.Eng. student in his 2nd semester.
-#   He paid all fees on time, lives on-campus in a Category-2
-#   dorm, maintains academic integrity, and follows all conduct
-#   rules. Expected result: CLEAN (zero violations).
-ait:Somchai a ait:Student ;
-    rdfs:label "Somchai Prasert — Compliant Master's Student" ;
-    ait:enrolled               true ;
-    ait:payFee                 true ;
-    ait:payFirstSemesterFee    true ;
-    ait:fullPayment            true ;
-    ait:student                true ;
-    ait:bringConcernsToAttention        true ;
-    ait:regularcleaningandhygieneoftheunit true ;
-    ait:maintainCleanlinessOfCommonAreaAndLandscape true ;
-    ait:maintainCleanlinessOfBedroomAndFacilities   true ;
-    ait:clean                  true ;
-    ait:vacateRoom             true ;
-    ait:newStudent             true ;
-    ait:queuing                true ;
-    ait:confirmOfferMove       true ;
-    ait:moveWithSpouse         true ;
-    ait:provideapproximatedateofarrivaloncampus     true ;
-    ait:putNameOnWaitingListForCampusAccommodation  true ;
-    ait:payRentForStayOnCampus true ;
-    ait:vacatesRoom            true ;
-    ait:meetHighestStandardsOfPersonalEthicalAndMoralConduct true ;
-    ait:maintainPeacefulHealthyLearningEnvironmentForFreeDiscussion true ;
-    ait:useAITLibraryAndEducationalResourcesResponsibly true ;
-    ait:abideByAcceptableUsePolicyForITResources    true ;
-    ait:determineGradeInCourse true ;
-    ait:scheduledoutsideregularhoursmakeupclasses    true ;
-    ait:paidinadvanceorfully   true ;
-    ait:registry               true ;
-    ait:serveAsCorrespondingAuthor true ;
-    ait:correspondAsAuthorWithJournal true ;
-    ait:multiAuthoredArticleWrittenByStudentShouldBeFirstAuthorUnlessJournalRequiresDifferentOrder true .
-
-# ── 2. Napat — Undergrad, Hasn't Paid Fees ────────────────────
-# Scenario: A 1st-year Thai B.Eng. student who enrolled but
-#   failed to pay the semester fee by the deadline. His student
-#   ID has not been activated, and he risks suspension.
-#   Expected result: violations on fee-payment obligations
-#   (AIT-0007, AIT-0010, AIT-0014, AIT-0032, AIT-0094).
-ait:Napat a ait:Student ;
-    rdfs:label "Napat Srikhao — Fee Defaulter (Unpaid Tuition)" ;
-    ait:enrolled               true ;
-    ait:payFee                 false ;
-    ait:payFirstSemesterFee    false ;
-    ait:fullPayment            false ;
-    ait:paidinadvanceorfully   false ;
-    ait:student                true ;
-    ait:bringConcernsToAttention        true ;
-    ait:regularcleaningandhygieneoftheunit true ;
-    ait:maintainCleanlinessOfCommonAreaAndLandscape true ;
-    ait:maintainCleanlinessOfBedroomAndFacilities   true ;
-    ait:clean                  true ;
-    ait:vacateRoom             true ;
-    ait:queuing                true ;
-    ait:confirmOfferMove       true ;
-    ait:moveWithSpouse         true ;
-    ait:provideapproximatedateofarrivaloncampus     true ;
-    ait:putNameOnWaitingListForCampusAccommodation  true ;
-    ait:payRentForStayOnCampus true ;
-    ait:vacatesRoom            true ;
-    ait:meetHighestStandardsOfPersonalEthicalAndMoralConduct true ;
-    ait:maintainPeacefulHealthyLearningEnvironmentForFreeDiscussion true ;
-    ait:useAITLibraryAndEducationalResourcesResponsibly true ;
-    ait:abideByAcceptableUsePolicyForITResources    true ;
-    ait:determineGradeInCourse true ;
-    ait:scheduledoutsideregularhoursmakeupclasses    true ;
-    ait:registry               true ;
-    ait:newStudent             true ;
-    ait:serveAsCorrespondingAuthor true ;
-    ait:correspondAsAuthorWithJournal true ;
-    ait:multiAuthoredArticleWrittenByStudentShouldBeFirstAuthorUnlessJournalRequiresDifferentOrder true .
-
-# ── 3. Priya — Exchange Student, Disruptive Dorm Resident ─────
-# Scenario: An Indian exchange student staying in a shared dorm.
-#   She has been cooking in her unit (prohibited in Cat-1 dorms),
-#   disturbing neighbours with loud late-night study groups, and
-#   keeps a pet cat in the dorm. Her fees are paid, but she
-#   violates multiple accommodation conduct rules.
-#   Expected result: violations on AIT-0072, AIT-0076, AIT-0078,
-#   AIT-0085, AIT-0088.
-ait:Priya a ait:Student ;
-    rdfs:label "Priya Sharma — Disruptive Dorm Resident" ;
-    ait:enrolled               true ;
-    ait:payFee                 true ;
-    ait:payFirstSemesterFee    true ;
-    ait:fullPayment            true ;
-    ait:paidinadvanceorfully   true ;
-    ait:student                true ;
-    ait:bringConcernsToAttention        true ;
-    ait:newStudent             true ;
-    ait:queuing                true ;
-    ait:confirmOfferMove       true ;
-    ait:moveWithSpouse         true ;
-    ait:provideapproximatedateofarrivaloncampus     true ;
-    ait:putNameOnWaitingListForCampusAccommodation  true ;
-    ait:payRentForStayOnCampus true ;
-    ait:vacatesRoom            true ;
-    ait:vacateRoom             true ;
-    ait:clean                  true ;
-    ait:meetHighestStandardsOfPersonalEthicalAndMoralConduct true ;
-    ait:maintainPeacefulHealthyLearningEnvironmentForFreeDiscussion true ;
-    ait:useAITLibraryAndEducationalResourcesResponsibly true ;
-    ait:abideByAcceptableUsePolicyForITResources    true ;
-    ait:determineGradeInCourse true ;
-    ait:scheduledoutsideregularhoursmakeupclasses    true ;
-    ait:registry               true ;
-    ait:serveAsCorrespondingAuthor true ;
-    ait:correspondAsAuthorWithJournal true ;
-    ait:multiAuthoredArticleWrittenByStudentShouldBeFirstAuthorUnlessJournalRequiresDifferentOrder true ;
-    # ⚠ Violations — accommodation conduct
-    ait:cookInUnit             true ;
-    ait:cookInProhibitedDormitory true ;
-    ait:disturbFellowStudentsInResidentialAreas true ;
-    ait:noisyGroupStudyOrPartyInStudentAccommodation true ;
-    ait:petInStudentAccommodation true ;
-    # Missing cleaning obligations
-    ait:regularcleaningandhygieneoftheunit false ;
-    ait:maintainCleanlinessOfCommonAreaAndLandscape false ;
-    ait:maintainCleanlinessOfBedroomAndFacilities   false .
-
-# ── 4. Dr. Tanaka — Faculty, Fully Compliant ─────────────────
-# Scenario: A Japanese associate professor in the School of
-#   Engineering. He follows disciplinary procedures, discloses
-#   potential conflicts of interest, makes grading criteria
-#   known to students at the start of each course, and reports
-#   suspicious academic integrity issues to the Dean.
-#   Expected result: CLEAN (zero violations).
-ait:DrTanaka a ait:Faculty ;
-    rdfs:label "Dr. Kenji Tanaka — Compliant Faculty Member" ;
-    ait:followProceduresForDisciplinaryActions true ;
-    ait:disclose               true ;
-    ait:makeKnownCriteriaForGrading true ;
-    ait:suspectCheatingDuringExamOrAssignmentOrResearchProject true ;
-    ait:reported               true .
-
-# ── 5. Maria — Administrative Staff, Unreported Gift ──────────
-# Scenario: A Filipina administrative officer in the Finance
-#   department. She accepted a gift worth THB 5,000 from a
-#   vendor but did not report it to her Unit Head within 15 days
-#   as required. She also hasn't settled a travel promissory
-#   note on time.
-#   Expected result: violations on AIT-0029 (settled), AIT-0102
-#   (reported).
-ait:Maria a ait:Employee ;
-    rdfs:label "Maria Santos — Unreported Gift (Admin Staff)" ;
-    ait:reported               false ;
-    ait:settled                false ;
-    ait:feesPaid               true ;
-    ait:payFees                true ;
-    ait:usesAuthorityEthicallyWithRespectAndSensitivityAndInAccordanceWithInstitutesPolicies true ;
-    ait:expresses_personal_opinion true ;
-    ait:undergoDisciplinaryAction true .
-
-# ── 6. Arjun — Campus Resident, Lease Violations ─────────────
-# Scenario: An Indian research assistant living in staff
-#   accommodation. His employment contract ended last month
-#   but he has not vacated the unit. He has not paid the
-#   required two-month deposit and owes overdue rent.
-#   Expected result: violations on AIT-0026, AIT-0027, AIT-0023,
-#   AIT-0028, AIT-0084, AIT-0098.
-ait:Arjun a ait:Resident ;
-    rdfs:label "Arjun Mehta — Overstaying Campus Resident" ;
-    ait:tenant_vacates_unit    false ;
-    ait:payTwoMonthDeposit     false ;
-    ait:payAdditionalCharges   false ;
-    ait:requestDoubtfulAccountsApproval false ;
-    ait:request_and_Approve_and_Forward false ;
-    ait:actInInterestOfInstitute false ;
-    ait:inform_President_of_Settlements false ;
-    ait:consult_with_president_and_inform_police false ;
-    ait:ceaseGameOrActivity    true ;
-    ait:reportIncidentOrPractice true ;
-    ait:appointGrievanceTribunal true .
-
-# ── 7. Lin — PhD Student with Spouse, Compliant ──────────────
-# Scenario: A Chinese doctoral student whose husband is an AIT
-#   lab technician. She is registered for staff accommodation
-#   as required for students with AIT-employed spouses. She has
-#   paid all fees and maintains academic integrity.
-#   Expected result: CLEAN (zero violations).
-ait:Lin a ait:PostgraduateStudent ;
-    rdfs:label "Lin Wei — Compliant PhD Student (Married)" ;
-    ait:enrolled               true ;
-    ait:payFee                 true ;
-    ait:payFirstSemesterFee    true ;
-    ait:fullPayment            true ;
-    ait:student                true ;
-    ait:paidinadvanceorfully   true ;
-    ait:studentID_and_InternetEmailAccess_not_released_by_Registry true ;
-    ait:registers_for_staff_accommodation true ;
-    ait:bringConcernsToAttention        true ;
-    ait:regularcleaningandhygieneoftheunit true ;
-    ait:maintainCleanlinessOfCommonAreaAndLandscape true ;
-    ait:maintainCleanlinessOfBedroomAndFacilities   true ;
-    ait:clean                  true ;
-    ait:vacateRoom             true ;
-    ait:queuing                true ;
-    ait:confirmOfferMove       true ;
-    ait:moveWithSpouse         true ;
-    ait:provideapproximatedateofarrivaloncampus     true ;
-    ait:putNameOnWaitingListForCampusAccommodation  true ;
-    ait:payRentForStayOnCampus true ;
-    ait:vacatesRoom            true ;
-    ait:newStudent             true ;
-    ait:meetHighestStandardsOfPersonalEthicalAndMoralConduct true ;
-    ait:maintainPeacefulHealthyLearningEnvironmentForFreeDiscussion true ;
-    ait:useAITLibraryAndEducationalResourcesResponsibly true ;
-    ait:abideByAcceptableUsePolicyForITResources    true ;
-    ait:determineGradeInCourse true ;
-    ait:scheduledoutsideregularhoursmakeupclasses    true ;
-    ait:registry               true ;
-    ait:serveAsCorrespondingAuthor true ;
-    ait:correspondAsAuthorWithJournal true ;
-    ait:multiAuthoredArticleWrittenByStudentShouldBeFirstAuthorUnlessJournalRequiresDifferentOrder true .
-
-# ── 8. Ethics Committee — Institutional Body ─────────────────
-# Scenario: AIT's Grievance Committee responsible for handling
-#   harassment and discrimination complaints. Validates whether
-#   the committee fulfils its procedural obligations (receiving
-#   grievances, electing a chair, maintaining confidentiality).
-#   Expected result: CLEAN (zero violations).
-ait:EthicsCommittee a ait:Committee ;
-    rdfs:label "AIT Grievance & Ethics Committee" ;
-    ait:receive_grievance      true ;
-    ait:electsChair            true ;
-    ait:grievanceCommitteePerformsRole true ;
-    ait:prepared               true ;
-    ait:confidentiality_and_due_regard  true ;
-    ait:grievanceProcedureInvolvement   true ;
-    ait:writeDownGrievanceFacts true ;
-    ait:recordFacts            true ;
-    ait:analyzeGrievance       true ;
-    ait:conveneGrievanceTribunal true ;
-    ait:attendHearing          true ;
-    ait:ascertainFactsOfCase   true ;
-    ait:expressesInWriting     true ;
-    ait:submitWrittenAgreementsToGrievanceCommittee true .
-"""
 
 
 # ── Routes ────────────────────────────────────────────────────────────────
@@ -401,7 +142,7 @@ ait:EthicsCommittee a ait:Committee ;
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Serve the main dashboard page."""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 
 @app.get("/api/stats")
@@ -485,10 +226,65 @@ async def get_rule_detail(rule_id: str):
     }
 
 
-@app.get("/api/sample-data")
-async def get_sample_data():
-    """Return pre-built sample RDF data for demo."""
-    return {"turtle": SAMPLE_DATA}
+# ── Database-backed endpoints ────────────────────────────────────────────
+
+@app.get("/api/db-status")
+async def db_status():
+    """Check if PostgreSQL is reachable and return entity count."""
+    try:
+        from db.connection import db_health
+        return db_health()
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@app.get("/api/db-entities")
+async def list_db_entities():
+    """List all entities in the database (name, type, property count)."""
+    try:
+        from db.rdf_converter import list_entities
+        entities = list_entities()
+        return {"entities": entities, "total": len(entities)}
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"error": str(exc), "detail": "Failed to list DB entities"},
+        )
+
+
+@app.post("/api/load-from-db")
+async def load_from_db(request: Request):
+    """
+    Convert selected (or all) DB entities to RDF Turtle.
+
+    Request body (JSON):
+        { "entities": ["Somchai", "Priya"] }   <- specific entities
+        { "entities": "all" }                   <- all entities (default)
+        {}                                      <- all entities
+
+    Returns:
+        { "turtle": "...", "entity_count": N, "property_count": M }
+    """
+    try:
+        from db.rdf_converter import convert_db_to_turtle
+
+        body = await request.json()
+        entity_names = body.get("entities", "all")
+
+        if entity_names == "all" or not isinstance(entity_names, list):
+            result = convert_db_to_turtle()
+        else:
+            result = convert_db_to_turtle(entity_names=entity_names)
+
+        return result
+    except Exception as exc:
+        import traceback
+        tb = traceback.format_exc()
+        print(f"[load-from-db] ERROR: {exc}\n{tb}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": str(exc), "detail": "Failed to convert DB to RDF"},
+        )
 
 
 @app.post("/api/validate")

@@ -30,6 +30,7 @@ build/
 # Note md
 ARCHITECTURE.md
 POLICYCHECKER_ENHANCEMENT_PLAN.md
+INTERN_GUIDE.md
 
 # Environment
 .env
@@ -63,7 +64,7 @@ tests/
 .docker/
 
 # Pipeline runtime outputs
-output/
+# output/
 
 # LLM cache (local, large)
 cache/llm_cache.db
