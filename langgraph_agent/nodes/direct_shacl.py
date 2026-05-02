@@ -40,8 +40,7 @@ def _get_shacl_prefixes() -> str:
         f"@prefix {cfg.prefix}:  <{cfg.namespace}> .\n"
     )
 
-# Backward-compatible alias
-_SHACL_PREFIXES = None
+
 
 _DIRECT_PROMPT = """\
 Translate this policy rule DIRECTLY into a valid SHACL NodeShape in Turtle syntax.
@@ -80,7 +79,7 @@ def _validate_turtle(text: str) -> Tuple[bool, str]:
         from rdflib.term import Literal
         
         g = Graph()
-        g.parse(data=_SHACL_PREFIXES + "\n" + text, format="turtle")
+        g.parse(data=_get_shacl_prefixes() + "\n" + text, format="turtle")
         
         # Check for common PySHACL ConstraintLoadErrors that are syntactically valid Turtle
         for s, p, o in g:
@@ -142,10 +141,13 @@ def direct_shacl_node(state: PipelineState) -> PipelineState:
             valid = cached.get("valid", False)
         else:
             try:
+                cfg = get_corpus_config()
                 prompt = _DIRECT_PROMPT.format(
                     text=text,
                     rule_type=rule["rule_type"],
                     shape_id=shape_id,
+                    ns_prefix=cfg.prefix,
+                    namespace=cfg.namespace,
                 )
                 response = _get_llm().invoke([HumanMessage(content=prompt)])
                 turtle = _strip_fences(response.content.strip())

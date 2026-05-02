@@ -7,14 +7,25 @@ from pyshacl import validate
 from rdflib import Graph, Namespace, RDF, SH, BNode
 
 from langgraph_agent.state import PipelineState, SHACLShape
+from langgraph_agent.corpus_config import get_corpus_config
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 
+
+def _get_paths():
+    """Resolve gold shapes, test data, and ontology paths from corpus config."""
+    cfg = get_corpus_config()
+    return cfg.gold_shapes_path, cfg.test_data_path, cfg.ontology_path
+
+
+def _get_namespace() -> Namespace:
+    return Namespace(get_corpus_config().namespace)
+
+
+# Backward-compatible module-level aliases (deprecated)
 SHACL_SHAPES_FILE  = PROJECT_ROOT / "shacl" / "shapes"   / "ait_policy_shapes.ttl"
 SHACL_TEST_FILE    = PROJECT_ROOT / "shacl" / "test_data" / "tdd_test_data_fixed.ttl"
 ONTOLOGY_FILE      = PROJECT_ROOT / "shacl" / "ontology"  / "ait_policy_ontology.ttl"
-
-AIT = Namespace("http://example.org/ait-policy#")
 
 
 def _resolve_parent_shape(source_shape, shapes_graph: Graph) -> str:
@@ -35,21 +46,24 @@ def _resolve_parent_shape(source_shape, shapes_graph: Graph) -> str:
 
 def _merge_shapes(pipeline_shapes: List[SHACLShape]) -> Graph:
     """Merge authoritative shapes with pipeline-generated shapes into one graph."""
-    from langgraph_agent.nodes.shacl import _TTL_PREFIXES
+    from langgraph_agent.nodes.shacl import _get_ttl_prefixes
+
+    gold_shapes, _, _ = _get_paths()
+    ttl_prefixes = _get_ttl_prefixes()
 
     g = Graph()
 
     # Load authoritative production shapes
-    if SHACL_SHAPES_FILE.exists():
-        g.parse(str(SHACL_SHAPES_FILE), format="turtle")
+    if gold_shapes.exists():
+        g.parse(str(gold_shapes), format="turtle")
 
-    # Append valid pipeline-generated shapes (prepend prefixes so ait:/sh: resolve)
+    # Append valid pipeline-generated shapes (prepend prefixes so ns resolves)
     skipped = 0
     for shape in pipeline_shapes:
         if not (shape["syntax_valid"] and shape["turtle_text"]):
             continue
         try:
-            g.parse(data=_TTL_PREFIXES + shape["turtle_text"], format="turtle")
+            g.parse(data=ttl_prefixes + shape["turtle_text"], format="turtle")
         except Exception:
             skipped += 1
 
@@ -66,12 +80,14 @@ def validate_node(state: PipelineState) -> PipelineState:
     shapes: List[SHACLShape] = state.get("shacl_shapes", [])
     errors: List[str] = []
 
-    if not SHACL_TEST_FILE.exists():
+    gold_shapes, test_data, ontology = _get_paths()
+
+    if not test_data.exists():
         return {
             "validation_results": {"skipped": True, "reason": "test data not found"},
             "conforms": False,
             "current_step": "validate",
-            "errors": [f"validate: test data not found at {SHACL_TEST_FILE}"],
+            "errors": [f"validate: test data not found at {test_data}"],
         }
 
     # Build shapes graph
@@ -80,7 +96,7 @@ def validate_node(state: PipelineState) -> PipelineState:
 
     # Load test data
     data_graph = Graph()
-    data_graph.parse(str(SHACL_TEST_FILE), format="turtle")
+    data_graph.parse(str(test_data), format="turtle")
     entity_count = len(set(data_graph.subjects()))
 
     # Run validation
@@ -88,7 +104,7 @@ def validate_node(state: PipelineState) -> PipelineState:
         conforms, results_graph, results_text = validate(
             data_graph,
             shacl_graph=shapes_graph,
-            ont_graph=Graph().parse(str(ONTOLOGY_FILE)) if ONTOLOGY_FILE.exists() else None,
+            ont_graph=Graph().parse(str(ontology)) if ontology.exists() else None,
             inference="rdfs",
             abort_on_first=False,
             meta_shacl=False,

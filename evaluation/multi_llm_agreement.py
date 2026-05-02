@@ -28,7 +28,10 @@ from pathlib import Path
 from typing import Optional
 
 PROJECT_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "output" / "ait"
+
+def _get_output_dir() -> Path:
+    from evaluation.eval_config import get_eval_paths
+    return get_eval_paths()[3]  # generated_shapes_dir / output dir
 
 _CLASSIFY_PROMPT = """\
 You are a legal/policy analyst. Classify the following institutional policy rule 
@@ -46,7 +49,8 @@ Respond with ONLY one word: obligation, permission, or prohibition.
 
 def _load_gold_sample(n: int = 50, seed: int = 42) -> list[dict]:
     """Load a sample of gold-standard rules."""
-    gold_path = PROJECT_ROOT / "shacl" / "shapes" / "ait_policy_shapes.ttl"
+    from evaluation.eval_config import get_eval_paths
+    gold_path = get_eval_paths()[0]  # gold_shapes_path
     content = gold_path.read_text(encoding="utf-8")
 
     pattern = (
@@ -227,7 +231,7 @@ def main():
             item[model] = model_results[model][i]
         output["per_item"].append(item)
 
-    out_path = OUTPUT_DIR / "multi_llm_agreement.json"
+    out_path = _get_output_dir() / "multi_llm_agreement.json"
     out_path.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\nSaved to: {out_path}")
 

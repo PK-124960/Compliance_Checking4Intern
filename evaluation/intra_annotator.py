@@ -24,12 +24,16 @@ import re
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = PROJECT_ROOT / "output" / "ait"
+
+def _get_output_dir() -> Path:
+    from evaluation.eval_config import get_eval_paths
+    return get_eval_paths()[3]
 
 
 def _load_gold_rules() -> list[dict]:
     """Load gold standard rules with their deontic types from the TTL file."""
-    gold_path = PROJECT_ROOT / "shacl" / "shapes" / "ait_policy_shapes.ttl"
+    from evaluation.eval_config import get_eval_paths
+    gold_path = get_eval_paths()[0]  # gold_shapes_path
     content = gold_path.read_text(encoding="utf-8")
 
     # Extract rule ID, deontic type, and comment (rule text)
@@ -78,6 +82,7 @@ def generate_questionnaire(n_sample: int = 50, seed: int = 42):
         })
 
     # Save questionnaire (blinded)
+    OUTPUT_DIR = _get_output_dir()
     q_path = OUTPUT_DIR / "reannotation_questionnaire.json"
     q_path.write_text(json.dumps(questionnaire, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Saved blinded questionnaire: {q_path} ({len(questionnaire)} items)")
@@ -97,6 +102,7 @@ def generate_questionnaire(n_sample: int = 50, seed: int = 42):
 
 def compute_kappa():
     """Compute Cohen's Kappa between original and re-annotation."""
+    OUTPUT_DIR = _get_output_dir()
     q_path = OUTPUT_DIR / "reannotation_questionnaire.json"
     ak_path = OUTPUT_DIR / "reannotation_answer_key.json"
 

@@ -176,7 +176,8 @@ def build_report(source: str = "ait") -> MetricsReport:
 
     # Load gold rules for M2
     from evaluation.align import load_gold_rules
-    shapes_file = PROJECT_ROOT / "shacl" / "shapes" / "ait_policy_shapes.ttl"
+    from evaluation.eval_config import get_eval_paths
+    shapes_file = get_eval_paths(source)[0]  # gold_shapes_path
     gold_rules = []
     if shapes_file.exists():
         gold = load_gold_rules(shapes_file)

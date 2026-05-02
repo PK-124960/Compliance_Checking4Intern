@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-02T14:17:36.931410",
+  "timestamp": "2026-05-02T20:20:17.777178",
   "source": "ait",
   "pipeline_version": "dev",
   "environment": {
@@ -11,7 +11,7 @@
     "pipeline_version": "dev",
     "extract_spacy": "0",
     "ollama_model_digest": "6577803aa9a0",
-    "git_sha": "0be6c9a7"
+    "git_sha": "cba483bf"
   },
   "summary": {
     "sentences_extracted": 1663,
@@ -42,7 +42,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:hasAdditionalPayment"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:hasAdditionalPayment"
       },
       {
         "shape": "http://example.org/ait-policy#Gs049Shape",
@@ -50,7 +50,7 @@
         "distinct_entities": 140,
         "pct_entities": 77.8,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Neg_GS061->ait:interviewedby"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:interviewedby"
       },
       {
         "shape": "http://example.org/ait-policy#AIT_0059Shape",
@@ -58,7 +58,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:hasStudentID"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:hasStudentID"
       },
       {
         "shape": "http://example.org/ait-policy#AIT_0235Shape",
@@ -66,7 +66,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:hasMedicalInsurance"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:hasMedicalInsurance"
       },
       {
         "shape": "http://example.org/ait-policy#Gs087Shape",
@@ -74,15 +74,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:enrolment"
-      },
-      {
-        "shape": "http://example.org/ait-policy#Gs014Shape",
-        "count": 196,
-        "distinct_entities": 66,
-        "pct_entities": 36.7,
-        "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:putnameonwaitinglist"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:enrolment"
       },
       {
         "shape": "http://example.org/ait-policy#Gs066Shape",
@@ -90,7 +82,15 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:moveswithspouse"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:moveswithspouse"
+      },
+      {
+        "shape": "http://example.org/ait-policy#Gs014Shape",
+        "count": 196,
+        "distinct_entities": 66,
+        "pct_entities": 36.7,
+        "likely_false_positive": false,
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:putnameonwaitinglist"
       },
       {
         "shape": "http://example.org/ait-policy#Gs097Shape",
@@ -98,7 +98,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS056->ait:takes"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:takes"
       },
       {
         "shape": "http://example.org/ait-policy#Gs044Shape",
@@ -106,7 +106,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:sra_completed"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:sra_completed"
       },
       {
         "shape": "http://example.org/ait-policy#Gs056Shape",
@@ -114,7 +114,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:submit"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:submit"
       },
       {
         "shape": "http://example.org/ait-policy#Gs075Shape",
@@ -122,7 +122,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:payfee"
+        "sample_message": "Less than 1 values on ait:Pos_GS031->ait:payfee"
       },
       {
         "shape": "http://example.org/ait-policy#Gs011Shape",
@@ -130,15 +130,7 @@
         "distinct_entities": 65,
         "pct_entities": 36.1,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:semester"
-      },
-      {
-        "shape": "http://example.org/ait-policy#AIT_0445Shape",
-        "count": 132,
-        "distinct_entities": 66,
-        "pct_entities": 36.7,
-        "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:goesToAITClinic"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:semester"
       },
       {
         "shape": "http://example.org/ait-policy#AIT_0019Shape",
@@ -146,15 +138,7 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:hasDismissalStatus"
-      },
-      {
-        "shape": "http://example.org/ait-policy#AIT_0008Shape",
-        "count": 132,
-        "distinct_entities": 66,
-        "pct_entities": 36.7,
-        "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:hasStudentID"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:hasDismissalStatus"
       },
       {
         "shape": "http://example.org/ait-policy#AIT_0204Shape",
@@ -162,39 +146,55 @@
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Less than 1 values on ait:Pos_GS043->ait:dismissed"
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:dismissed"
       },
       {
-        "shape": "http://example.org/ait-policy#AIT_0150Shape_prop1",
+        "shape": "http://example.org/ait-policy#AIT_0445Shape",
+        "count": 132,
+        "distinct_entities": 66,
+        "pct_entities": 36.7,
+        "likely_false_positive": false,
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:goesToAITClinic"
+      },
+      {
+        "shape": "http://example.org/ait-policy#AIT_0008Shape",
+        "count": 132,
+        "distinct_entities": 66,
+        "pct_entities": 36.7,
+        "likely_false_positive": false,
+        "sample_message": "Less than 1 values on ait:Neg_GS047->ait:hasStudentID"
+      },
+      {
+        "shape": "http://example.org/ait-policy#AIT_0228Shape_prop1",
         "count": 66,
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "STUDENT CODE OF CONDUCT Students at AIT are expected to meet the highest standards of personal, ethical and moral conduct."
+        "sample_message": "In order to make use of this feature, students must login to SIS/SOMSIS, and click the menu Invoice."
       },
       {
-        "shape": "http://example.org/ait-policy#AIT_0070Shape_prop1",
+        "shape": "http://example.org/ait-policy#AIT_0146Shape_prop1",
         "count": 66,
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Regular cleaning and hygiene of the unit has to be maintained by the student."
+        "sample_message": "Students must use the AIT Library and all educational resources of the Institute in a responsible manner."
       },
       {
-        "shape": "http://example.org/ait-policy#AIT_0095Shape_prop1",
+        "shape": "http://example.org/ait-policy#AIT_0319Shape_prop1",
         "count": 66,
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Self-funded students are required to pay a one-month advance deposit."
+        "sample_message": "Students, who will study in another country as part of the Exchange/Dual Degree program, are required to vacate their rooms while they study abroad."
       },
       {
-        "shape": "http://example.org/ait-policy#AIT_0313Shape_prop1",
+        "shape": "http://example.org/ait-policy#AIT_0144Shape_prop1",
         "count": 66,
         "distinct_entities": 66,
         "pct_entities": 36.7,
         "likely_false_positive": false,
-        "sample_message": "Any issue or concern involving student welfare that is related to accommodation should be brought to the attention of the Director, Office of Student "
+        "sample_message": "All students have the right to a peaceful, healthy learning environment in which free discussion is encouraged in the common interest of the pursuit o"
       }
     ],
     "likely_false_positive_count": 0,

@@ -11,19 +11,37 @@ from pyshacl import validate
 from rdflib import Graph, Namespace, URIRef
 
 PROJECT_ROOT = Path(__file__).parent.parent
-AIT = Namespace("http://example.org/ait-policy#")
+
+# Lazy-loaded namespace from corpus config
+_NS_CACHE = None
+def _get_ns() -> Namespace:
+    global _NS_CACHE
+    if _NS_CACHE is None:
+        from evaluation.eval_config import get_eval_namespace
+        _NS_CACHE = get_eval_namespace()
+    return _NS_CACHE
+
+_PREFIX_CACHE = None
+def _get_prefix() -> str:
+    global _PREFIX_CACHE
+    if _PREFIX_CACHE is None:
+        from evaluation.eval_config import get_eval_prefix
+        _PREFIX_CACHE = get_eval_prefix()
+    return _PREFIX_CACHE
 
 
 # Load gold standard property paths once at module level
 def _load_gold_property_paths() -> Set[str]:
     """Load all property paths from gold standard shapes."""
-    gold_file = PROJECT_ROOT / "shacl" / "shapes" / "ait_policy_shapes.ttl"
+    from evaluation.eval_config import get_eval_paths
+    gold_file = get_eval_paths()[0]
     if not gold_file.exists():
         return set()
-    
+
+    pfx = _get_prefix()
     content = gold_file.read_text(encoding="utf-8")
-    # Find all sh:path statements
-    path_matches = re.findall(r'sh:path\s+(ait:\w+)', content)
+    # Find all sh:path statements with the corpus prefix
+    path_matches = re.findall(rf'sh:path\s+({re.escape(pfx)}:\w+)', content)
     return set(path_matches)
 
 
@@ -32,56 +50,58 @@ _GOLD_PROPERTY_PATHS = _load_gold_property_paths()
 
 
 def _lowercase_property_paths(turtle_str: str) -> str:
-    """Convert only sh:path property values in the AIT namespace to lowercase.
-    e.g., sh:path ait:payFee -> sh:path ait:payfee
-    Only lowercases terms after 'sh:path', preserving class names, shape names, etc.
-    """
+    """Convert only sh:path property values in the corpus namespace to lowercase."""
+    pfx = _get_prefix()
     def lower_path_match(match):
         prefix = match.group(1)  # "sh:path "
-        ait_term = match.group(2)  # "ait:payFee"
-        return prefix + ait_term[0:4] + ait_term[4:].lower()
+        ns_term = match.group(2)  # "ait:payFee" or "<pfx>:payFee"
+        colon_idx = ns_term.index(':') + 1
+        return prefix + ns_term[:colon_idx] + ns_term[colon_idx:].lower()
 
-    return re.sub(r'(sh:path\s+)(ait:\w+)', lower_path_match, turtle_str)
+    return re.sub(rf'(sh:path\s+)({re.escape(pfx)}:\w+)', lower_path_match, turtle_str)
 
 
 def _extract_property_paths(turtle_str: str) -> Set[str]:
     """Extract all property paths from SHACL turtle string."""
-    # Find all sh:path statements
-    path_matches = re.findall(r'sh:path\s+(ait:\w+)', turtle_str)
+    pfx = _get_prefix()
+    path_matches = re.findall(rf'sh:path\s+({re.escape(pfx)}:\w+)', turtle_str)
     return set(path_matches)
 
 
 def _get_close_property_path(path: str, paths: Set[str], cutoff: float = 0.55) -> str | None:
-    """Find the closest matching property path using fuzzy matching.
-    Returns the closest match if similarity >= cutoff, otherwise None.
-    Cutoff lowered from 0.7 to 0.55 to catch more partial matches.
-    """
+    """Find the closest matching property path using fuzzy matching."""
     if not paths:
         return None
 
-    # Extract the local part after 'ait:'
-    if not path.startswith('ait:'):
+    pfx = _get_prefix()
+    pfx_colon = pfx + ':'
+    if not path.startswith(pfx_colon):
         return None
 
-    path_local = path[4:]  # Remove 'ait:' prefix
+    path_local = path[len(pfx_colon):]  # Remove prefix
 
     # Get local parts of all candidate paths
-    path_locals = {p[4:] for p in paths if p.startswith('ait:')}
+    path_locals = {p[len(pfx_colon):] for p in paths if p.startswith(pfx_colon)}
 
     # Find close matches
     matches = difflib.get_close_matches(path_local, path_locals, n=1, cutoff=cutoff)
     if matches:
-        return 'ait:' + matches[0]
+        return pfx_colon + matches[0]
     return None
 
-_PREFIXES = """
-@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sh:     <http://www.w3.org/ns/shacl#> .
-@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
-@prefix ait:    <http://example.org/ait-policy#> .
-@prefix deontic: <http://example.org/deontic#> .
-"""
+def _get_prefixes() -> str:
+    """Build Turtle prefix block from corpus config."""
+    from evaluation.eval_config import get_eval_namespace, get_eval_prefix
+    pfx = get_eval_prefix()
+    ns = str(get_eval_namespace())
+    return (
+        f"@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+        f"@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .\n"
+        f"@prefix sh:     <http://www.w3.org/ns/shacl#> .\n"
+        f"@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .\n"
+        f"@prefix {pfx}:    <{ns}> .\n"
+        f"@prefix deontic: <http://example.org/deontic#> .\n"
+    )
 
 @dataclass
 class RuleEvalResult:
@@ -101,16 +121,14 @@ def _entity_subgraph(full_data: Graph, entity_uri: URIRef) -> Graph:
 
 
 def _lowercase_entity_graph(g: Graph) -> Graph:
-    """Lowercase all AIT namespace property paths in an entity graph.
-    This ensures property URIs match the lowercased shape paths.
-    """
-    AIT_NS = str(AIT)
+    """Lowercase all corpus namespace property paths in an entity graph."""
+    NS_STR = str(_get_ns())
     lowered = Graph()
     for s, p, o in g:
         p_str = str(p)
-        if p_str.startswith(AIT_NS):
-            local = p_str[len(AIT_NS):]
-            p = URIRef(AIT_NS + local.lower())
+        if p_str.startswith(NS_STR):
+            local = p_str[len(NS_STR):]
+            p = URIRef(NS_STR + local.lower())
         lowered.add((s, p, o))
     return lowered
 
@@ -162,7 +180,7 @@ def _adapt_shape_for_test(shape_graph: Graph, entity_graph: Graph,
     from rdflib.namespace import SH, RDF
     from rdflib import Literal
 
-    AIT_NS = str(AIT)
+    AIT_NS = str(_get_ns())
 
     # Find the entity's first AIT-namespace property (the "primary" constraint)
     primary_prop = None
@@ -215,6 +233,7 @@ def evaluate_rule(gs_id: str,
                   ontology: Graph,
                   deontic_type: str = "obligation") -> RuleEvalResult:
     gs_num = gs_id.replace("GS-", "").zfill(3)
+    AIT = _get_ns()
     pos_uri = AIT[f"Pos_GS{gs_num}"]
     neg_uri = AIT[f"Neg_GS{gs_num}"]
 
@@ -236,7 +255,7 @@ def evaluate_rule(gs_id: str,
     # Build single-shape graph
     base_shape_graph = Graph()
     try:
-        base_shape_graph.parse(data=_PREFIXES + pipeline_turtle, format="turtle")
+        base_shape_graph.parse(data=_get_prefixes() + pipeline_turtle, format="turtle")
     except Exception:
         return RuleEvalResult(gs_id, ait_id, None, None, "skipped")
 
@@ -290,10 +309,11 @@ def main() -> None:
     import sys
     sys.path.insert(0, str(PROJECT_ROOT))
 
+    from evaluation.eval_config import get_eval_paths
+    gold_shapes, test_file, onto_file, gen_dir = get_eval_paths()
+
     alignment_file = PROJECT_ROOT / "output" / "ait" / "gold_alignment.json"
     shapes_file    = PROJECT_ROOT / "output" / "ait" / "shapes_generated.ttl"
-    test_file      = PROJECT_ROOT / "shacl" / "test_data" / "tdd_test_data_fixed.ttl"
-    onto_file      = PROJECT_ROOT / "shacl" / "ontology"  / "ait_policy_ontology.ttl"
     out_file       = PROJECT_ROOT / "output" / "ait" / "per_rule_eval.json"
 
     alignments = json.loads(alignment_file.read_text(encoding="utf-8"))

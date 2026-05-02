@@ -9,7 +9,12 @@ from rdflib import Graph, Namespace, RDF, RDFS
 from rdflib.namespace import SH
 
 PROJECT_ROOT = Path(__file__).parent.parent
-AIT = Namespace("http://example.org/ait-policy#")
+
+# Lazy-loaded from corpus config
+def _get_ns() -> Namespace:
+    from evaluation.eval_config import get_eval_namespace
+    return get_eval_namespace()
+
 DEONTIC = Namespace("http://example.org/deontic#")
 
 @dataclass
@@ -110,7 +115,8 @@ def align_all(gold: List[GoldRule],
 
 
 def main() -> None:
-    shapes = PROJECT_ROOT / "shacl" / "shapes" / "ait_policy_shapes.ttl"
+    from evaluation.eval_config import get_eval_paths
+    shapes = get_eval_paths()[0]  # gold_shapes_path
     classified = PROJECT_ROOT / "output" / "ait" / "classified_rules.json"
     out = PROJECT_ROOT / "output" / "ait" / "gold_alignment.json"
 

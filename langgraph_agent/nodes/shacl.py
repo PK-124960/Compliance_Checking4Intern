@@ -45,8 +45,7 @@ def _get_ttl_prefixes() -> str:
         f"@prefix deontic: <http://example.org/deontic#> .\n\n"
     )
 
-# Backward-compatible alias (used once in shacl_node)
-_TTL_PREFIXES = None
+
 
 # ── Subject → target class inference ───────────────────────────────────────
 _SUBJECT_MAP = [
@@ -87,10 +86,9 @@ def _get_property_list_path() -> Path:
 def _get_namespace() -> Namespace:
     return Namespace(get_corpus_config().namespace)
 
-# Keep backward-compatible aliases for code that references these directly
+# Backward-compatible aliases (deprecated — use get_corpus_config() instead)
 _ONTOLOGY_PATH = PROJECT_ROOT / "shacl" / "ontology" / "ait_policy_ontology.ttl"
 _PROPERTY_LIST_PATH = PROJECT_ROOT / "shacl" / "ontology" / "property_list.txt"
-AIT = Namespace("http://example.org/ait-policy#")
 
 # One-time load caches
 _ontology_classes: set[str] | None = None
@@ -571,10 +569,13 @@ def _fol_to_turtle(
 
     Implements:
     - §4.4: ``sh:targetSubjectsOf`` fallback when target class is Person
-    - §5.1: Named property shape URIs (``ait:AIT_xxxxShape_prop1``)
+    - §5.1: Named property shape URIs (``<prefix>:<id>Shape_prop1``)
     - §5.2: Confidence-weighted severity
     - §5.3: Datatype and pattern constraints based on property name
     """
+    cfg = get_corpus_config()
+    pfx = cfg.prefix  # e.g. "ait"
+
     shape_id = fol["rule_id"].replace("-", "_") + "Shape"
     prop_shape_id = shape_id + "_prop1"
     target_class = _infer_target_class(fol["text"], fol)
@@ -593,20 +594,20 @@ def _fol_to_turtle(
 
     # §4.4 — Use sh:targetSubjectsOf when target class is Person (weak inference)
     if target_class == "Person":
-        target_clause = f"sh:targetSubjectsOf ait:{prop_path}"
+        target_clause = f"sh:targetSubjectsOf {pfx}:{prop_path}"
     else:
-        target_clause = f"sh:targetClass ait:{target_class}"
+        target_clause = f"sh:targetClass {pfx}:{target_class}"
 
     turtle = (
         f"# Rule: {fol['rule_id']} | {deontic_type.upper()}\n"
         f"# FOL: {fol['deontic_formula']}\n"
-        f"ait:{shape_id} a sh:NodeShape ;\n"
+        f"{pfx}:{shape_id} a sh:NodeShape ;\n"
         f"    {target_clause} ;\n"
         f"    sh:severity {severity} ;\n"
-        f"    sh:property ait:{prop_shape_id} .\n"
+        f"    sh:property {pfx}:{prop_shape_id} .\n"
         f"\n"
-        f"ait:{prop_shape_id} a sh:PropertyShape ;\n"
-        f"    sh:path ait:{prop_path} ;\n"
+        f"{pfx}:{prop_shape_id} a sh:PropertyShape ;\n"
+        f"    sh:path {pfx}:{prop_path} ;\n"
         f"    {enhanced_constraint}\n"
         f'    sh:message "{message}" .\n'
     )
@@ -696,9 +697,10 @@ def _emit_override_triples(overrides: list[tuple[str, str]]) -> str:
     """Generate Turtle triples for deontic:overrides links."""
     if not overrides:
         return ""
+    pfx = get_corpus_config().prefix
     lines = ["# ── Permission-as-exception overrides (§5.3) ──"]
     for perm_id, obl_id in overrides:
-        lines.append(f"ait:{perm_id} deontic:overrides ait:{obl_id} .")
+        lines.append(f"{pfx}:{perm_id} deontic:overrides {pfx}:{obl_id} .")
     lines.append("")
     return "\n".join(lines) + "\n"
 
@@ -717,10 +719,13 @@ def _try_direct_fallback(fol: FOLItem) -> SHACLShape | None:
 
     shape_id = fol["rule_id"].replace("-", "_")
     try:
+        cfg = get_corpus_config()
         prompt = _DIRECT_PROMPT.format(
             text=fol["text"],
             rule_type=fol["deontic_type"],
             shape_id=shape_id,
+            ns_prefix=cfg.prefix,
+            namespace=cfg.namespace,
         )
         from langchain_core.messages import HumanMessage
 
@@ -791,9 +796,10 @@ def shacl_node(state: PipelineState) -> PipelineState:
     if overrides:
         override_ttl = _emit_override_triples(overrides)
         ttl_blocks.append(override_ttl)
+        pfx = get_corpus_config().prefix
         for perm_id, obl_id in overrides:
             errors.append(
-                f"shacl[override]: ait:{perm_id} deontic:overrides ait:{obl_id}"
+                f"shacl[override]: {pfx}:{perm_id} deontic:overrides {pfx}:{obl_id}"
             )
 
     # Write combined TTL to output/
