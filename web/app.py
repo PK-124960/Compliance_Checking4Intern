@@ -6,35 +6,44 @@ Users can browse extracted rules, submit RDF data, and see live validation resul
 
 Usage:
     pip install fastapi uvicorn jinja2 python-multipart
-    cd demo
+    cd web
     python app.py
     # Open http://localhost:8000
 """
 from __future__ import annotations
 
+import asyncio
 import json
 import os
 import sys
+import subprocess
+import threading
+import time
 from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 # Add project root to path
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-app = FastAPI(title="PolicyChecker Compliance Dashboard", version="1.0.0")
+app = FastAPI(title="PolicyChecker Compliance Dashboard", version="2.0.0")
 
-# Static files and templates
-DEMO_DIR = Path(__file__).parent
-app.mount("/static", StaticFiles(directory=str(DEMO_DIR / "static")), name="static")
-templates = Jinja2Templates(directory=str(DEMO_DIR / "templates"))
+# CORS for Vite dev server
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ── Data paths ────────────────────────────────────────────────────────────
+DEMO_DIR = Path(__file__).parent
 OUTPUT_DIR = PROJECT_ROOT / "output" / "ait"
 SHAPES_FILE = OUTPUT_DIR / "shapes_generated.ttl"
 RULES_FILE = OUTPUT_DIR / "classified_rules.json"
@@ -42,6 +51,7 @@ FOL_FILE = OUTPUT_DIR / "fol_formulas.json"
 REPORT_FILE = OUTPUT_DIR / "pipeline_report.json"
 TEST_DATA_FILE = PROJECT_ROOT / "shacl" / "test_data" / "tdd_test_data_fixed.ttl"
 ONTOLOGY_FILE = PROJECT_ROOT / "shacl" / "ontology" / "ait_policy_ontology.ttl"
+DIST_DIR = DEMO_DIR / "frontend" / "dist"
 
 
 # ── Cached data loading ──────────────────────────────────────────────────
@@ -59,7 +69,6 @@ def _load_json(path: Path) -> dict | list:
 def _load_text(path: Path) -> str:
     if path.exists():
         text = path.read_text(encoding="utf-8")
-        # Sanitise broken multi-line FOL comments in generated shapes
         if path == SHAPES_FILE:
             text = _sanitize_turtle(text)
         return text
@@ -67,42 +76,35 @@ def _load_text(path: Path) -> str:
 
 
 def _sanitize_turtle(text: str) -> str:
-    """Fix broken Turtle syntax in generated shapes.
-
-    Issues handled:
-    1. Multi-line FOL comments where continuation lines lack '#' prefix
-    2. SPARQL-style '?x' variables in Turtle (invalid)
-    """
+    """Fix broken Turtle syntax in generated shapes."""
     import re
     lines = text.split('\n')
     result = []
     in_fol_comment = False
     for line in lines:
         stripped = line.strip()
-        # Detect start of FOL comment
         if stripped.startswith('# FOL:'):
             in_fol_comment = True
             result.append(line)
             continue
-        # If we're inside a FOL comment continuation
         if in_fol_comment:
-            # Valid Turtle starts with a prefix, URI, or is blank
             if (stripped == '' or stripped.startswith('#') or
                 stripped.startswith('@') or stripped.startswith('ait:') or
                 stripped.startswith('sh:') or stripped.startswith('rdf') or
                 stripped.startswith('deontic:')):
                 in_fol_comment = False
             else:
-                # This is a continuation of the FOL comment — fix it
                 result.append('# ' + stripped)
                 continue
-
-        # Fix ?x variables in non-comment lines (invalid in Turtle)
         if not stripped.startswith('#') and '?' in line:
             line = re.sub(r'\?[a-zA-Z_]\w*', 'ait:Thing', line)
-
         result.append(line)
     return '\n'.join(result)
+
+
+def _invalidate_cache():
+    """Clear cached data so fresh pipeline output is loaded."""
+    _cache.clear()
 
 
 def _get_rules() -> list:
@@ -123,27 +125,17 @@ def _get_shapes_for_rule(rule_id: str) -> str:
     shapes_text = _load_text(SHAPES_FILE)
     if not shapes_text:
         return ""
-    # Find the block for this rule
     marker = f"# Rule: {rule_id}"
     start = shapes_text.find(marker)
     if start == -1:
         return ""
-    # Find the next rule block or end
     next_marker = shapes_text.find("# Rule:", start + len(marker))
     if next_marker == -1:
         return shapes_text[start:].strip()
     return shapes_text[start:next_marker].strip()
 
 
-
-
-# ── Routes ────────────────────────────────────────────────────────────────
-
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
-    """Serve the main dashboard page."""
-    return templates.TemplateResponse(request, "index.html")
-
+# ── API Routes ────────────────────────────────────────────────────────────
 
 @app.get("/api/stats")
 async def get_stats():
@@ -151,7 +143,6 @@ async def get_stats():
     report = _get_report()
     summary = report.get("summary", {})
     rules = _get_rules()
-    # Count by type
     type_dist = {}
     for r in rules:
         t = r.get("rule_type", "unknown")
@@ -179,12 +170,8 @@ async def get_rules(
 ):
     """List classified rules with filtering and pagination."""
     rules = _get_rules()
-
-    # Filter by type
     if rule_type and rule_type != "all":
         rules = [r for r in rules if r.get("rule_type") == rule_type]
-
-    # Search
     if search:
         q = search.lower()
         rules = [r for r in rules if q in r.get("text", "").lower()
@@ -212,11 +199,8 @@ async def get_rule_detail(rule_id: str):
     if not rule:
         raise HTTPException(status_code=404, detail=f"Rule {rule_id} not found")
 
-    # Find matching FOL
     fol_formulas = _get_fol()
     fol = next((f for f in fol_formulas if f["rule_id"] == rule_id), None)
-
-    # Get SHACL shape
     shape = _get_shapes_for_rule(rule_id)
 
     return {
@@ -254,17 +238,7 @@ async def list_db_entities():
 
 @app.post("/api/load-from-db")
 async def load_from_db(request: Request):
-    """
-    Convert selected (or all) DB entities to RDF Turtle.
-
-    Request body (JSON):
-        { "entities": ["Somchai", "Priya"] }   <- specific entities
-        { "entities": "all" }                   <- all entities (default)
-        {}                                      <- all entities
-
-    Returns:
-        { "turtle": "...", "entity_count": N, "property_count": M }
-    """
+    """Convert selected (or all) DB entities to RDF Turtle."""
     try:
         from db.rdf_converter import convert_db_to_turtle
 
@@ -292,7 +266,7 @@ async def validate_data(request: Request):
     """Validate submitted RDF data against pipeline SHACL shapes."""
     body = await request.json()
     data_turtle = body.get("data", "")
-    selected_shapes = body.get("shapes", "all")  # "all" or list of rule_ids
+    selected_shapes = body.get("shapes", "all")
 
     if not data_turtle.strip():
         raise HTTPException(status_code=400, detail="No RDF data provided")
@@ -301,17 +275,14 @@ async def validate_data(request: Request):
         from rdflib import Graph
         from pyshacl import validate
 
-        # Load data graph
         data_graph = Graph()
         data_graph.parse(data=data_turtle, format="turtle")
 
-        # Load shapes — clear cache to pick up sanitisation
         if str(SHAPES_FILE) in _cache:
             del _cache[str(SHAPES_FILE)]
         shapes_text = _load_text(SHAPES_FILE)
 
         if selected_shapes != "all" and isinstance(selected_shapes, list):
-            # Extract only selected shape blocks
             blocks = []
             prefix_end = shapes_text.find("# Rule:")
             if prefix_end > 0:
@@ -322,14 +293,12 @@ async def validate_data(request: Request):
                     blocks.append(block)
             shapes_text = "\n\n".join(blocks)
 
-        # Parse shapes block-by-block — skip any LLM-generated invalid Turtle
         shapes_graph = Graph()
         prefix_block = shapes_text[:shapes_text.find("# Rule:")] if "# Rule:" in shapes_text else ""
         shape_blocks = shapes_text.split("# Rule:")
         skipped = 0
         for i, block in enumerate(shape_blocks):
             if i == 0:
-                # This is the prefix block — always include
                 try:
                     shapes_graph.parse(data=block, format="turtle")
                 except Exception:
@@ -341,9 +310,6 @@ async def validate_data(request: Request):
             except Exception:
                 skipped += 1
 
-        # Run pyshacl validation
-        # Note: do NOT pass ont_graph — causes 'NoneType' error in some
-        # pyshacl/rdflib version combinations. inference="none" is sufficient.
         conforms, results_graph, results_text = validate(
             data_graph,
             shacl_graph=shapes_graph,
@@ -352,10 +318,8 @@ async def validate_data(request: Request):
             do_owl_imports=False,
         )
 
-        # Parse violations from results graph
         violations = _parse_violations(results_graph)
 
-        # Count entities
         entities = set()
         for s in data_graph.subjects():
             entities.add(str(s))
@@ -364,7 +328,7 @@ async def validate_data(request: Request):
             "conforms": conforms,
             "total_violations": len(violations),
             "total_entities": len(entities),
-            "violations": violations[:200],  # cap for UI
+            "violations": violations[:200],
             "results_text": results_text[:5000] if results_text else "",
         }
 
@@ -390,14 +354,12 @@ def _parse_violations(results_graph) -> list:
             pname = str(p).split("#")[-1]
             v[pname] = str(o)
 
-        # Map to friendly names
         focus = v.get("focusNode", "")
         source = v.get("sourceShape", "")
         severity_raw = v.get("resultSeverity", "")
         message = v.get("resultMessage", "")
         path = v.get("resultPath", "")
 
-        # Clean up URIs
         focus_label = focus.split("#")[-1] if "#" in focus else focus.split("/")[-1]
         source_label = source.split("#")[-1] if "#" in source else source.split("/")[-1]
         severity_label = severity_raw.split("#")[-1] if "#" in severity_raw else severity_raw
@@ -413,11 +375,137 @@ def _parse_violations(results_graph) -> list:
             "path": path_label,
         })
 
-    # Sort: Violation > Warning > Info
     severity_order = {"Violation": 0, "Warning": 1, "Info": 2}
     violations.sort(key=lambda v: severity_order.get(v["severity"], 3))
-
     return violations
+
+
+# ── Pipeline execution (SSE) ─────────────────────────────────────────────
+
+@app.post("/api/run-pipeline")
+async def run_pipeline(request: Request):
+    """Run the full pipeline and stream progress via SSE."""
+    body = await request.json()
+    source = body.get("source", "ait")
+
+    def generate():
+        def send(event_data):
+            return f"data: {json.dumps(event_data)}\n\n"
+
+        steps = [
+            ("extract", "PDF Extraction"),
+            ("prefilter", "Heuristic Pre-filter"),
+            ("classify", "LLM Classification"),
+            ("fol", "FOL Formalization"),
+            ("shacl_fol", "SHACL Generation (FOL)"),
+            ("shacl_nl", "SHACL Generation (NL)"),
+            ("validate", "SHACL Validation"),
+            ("report", "Report Generation"),
+        ]
+
+        # Map stdout lines to pipeline steps
+        step_markers = {
+            "Step 1": 0,
+            "Step 2a": 1,
+            "Step 2b": 2,
+            "Step 3": 3,
+            "Step 4a": 4,
+            "Step 4b": 5,
+            "Step 5": 6,
+            "Step 6": 7,
+        }
+
+        try:
+            cmd = [sys.executable, "-m", "langgraph_agent.run", "--source", source]
+            proc = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                cwd=str(PROJECT_ROOT),
+                bufsize=1,
+            )
+
+            current_step_idx = -1
+
+            for line in proc.stdout:
+                line = line.rstrip()
+                if not line:
+                    continue
+
+                # Detect step transitions
+                for marker, idx in step_markers.items():
+                    if f">> {marker}" in line or f">>{marker}" in line:
+                        if current_step_idx >= 0:
+                            sid, slabel = steps[current_step_idx]
+                            yield send({"type": "step_done", "step": sid})
+                        current_step_idx = idx
+                        sid, slabel = steps[idx]
+                        yield send({"type": "step_start", "step": sid, "label": slabel})
+                        break
+
+                # Forward warnings
+                if "[WARN]" in line:
+                    yield send({"type": "warning", "message": line.strip()})
+                # Forward log lines
+                elif line.strip() and not line.startswith("="):
+                    yield send({"type": "log", "level": "info", "message": line.strip()})
+
+            proc.wait()
+
+            # Mark last step done
+            if current_step_idx >= 0:
+                sid, slabel = steps[current_step_idx]
+                yield send({"type": "step_done", "step": sid})
+
+            # Invalidate cache and load fresh report
+            _invalidate_cache()
+            report = _get_report()
+            summary = report.get("summary", {})
+
+            yield send({
+                "type": "summary",
+                "data": {
+                    "sentences_extracted": summary.get("sentences_extracted", 0),
+                    "rules_classified": summary.get("rules_classified", 0),
+                    "fol_ok": summary.get("fol_formulas_ok", 0),
+                    "fol_failed": summary.get("fol_formulas_failed", 0),
+                    "shapes_valid": summary.get("shacl_shapes_valid", 0),
+                    "violations": summary.get("violations_found", 0),
+                }
+            })
+
+        except Exception as exc:
+            yield send({"type": "error", "message": str(exc)})
+
+    return StreamingResponse(
+        generate(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
+
+
+# ── Serve React build (production) ───────────────────────────────────────
+
+# Try to mount the built React app
+if DIST_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="react-assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_react(full_path: str):
+        """Serve React app for client-side routing."""
+        # Don't catch API routes
+        if full_path.startswith("api/"):
+            raise HTTPException(status_code=404)
+        # Serve static file if it exists
+        file_path = DIST_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        # Otherwise serve index.html for client-side routing
+        return FileResponse(DIST_DIR / "index.html")
 
 
 # ── Startup ───────────────────────────────────────────────────────────────
@@ -427,5 +515,10 @@ if __name__ == "__main__":
     print(f"\n{'='*60}")
     print(f"  PolicyChecker — Compliance Dashboard")
     print(f"  http://localhost:8000")
+    if DIST_DIR.exists():
+        print(f"  Serving React build from {DIST_DIR}")
+    else:
+        print(f"  React build not found — run: cd web/frontend && npm run build")
+        print(f"  Dev mode: cd web/frontend && npm run dev (port 5173)")
     print(f"{'='*60}\n")
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
