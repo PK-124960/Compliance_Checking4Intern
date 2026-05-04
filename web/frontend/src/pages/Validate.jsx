@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Database, ShieldCheck, AlertTriangle, CheckCircle, Loader } from 'lucide-react'
+import { Database, ShieldCheck, AlertTriangle, CheckCircle, Loader, ChevronDown, ChevronUp, Lightbulb, XCircle, Info } from 'lucide-react'
 import Badge from '../components/Badge'
 
 export default function Validate() {
@@ -11,8 +11,9 @@ export default function Validate() {
   const [loading, setLoading] = useState(false)
   const [loadingDb, setLoadingDb] = useState(false)
   const [validating, setValidating] = useState(false)
+  const [expandedEntity, setExpandedEntity] = useState(null)
+  const [filterType, setFilterType] = useState('all')
 
-  // Check DB status on mount
   useEffect(() => {
     fetch('/api/db-status')
       .then(r => r.json())
@@ -20,7 +21,6 @@ export default function Validate() {
       .catch(() => setDbStatus({ ok: false, error: 'Cannot reach API' }))
   }, [])
 
-  // Load entity list
   useEffect(() => {
     if (dbStatus?.ok) {
       fetch('/api/db-entities')
@@ -39,10 +39,10 @@ export default function Validate() {
   }
 
   const selectAll = () => {
-    if (selectedEntities.size === entities.length) {
+    if (selectedEntities.size === filteredEntities.length) {
       setSelectedEntities(new Set())
     } else {
-      setSelectedEntities(new Set(entities.map(e => e.name)))
+      setSelectedEntities(new Set(filteredEntities.map(e => e.name)))
     }
   }
 
@@ -58,9 +58,7 @@ export default function Validate() {
         body: JSON.stringify(body),
       })
       const data = await res.json()
-      if (data.turtle) {
-        setTurtleData(data.turtle)
-      }
+      if (data.turtle) setTurtleData(data.turtle)
     } catch (err) {
       console.error('Failed to load from DB:', err)
     }
@@ -85,23 +83,43 @@ export default function Validate() {
     setValidating(false)
   }
 
+  // Filter entities by type
+  const filteredEntities = filterType === 'all'
+    ? entities
+    : entities.filter(e => e.type === filterType)
+
+  const entityTypes = [...new Set(entities.map(e => e.type))]
+
   // Group violations by entity
   const groupedViolations = results?.violations?.reduce((acc, v) => {
     const key = v.focus_node || 'Unknown'
-    if (!acc[key]) acc[key] = []
-    acc[key].push(v)
+    if (!acc[key]) acc[key] = { violations: [], info: [] }
+    if (v.severity === 'Info') {
+      acc[key].info.push(v)
+    } else {
+      acc[key].violations.push(v)
+    }
     return acc
   }, {}) || {}
+
+  // Compliance summary
+  const totalEntities = results?.total_entities || 0
+  const entitiesWithViolations = Object.keys(groupedViolations).filter(
+    k => groupedViolations[k].violations.length > 0
+  ).length
+  const compliantEntities = totalEntities - entitiesWithViolations
+  const violationCount = results?.violations?.filter(v => v.severity === 'Violation').length || 0
+  const infoCount = results?.violations?.filter(v => v.severity === 'Info').length || 0
 
   return (
     <>
       <div className="page-header">
         <h2>Compliance Validator</h2>
-        <p>Load entities from the database, convert to RDF, and validate against generated SHACL shapes</p>
+        <p>Select entities from the database, convert to RDF, and validate against 443 generated SHACL policy shapes</p>
       </div>
 
-      {/* DB Status */}
-      <div className="stats-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+      {/* Stats */}
+      <div className="stats-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
         <div className="stat-card">
           <div className="stat-label">Database</div>
           <div className="stat-value" style={{ fontSize: '1rem', color: dbStatus?.ok ? 'var(--success)' : 'var(--danger)' }}>
@@ -115,24 +133,39 @@ export default function Validate() {
           <div className="stat-sub">{selectedEntities.size} selected</div>
         </div>
         <div className="stat-card">
-          <div className="stat-label">Validation</div>
-          <div className="stat-value" style={{ fontSize: '1rem' }}>
-            {results ? (results.conforms ? '✓ Conforms' : `${results.total_violations} violations`) : '—'}
+          <div className="stat-label">Compliance</div>
+          <div className="stat-value" style={{ fontSize: '1rem', color: results ? (results.conforms ? 'var(--success)' : 'var(--danger)') : 'var(--text-muted)' }}>
+            {results ? (results.conforms ? '✓ All Conform' : `${compliantEntities}/${totalEntities} pass`) : '—'}
           </div>
-          <div className="stat-sub">{results ? `${results.total_entities} entities checked` : 'Not run yet'}</div>
+          <div className="stat-sub">{results ? `${violationCount} violations, ${infoCount} info` : 'Not run yet'}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">Violations</div>
+          <div className="stat-value" style={{ color: violationCount > 0 ? 'var(--danger)' : 'var(--success)' }}>
+            {results ? violationCount : '—'}
+          </div>
+          <div className="stat-sub">{results ? `${entitiesWithViolations} entities affected` : ''}</div>
         </div>
       </div>
 
       <div className="grid-2">
         {/* Left: Entity selection + RDF */}
         <div className="flex flex-col gap-4">
-          {/* Entity selector */}
           <div className="card">
             <div className="card-header">
               <span><Database size={16} style={{ marginRight: '8px', verticalAlign: 'text-bottom' }} />Entity Selector</span>
               <div className="flex gap-2">
+                <select
+                  className="input"
+                  style={{ width: 'auto', padding: '4px 8px', fontSize: '0.8rem' }}
+                  value={filterType}
+                  onChange={e => setFilterType(e.target.value)}
+                >
+                  <option value="all">All Types</option>
+                  {entityTypes.map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
                 <button className="btn btn-outline btn-sm" onClick={selectAll}>
-                  {selectedEntities.size === entities.length ? 'Deselect All' : 'Select All'}
+                  {selectedEntities.size === filteredEntities.length ? 'Deselect All' : 'Select All'}
                 </button>
                 <button
                   className="btn btn-primary btn-sm"
@@ -149,8 +182,8 @@ export default function Validate() {
               ) : entities.length === 0 ? (
                 <p className="text-muted text-sm">No entities found. Run <code>python -m db.seed</code> to populate.</p>
               ) : (
-                <div className="entity-list">
-                  {entities.map(entity => (
+                <div className="entity-list" style={{ maxHeight: '350px', overflowY: 'auto' }}>
+                  {filteredEntities.map(entity => (
                     <label
                       key={entity.name}
                       className={`entity-item ${selectedEntities.has(entity.name) ? 'selected' : ''}`}
@@ -160,9 +193,29 @@ export default function Validate() {
                         checked={selectedEntities.has(entity.name)}
                         onChange={() => toggleEntity(entity.name)}
                       />
-                      <div>
-                        <div style={{ fontWeight: 600 }}>{entity.name}</div>
-                        <div className="entity-type">{entity.type} · {entity.properties} properties</div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          {entity.name}
+                          <span className="badge" style={{
+                            fontSize: '0.65rem',
+                            padding: '1px 6px',
+                            background: entity.type === 'Student' || entity.type === 'PostgraduateStudent'
+                              ? 'var(--primary-light)' : entity.type === 'Faculty'
+                              ? '#e8f5e9' : entity.type === 'Employee' ? '#fff3e0' : '#f3e5f5',
+                            color: entity.type === 'Student' || entity.type === 'PostgraduateStudent'
+                              ? 'var(--primary)' : entity.type === 'Faculty'
+                              ? '#2e7d32' : entity.type === 'Employee' ? '#e65100' : '#7b1fa2',
+                            borderRadius: '4px',
+                          }}>{entity.type}</span>
+                          {entity.issues > 0 && (
+                            <span style={{ color: 'var(--danger)', fontSize: '0.7rem', fontWeight: 500 }}>
+                              ⚠ {entity.issues} issue{entity.issues > 1 ? 's' : ''}
+                            </span>
+                          )}
+                        </div>
+                        <div className="entity-type" style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                          {entity.detail}
+                        </div>
                       </div>
                     </label>
                   ))}
@@ -183,7 +236,7 @@ export default function Validate() {
                 value={turtleData}
                 onChange={e => setTurtleData(e.target.value)}
                 placeholder="Load from database or paste RDF Turtle data here..."
-                style={{ minHeight: '220px' }}
+                style={{ minHeight: '180px', fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75rem' }}
               />
               <div className="mt-3 flex gap-2">
                 <button
@@ -207,10 +260,10 @@ export default function Validate() {
         <div className="flex flex-col gap-4">
           <div className="card">
             <div className="card-header">
-              <span>Validation Results</span>
+              <span>Validation Report</span>
               {results && (
                 <Badge type={results.conforms ? 'success' : 'violation'}>
-                  {results.conforms ? 'CONFORMS' : 'NON-CONFORMANT'}
+                  {results.conforms ? 'ALL CONFORM' : 'NON-CONFORMANT'}
                 </Badge>
               )}
             </div>
@@ -225,40 +278,127 @@ export default function Validate() {
                   <AlertTriangle size={20} /> Error: {results.error}
                 </div>
               ) : results.conforms ? (
-                <div className="conforms-true" style={{ padding: '40px', textAlign: 'center' }}>
-                  <CheckCircle size={40} style={{ marginBottom: '12px' }} />
-                  <div style={{ fontSize: '1.1rem' }}>All entities conform to policy rules</div>
-                  <div className="text-xs mt-2">{results.total_entities} entities validated</div>
+                <div style={{ padding: '40px', textAlign: 'center', background: '#f0fdf4', borderRadius: '8px' }}>
+                  <CheckCircle size={48} style={{ color: 'var(--success)', marginBottom: '12px' }} />
+                  <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--success)' }}>All Entities Conform</div>
+                  <div className="text-sm mt-2" style={{ color: '#4a5568' }}>{totalEntities} entities validated against 443 policy shapes</div>
                 </div>
               ) : (
-                <div style={{ maxHeight: '600px', overflowY: 'auto' }}>
-                  <div className="mb-3 text-sm text-muted">
-                    {results.total_violations} violations across {Object.keys(groupedViolations).length} entities
-                  </div>
-                  {Object.entries(groupedViolations).map(([entity, violations]) => (
-                    <div key={entity} style={{ marginBottom: '16px' }}>
-                      <div style={{ fontWeight: 700, fontSize: '0.87rem', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span>{entity}</span>
-                        <span className="badge badge-violation">{violations.length}</span>
+                <div style={{ maxHeight: '700px', overflowY: 'auto' }}>
+                  {/* Compliance summary bar */}
+                  <div style={{
+                    display: 'flex', gap: '8px', marginBottom: '16px', padding: '12px',
+                    background: '#f7fafc', borderRadius: '8px', alignItems: 'center',
+                  }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', height: '8px', borderRadius: '4px', overflow: 'hidden', background: '#e2e8f0' }}>
+                        {compliantEntities > 0 && (
+                          <div style={{
+                            width: `${(compliantEntities / totalEntities) * 100}%`,
+                            background: 'var(--success)',
+                          }} />
+                        )}
+                        {entitiesWithViolations > 0 && (
+                          <div style={{
+                            width: `${(entitiesWithViolations / totalEntities) * 100}%`,
+                            background: 'var(--danger)',
+                          }} />
+                        )}
                       </div>
-                      {violations.slice(0, 8).map((v, i) => (
-                        <div key={i} className={`result-card ${v.severity === 'Info' ? 'severity-info' : ''}`}>
-                          <div className="result-shape">{v.source_shape}</div>
-                          {v.path && <div className="result-path">sh:path {v.path}</div>}
-                          {v.message && (
-                            <div className="text-xs text-muted mt-2" style={{ lineHeight: '1.5' }}>
-                              {v.message.slice(0, 200)}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                      {violations.length > 8 && (
-                        <div className="text-xs text-muted" style={{ paddingLeft: '18px' }}>
-                          + {violations.length - 8} more violations...
-                        </div>
-                      )}
+                      <div className="text-xs mt-1" style={{ color: '#718096' }}>
+                        <span style={{ color: 'var(--success)' }}>■</span> {compliantEntities} compliant
+                        {' · '}
+                        <span style={{ color: 'var(--danger)' }}>■</span> {entitiesWithViolations} non-compliant
+                      </div>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Per-entity results */}
+                  {Object.entries(groupedViolations).map(([entity, { violations, info }]) => {
+                    const isExpanded = expandedEntity === entity
+                    const hasViolations = violations.length > 0
+                    return (
+                      <div key={entity} style={{
+                        marginBottom: '8px', border: '1px solid #e2e8f0',
+                        borderRadius: '8px', overflow: 'hidden',
+                        borderLeft: `3px solid ${hasViolations ? 'var(--danger)' : 'var(--success)'}`,
+                      }}>
+                        <div
+                          onClick={() => setExpandedEntity(isExpanded ? null : entity)}
+                          style={{
+                            padding: '10px 14px', cursor: 'pointer',
+                            display: 'flex', alignItems: 'center', gap: '10px',
+                            background: isExpanded ? '#f7fafc' : 'white',
+                          }}
+                        >
+                          {hasViolations
+                            ? <XCircle size={18} style={{ color: 'var(--danger)', flexShrink: 0 }} />
+                            : <CheckCircle size={18} style={{ color: 'var(--success)', flexShrink: 0 }} />
+                          }
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontWeight: 700, fontSize: '0.87rem' }}>{entity}</div>
+                            <div style={{ fontSize: '0.73rem', color: '#718096' }}>
+                              {hasViolations
+                                ? `${violations.length} violation${violations.length > 1 ? 's' : ''}${info.length > 0 ? `, ${info.length} info` : ''}`
+                                : info.length > 0 ? `${info.length} info notices` : 'Fully compliant'
+                              }
+                            </div>
+                          </div>
+                          {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </div>
+
+                        {isExpanded && (
+                          <div style={{ padding: '0 14px 14px' }}>
+                            {violations.map((v, i) => (
+                              <div key={i} style={{
+                                padding: '10px 12px', marginTop: '8px',
+                                background: '#fff5f5', borderRadius: '6px',
+                                borderLeft: '3px solid var(--danger)',
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+                                  <AlertTriangle size={13} style={{ color: 'var(--danger)' }} />
+                                  <span style={{ fontWeight: 600, fontSize: '0.8rem' }}>{v.source_shape}</span>
+                                  <span style={{ fontSize: '0.7rem', color: '#a0aec0' }}>sh:path {v.path}</span>
+                                </div>
+                                {v.message && (
+                                  <div style={{ fontSize: '0.75rem', color: '#4a5568', lineHeight: '1.5', marginBottom: '6px' }}>
+                                    {v.message.slice(0, 200)}
+                                  </div>
+                                )}
+                                {v.suggestion && (
+                                  <div style={{
+                                    display: 'flex', alignItems: 'flex-start', gap: '6px',
+                                    padding: '6px 8px', background: '#fffbeb', borderRadius: '4px',
+                                    fontSize: '0.73rem', color: '#92400e',
+                                  }}>
+                                    <Lightbulb size={13} style={{ flexShrink: 0, marginTop: '1px' }} />
+                                    <span><strong>Action:</strong> {v.suggestion}</span>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                            {info.map((v, i) => (
+                              <div key={`info-${i}`} style={{
+                                padding: '8px 12px', marginTop: '6px',
+                                background: '#ebf8ff', borderRadius: '6px',
+                                borderLeft: '3px solid #3182ce',
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                  <Info size={13} style={{ color: '#3182ce' }} />
+                                  <span style={{ fontWeight: 600, fontSize: '0.78rem' }}>{v.source_shape}</span>
+                                </div>
+                                {v.message && (
+                                  <div style={{ fontSize: '0.73rem', color: '#4a5568', marginTop: '2px' }}>
+                                    {v.message.slice(0, 150)}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               )}
             </div>

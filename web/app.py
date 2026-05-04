@@ -342,6 +342,42 @@ async def validate_data(request: Request):
         )
 
 
+# Remediation suggestions keyed by property path fragment
+_REMEDIATION_MAP = {
+    "payFirstSemesterFee": "Pay the first semester tuition fee before the registration deadline.",
+    "payFee": "Settle all outstanding tuition fees with the Finance Office.",
+    "feesPaid": "Ensure all fees are paid in full within 30 days from semester start.",
+    "fullPayment": "Complete the remaining tuition balance to avoid enrollment suspension.",
+    "cookInProhibitedDormitory": "Remove all cooking equipment from the dormitory immediately. Use designated cooking areas.",
+    "cookInUnit": "Cooking is prohibited in this accommodation category. Use shared kitchen facilities.",
+    "petInStudentAccommodation": "Remove the pet from student accommodation. Pets are not allowed per housing policy.",
+    "noisyGroupStudyOrPartyInStudentAccommodation": "Cease noisy activities in the dorm. Use designated study rooms for group work.",
+    "disturbingpeace": "Refrain from disturbing other residents. A formal reprimand may be issued.",
+    "disturbFellowStudentsInResidentialAreas": "Stop activities that disturb fellow residents, especially after 23:00.",
+    "maintainCleanlinessOfBedroomAndFacilities": "Clean your room and maintain hygiene standards as required by housing policy.",
+    "maintainCleanlinessOfCommonAreaAndLandscape": "Help maintain cleanliness of common areas and surrounding landscape.",
+    "regularcleaningandhygieneoftheunit": "Perform regular cleaning and maintain unit hygiene standards.",
+    "vacateRoom": "Vacate your room within 5 days after graduation/completion of studies.",
+    "vacatesRoom": "Vacate the accommodation unit as required by the housing agreement.",
+    "confirmOfferMove": "Confirm the accommodation offer within 5 working days or lose the allocation.",
+    "makeKnownCriteriaForGrading": "Publish grading criteria to students at the beginning of each course.",
+    "followProceduresForDisciplinaryActions": "Follow institutional disciplinary procedures as outlined in the staff handbook.",
+    "disclose": "Disclose any actual or potential conflicts of interest to your supervisor.",
+    "suspectCheatingDuringExamOrAssignmentOrResearchProject": "Report any suspected academic misconduct to the relevant committee.",
+    "reported": "Report all gifts and benefits received as required by the ethics policy.",
+    "settled": "Settle all outstanding travel authorizations and promissory notes by the due dates.",
+    "usesAuthorityEthicallyWithRespectAndSensitivityAndInAccordanceWithInstitutesPolicies":
+        "Exercise supervisory authority ethically, with respect and sensitivity.",
+    "meetHighestStandardsOfPersonalEthicalAndMoralConduct":
+        "Uphold the highest standards of personal ethical and moral conduct.",
+    "bringConcernsToAttention": "Report any student welfare concerns to the Director of Student Affairs.",
+    "correspondAsAuthorWithJournal": "Ensure the committee chair serves as corresponding author for journal submissions.",
+    "multiAuthoredArticleWrittenByStudentShouldBeFirstAuthorUnlessJournalRequiresDifferentOrder":
+        "Ensure student is listed as first author in multi-authored thesis-based articles.",
+    "electsChair": "Hold an election to appoint a committee chair.",
+}
+
+
 def _parse_violations(results_graph) -> list:
     """Extract structured violations from pyshacl results graph."""
     from rdflib import SH, RDF, Namespace
@@ -365,6 +401,11 @@ def _parse_violations(results_graph) -> list:
         severity_label = severity_raw.split("#")[-1] if "#" in severity_raw else severity_raw
         path_label = path.split("#")[-1] if "#" in path else path.split("/")[-1]
 
+        # Generate remediation suggestion
+        suggestion = _REMEDIATION_MAP.get(path_label, "")
+        if not suggestion and message:
+            suggestion = "Review and address: " + message[:120]
+
         violations.append({
             "focus_node": focus_label,
             "focus_uri": focus,
@@ -373,6 +414,7 @@ def _parse_violations(results_graph) -> list:
             "severity": severity_label,
             "message": message[:300],
             "path": path_label,
+            "suggestion": suggestion,
         })
 
     severity_order = {"Violation": 0, "Warning": 1, "Info": 2}
@@ -403,77 +445,254 @@ async def run_pipeline(request: Request):
             ("report", "Report Generation"),
         ]
 
-        # Map stdout lines to pipeline steps
-        step_markers = {
-            "Step 1": 0,
-            "Step 2a": 1,
-            "Step 2b": 2,
-            "Step 3": 3,
-            "Step 4a": 4,
-            "Step 4b": 5,
-            "Step 5": 6,
-            "Step 6": 7,
+        # ">> Step X" markers are printed AFTER each LangGraph node
+        # completes (by run.py's graph.stream loop).  But tqdm bars
+        # like "Generating FOL: 5%|█…" run DURING the node.  So we
+        # use BOTH signals:
+        #   - ">> Step X" → mark the PREVIOUS step as done
+        #   - tqdm desc  → mark the CURRENT step as started (early)
+
+        # Map ">> Step X" to the step index they represent.
+        # When we see ">> Step 2b", it means classify just finished.
+        step_done_markers = {
+            "Step 1":  0,   # extract done
+            "Step 2a": 1,   # prefilter done
+            "Step 2b": 2,   # classify done
+            "Step 2c": 2,   # reclassify done (same UI step)
+            "Step 3":  3,   # fol done
+            "Step 4a": 4,   # shacl_fol done
+            "Step 4b": 5,   # shacl_nl done
+            "Step 5":  6,   # validate done
+            "Step 6":  7,   # report done
+        }
+
+        # Map tqdm desc substrings to the step they START.
+        # These fire as soon as the node begins its work.
+        tqdm_start_markers = {
+            "Classifying":    2,   # classify step
+            "Reclassifying":  2,   # same UI step
+            "Generating FOL": 3,   # fol step
+            "Direct SHACL":   5,   # shacl_nl step
         }
 
         try:
-            cmd = [sys.executable, "-m", "langgraph_agent.run", "--source", source]
+            env = os.environ.copy()
+            env["PYTHONUNBUFFERED"] = "1"
+
+            cmd = [sys.executable, "-u", "-m", "langgraph_agent.run", "--source", source]
             proc = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True,
                 cwd=str(PROJECT_ROOT),
-                bufsize=1,
+                env=env,
+                bufsize=0,  # unbuffered binary
             )
 
             current_step_idx = -1
+            last_progress_time = 0
+            conn_refused_count = 0
+            override_count = 0
 
-            for line in proc.stdout:
-                line = line.rstrip()
-                if not line:
-                    continue
-
-                # Detect step transitions
-                for marker, idx in step_markers.items():
-                    if f">> {marker}" in line or f">>{marker}" in line:
-                        if current_step_idx >= 0:
-                            sid, slabel = steps[current_step_idx]
-                            yield send({"type": "step_done", "step": sid})
-                        current_step_idx = idx
+            def transition_to(idx):
+                """Move the step tracker to a new step."""
+                nonlocal current_step_idx
+                events = []
+                if idx != current_step_idx:
+                    # Mark all steps between current and target as done
+                    if current_step_idx >= 0:
+                        for i in range(current_step_idx, min(idx, len(steps))):
+                            sid, _ = steps[i]
+                            events.append(send({"type": "step_done", "step": sid}))
+                    # Start the new step
+                    if idx < len(steps):
                         sid, slabel = steps[idx]
-                        yield send({"type": "step_start", "step": sid, "label": slabel})
-                        break
+                        events.append(send({"type": "step_start", "step": sid, "label": slabel}))
+                    current_step_idx = idx
+                return events
 
-                # Forward warnings
+            import re
+
+            def parse_tqdm_line(line):
+                """Extract clean progress info from tqdm output.
+                Input:  'Generating FOL:  27%|███████      | 120/443 [00:09<00:25, 12.97it/s]'
+                Output: 'Generating FOL: 27% | 120/443 [00:09<00:25, 12.97it/s]'
+                """
+                m = re.match(
+                    r'(.+?):\s*(\d+)%\|[^|]*\|\s*(\d+)/(\d+)\s*(\[.+\])',
+                    line
+                )
+                if m:
+                    desc, pct, cur, tot, timing = m.groups()
+                    return f"{desc.strip()}: {pct}% | {cur}/{tot} {timing}"
+                m2 = re.match(r'(.+?):\s*(\d+)%\|[^|]*\|\s*(\d+)/(\d+)', line)
+                if m2:
+                    desc, pct, cur, tot = m2.groups()
+                    return f"{desc.strip()}: {pct}% | {cur}/{tot}"
+                return line
+
+            def process_line(line):
+                """Process a single complete line and yield SSE events."""
+                nonlocal current_step_idx, last_progress_time
+                nonlocal conn_refused_count, override_count
+                events = []
+
+                # ── ">> Step X" done markers ──
+                for marker, idx in step_done_markers.items():
+                    if f">> {marker}" in line or f">>{marker}" in line:
+                        # Only process if we haven't already passed this step
+                        if idx >= current_step_idx:
+                            events.extend(transition_to(idx))
+                            sid, _ = steps[idx]
+                            events.append(send({"type": "step_done", "step": sid}))
+                            current_step_idx = idx + 1
+                            if idx + 1 < len(steps):
+                                nsid, nslabel = steps[idx + 1]
+                                events.append(send({"type": "step_start", "step": nsid, "label": nslabel}))
+                        return events  # Don't forward step markers as log text
+
+                # ── tqdm progress bars ──
+                is_progress = ("%" in line and "|" in line) or \
+                              ("%" in line and ("it/s" in line or "s/it" in line))
+                if is_progress:
+                    for desc, idx in tqdm_start_markers.items():
+                        if desc in line and idx > current_step_idx:
+                            events.extend(transition_to(idx))
+                            break
+                    now = time.time()
+                    if now - last_progress_time >= 0.5:
+                        last_progress_time = now
+                        events.append(send({"type": "log", "level": "info", "message": parse_tqdm_line(line)}))
+                    return events
+
+                # ── Warnings (deduplicated) ──
                 if "[WARN]" in line:
-                    yield send({"type": "warning", "message": line.strip()})
-                # Forward log lines
-                elif line.strip() and not line.startswith("="):
-                    yield send({"type": "log", "level": "info", "message": line.strip()})
+                    if "Connection refused" in line:
+                        conn_refused_count += 1
+                        if conn_refused_count == 1:
+                            events.append(send({"type": "warning", "message": line}))
+                            events.append(send({"type": "log", "level": "warn",
+                                                "message": "  (Ollama not reachable — using cached results for remaining rules)"}))
+                        elif conn_refused_count % 50 == 0:
+                            events.append(send({"type": "log", "level": "warn",
+                                                "message": f"  ... {conn_refused_count} cache-miss rules skipped (Ollama offline)"}))
+                    elif "override" in line:
+                        override_count += 1
+                        if override_count <= 3:
+                            events.append(send({"type": "warning", "message": line}))
+                        elif override_count == 4:
+                            events.append(send({"type": "log", "level": "warn",
+                                                "message": "  ... (more override warnings suppressed)"}))
+                    else:
+                        events.append(send({"type": "warning", "message": line}))
+                    return events
+
+                # ── Separators ──
+                if line.startswith("=") or (line.startswith("-") and len(line) > 5 and line == line[0] * len(line)):
+                    return events
+
+                # ── Pipeline start ──
+                if "PolicyChecker" in line and current_step_idx < 0:
+                    events.extend(transition_to(0))
+                    events.append(send({"type": "log", "level": "info", "message": line}))
+                    return events
+
+                # ── Everything else ──
+                events.append(send({"type": "log", "level": "info", "message": line}))
+                return events
+
+            # ── Main read loop ──
+            # Read in chunks, decode UTF-8 properly, buffer incomplete lines
+            raw_buffer = b""     # undecoded bytes (partial UTF-8)
+            text_buffer = ""     # decoded text waiting for a line ending
+
+            while True:
+                chunk = proc.stdout.read(4096)
+                if not chunk:
+                    break
+                raw_buffer += chunk
+
+                # Decode as much UTF-8 as possible
+                try:
+                    decoded = raw_buffer.decode("utf-8")
+                    raw_buffer = b""
+                except UnicodeDecodeError:
+                    # Find the last fully decodable prefix
+                    for i in range(len(raw_buffer) - 1, max(len(raw_buffer) - 5, -1), -1):
+                        try:
+                            decoded = raw_buffer[:i].decode("utf-8")
+                            raw_buffer = raw_buffer[i:]
+                            break
+                        except UnicodeDecodeError:
+                            continue
+                    else:
+                        continue
+
+                text_buffer += decoded
+
+                # Split into complete lines (\n or \r delimited)
+                # Keep the last segment if it doesn't end with a delimiter
+                parts = re.split(r'(\r\n|\r|\n)', text_buffer)
+
+                # parts = [seg0, delim0, seg1, delim1, ..., last_seg]
+                # If text_buffer ends with a delimiter, last_seg is ""
+                # If not, last_seg is an incomplete line to carry forward
+                if len(parts) >= 2 and parts[-1] != "":
+                    # Last segment has no trailing delimiter — carry it forward
+                    text_buffer = parts[-1]
+                    parts = parts[:-1]
+                else:
+                    text_buffer = ""
+
+                # Process complete lines
+                for part in parts:
+                    line = part.strip()
+                    if not line:
+                        continue
+                    for ev in process_line(line):
+                        yield ev
+
+            # Flush any remaining text
+            if text_buffer.strip():
+                for ev in process_line(text_buffer.strip()):
+                    yield ev
+            if raw_buffer:
+                try:
+                    remaining = raw_buffer.decode("utf-8", errors="replace").strip()
+                    if remaining:
+                        for ev in process_line(remaining):
+                            yield ev
+                except Exception:
+                    pass
 
             proc.wait()
 
-            # Mark last step done
+            # Mark all remaining steps as done
             if current_step_idx >= 0:
-                sid, slabel = steps[current_step_idx]
-                yield send({"type": "step_done", "step": sid})
+                for i in range(current_step_idx, len(steps)):
+                    sid, _ = steps[i]
+                    yield send({"type": "step_done", "step": sid})
 
-            # Invalidate cache and load fresh report
-            _invalidate_cache()
-            report = _get_report()
-            summary = report.get("summary", {})
+            # Check exit code
+            if proc.returncode != 0:
+                yield send({"type": "error", "message": f"Pipeline exited with code {proc.returncode}"})
+            else:
+                # Invalidate cache and load fresh report
+                _invalidate_cache()
+                report = _get_report()
+                summary = report.get("summary", {})
 
-            yield send({
-                "type": "summary",
-                "data": {
-                    "sentences_extracted": summary.get("sentences_extracted", 0),
-                    "rules_classified": summary.get("rules_classified", 0),
-                    "fol_ok": summary.get("fol_formulas_ok", 0),
-                    "fol_failed": summary.get("fol_formulas_failed", 0),
-                    "shapes_valid": summary.get("shacl_shapes_valid", 0),
-                    "violations": summary.get("violations_found", 0),
-                }
-            })
+                yield send({
+                    "type": "summary",
+                    "data": {
+                        "sentences_extracted": summary.get("sentences_extracted", 0),
+                        "rules_classified": summary.get("rules_classified", 0),
+                        "fol_ok": summary.get("fol_formulas_ok", 0),
+                        "fol_failed": summary.get("fol_formulas_failed", 0),
+                        "shapes_valid": summary.get("shacl_shapes_valid", 0),
+                        "violations": summary.get("violations_found", 0),
+                    }
+                })
 
         except Exception as exc:
             yield send({"type": "error", "message": str(exc)})

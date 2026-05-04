@@ -53,7 +53,7 @@ services:
       OLLAMA_MODEL: ${OLLAMA_MODEL:-mistral}
       OLLAMA_SECOND_MODEL: ${OLLAMA_SECOND_MODEL:-mistral}
       OLLAMA_SEED: ${OLLAMA_SEED:-42}
-      PIPELINE_VERSION: ${PIPELINE_VERSION:-2.1-hints}
+      PIPELINE_VERSION: ${PIPELINE_VERSION:-2.1-final-defense}
     ports:
       - "8000:8000"
     volumes:

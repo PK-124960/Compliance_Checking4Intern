@@ -126,10 +126,10 @@ export default function Pipeline() {
   }
 
   const logColors = {
-    info: 'var(--text-primary)',
-    success: 'var(--success)',
-    warn: 'var(--warning)',
-    error: 'var(--danger)',
+    info: '#93c5fd',
+    success: '#6ee7b7',
+    warn: '#fcd34d',
+    error: '#fca5a5',
   }
 
   return (
@@ -218,24 +218,34 @@ export default function Pipeline() {
           </div>
           <div
             ref={logRef}
-            className="card-body"
             style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.76rem',
-              lineHeight: '1.7',
+              fontFamily: "'JetBrains Mono', 'Consolas', 'Courier New', monospace",
+              fontSize: '0.82rem',
+              lineHeight: '1.8',
               maxHeight: '560px',
               overflowY: 'auto',
               background: '#0f172a',
-              color: '#e2e8f0',
-              padding: '16px',
+              color: '#cbd5e1',
+              padding: '18px 20px',
               borderRadius: '0 0 var(--radius-md) var(--radius-md)',
             }}
           >
             {logs.length === 0 ? (
-              <span style={{ opacity: 0.4 }}>Click "Run Pipeline" to start...</span>
+              <span style={{ opacity: 0.4, color: '#64748b' }}>Click "Run Pipeline" to start...</span>
             ) : logs.map((log, i) => (
-              <div key={i} style={{ color: logColors[log.level] || '#e2e8f0' }}>
-                <span style={{ opacity: 0.5 }}>[{log.time}]</span> {log.message}
+              <div key={i} style={{
+                color: logColors[log.level] || '#cbd5e1',
+                padding: '1px 0',
+                fontWeight: log.level === 'error' ? 600 : 400,
+              }}>
+                <span style={{ color: '#475569' }}>[{log.time}]</span>{' '}
+                {log.message.startsWith('>>') ? (
+                  <span style={{ color: '#818cf8', fontWeight: 600 }}>{log.message}</span>
+                ) : log.message.includes('[WARN]') ? (
+                  <span style={{ color: '#fbbf24' }}>{log.message}</span>
+                ) : (
+                  log.message
+                )}
               </div>
             ))}
           </div>

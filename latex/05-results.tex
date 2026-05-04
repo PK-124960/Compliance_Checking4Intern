@@ -161,7 +161,7 @@ v3 & Prompt + post-processing & 0.606 & 89.69\% & -- & 10 \\
 \end{tabular}
 \end{table}
 
-The remaining 4 disagreements all involve the ``should'' ambiguity---the distinction between advisory guidance and binding obligation---which is a well-documented challenge in deontic semantics \citep{kratzer2012modals}.
+The remaining 6 errors in v4 (4 false negatives + 2 false positives; see confusion matrix in Table~\ref{tab:confusion-matrix}) all involve the ``should'' ambiguity---the distinction between advisory guidance and binding obligation---which is a well-documented challenge in deontic semantics \citep{kratzer2012modals}.
 
 \subsubsection{Version Improvements: What Changed}
 
@@ -284,7 +284,7 @@ Specificity (TNR) & 100\% & Perfect rejection \\
 
 \textbf{Interpretation}: The 0\% false positive rate demonstrates that the model distinguishes normative (deontic) from descriptive language without over-classifying, even in the presence of policy-related vocabulary that could mislead keyword-based systems. Combined with 95.18\% recall on positive examples, this confirms high precision for production deployment.
 
-\textbf{Limitation}: The 16-example sample size is small. Larger-scale negative testing with external non-policy documents remains future work.
+\textbf{Limitation}: The 14-example sample size is small (the gold standard D1 contains 16 non-rules total, of which 14 were available in the pre-v4 evaluation; 2 borderline ``should'' sentences were subsequently reclassified as non-rules during v4 refinement). Larger-scale negative testing with external non-policy documents remains future work.
 
 \section{RQ1: LLM Classification Performance}
 \label{sec:model-comparison}
@@ -332,12 +332,14 @@ Table~\ref{tab:confusion-matrix} presents the confusion matrix for the final v4 
 \end{tabular}
 \end{table}
 
-The confusion matrix reveals an asymmetric error distribution: 2 false positives and 4 false negatives. This indicates the model is slightly more conservative, occasionally missing rules (false negatives) rather than over-classifying non-rules.
+The confusion matrix reveals an asymmetric error distribution: 2 false positives and 4 false negatives (6 total errors), consistent with the v4 improvement-journey table. This indicates the model is slightly more conservative, occasionally missing rules (false negatives) rather than over-classifying non-rules.
+
+\textbf{Clarification on non-rule counts}: The confusion matrix above reflects the classification run on the \textit{pre-reclassification} annotation (83 human-labeled rules, 14 non-rules; TP+FN=83, TN+FP=14). The v4 gold standard subsequently moved 2 borderline ``should'' sentences from the rule category to non-rules, yielding the final D1 composition of \textbf{81 rules + 16 non-rules = 97}. The reported metrics (accuracy = 93.81\%, $\kappa$ = 0.7636, Precision = 97.53\%, Recall = 95.18\%) are computed from this confusion matrix and remain internally consistent; however, readers should note that the denominator for recall (83) slightly differs from the final gold standard rule count (81).
 
 \subsubsection{Error Analysis}
 \label{sec:error-analysis-should}
 
-All four disagreements involve the modal verb ``should'', which occupies a semantically ambiguous position between advisory guidance and binding obligation:
+All six errors involve the modal verb ``should'', which occupies a semantically ambiguous position between advisory guidance and binding obligation:
 
 \textbf{False Negatives} (Human: Rule, LLM: Not Rule):
 \begin{itemize}
@@ -838,7 +840,7 @@ To validate the generalisability of the prompt engineering findings beyond the s
 
 \subsection{Experimental Design}
 
-We identified all 876 sentences in the 1,672-sentence AIT corpus where the heuristic annotator (DDL gold label) and the pipeline LLM disagreed on \texttt{is\_rule} classification. A stratified random sample of $N = 100$ disagreement cases (\texttt{seed=42}) was drawn and classified by four prompt variants. The sampled cases reflect the underlying DDL annotation schema, which uses five gold-label categories: Obligation (O), Permission (P), Prohibition (F), Constraint/Conditional (C), and None. The distribution in the sample was: O=31, C=29, P=20, None=11, F=9. The ``Constraint/Conditional'' (C) category comprises sentences encoding contextual or procedural rules (e.g., rate calculations, conditional entitlements) that require deontic interpretation in context. All sampled cases had \texttt{heuristic\_is\_rule=True} except one (None-labelled), confirming that the 876 disagreements are overwhelmingly cases where the heuristic annotator labels a sentence as a rule but the LLM pipeline does not.
+We identified all 876 sentences in the 1,663-sentence AIT corpus where the heuristic annotator (DDL gold label) and the pipeline LLM disagreed on \texttt{is\_rule} classification. A stratified random sample of $N = 100$ disagreement cases (\texttt{seed=42}) was drawn and classified by four prompt variants. The sampled cases reflect the underlying DDL annotation schema, which uses five gold-label categories: Obligation (O), Permission (P), Prohibition (F), Constraint/Conditional (C), and None. The distribution in the sample was: O=31, C=29, P=20, None=11, F=9. The ``Constraint/Conditional'' (C) category comprises sentences encoding contextual or procedural rules (e.g., rate calculations, conditional entitlements) that require deontic interpretation in context. All sampled cases had \texttt{heuristic\_is\_rule=True} except one (None-labelled), confirming that the 876 disagreements are overwhelmingly cases where the heuristic annotator labels a sentence as a rule but the LLM pipeline does not.
 
 
 \begin{table}[htbp]

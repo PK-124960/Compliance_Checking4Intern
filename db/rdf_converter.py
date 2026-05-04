@@ -381,60 +381,122 @@ def list_entities() -> list[dict]:
                        CASE WHEN s.degree_level = 'PhD' THEN 'PostgraduateStudent'
                             ELSE 'Student' END as entity_type,
                        s.program, s.enrollment_status, s.degree_level,
-                       (SELECT COUNT(*) FROM fee_records f WHERE f.student_id = s.student_id) as fee_count,
-                       (SELECT COUNT(*) FROM accommodations a WHERE a.student_id = s.student_id) as accom_count,
-                       (SELECT COUNT(*) FROM conduct_records cr WHERE cr.student_id = s.student_id) as violation_count
-                FROM students s ORDER BY s.student_id
+                       (SELECT COUNT(*) FROM conduct_records cr WHERE cr.student_id = s.student_id) as violation_count,
+                       COALESCE(fr.payment_status, 'N/A') as pay_status,
+                       COALESCE(sc.cooking_in_dorm, false) as cooking,
+                       COALESCE(sc.pet_in_dorm, false) as pet,
+                       COALESCE(sc.noisy_in_dorm, false) as noisy,
+                       COALESCE(sc.disturbing_residents, false) as disturbing
+                FROM students s
+                LEFT JOIN LATERAL (
+                    SELECT payment_status FROM fee_records f
+                    WHERE f.student_id = s.student_id
+                    ORDER BY f.semester DESC LIMIT 1
+                ) fr ON true
+                LEFT JOIN student_conduct sc ON sc.student_id = s.student_id
+                ORDER BY s.student_id
             """)
             for row in cur.fetchall():
+                (first, last, etype, program, status, degree,
+                 viol_count, pay_status, cooking, pet, noisy, disturbing) = row
+                # Build detail string
+                issues = []
+                if pay_status in ("Overdue", "Partial"):
+                    issues.append(f"Fee: {pay_status}")
+                if cooking:
+                    issues.append("Cooking violation")
+                if pet:
+                    issues.append("Pet violation")
+                if noisy:
+                    issues.append("Noise violation")
+                if disturbing:
+                    issues.append("Disturbing residents")
+                detail_str = ", ".join(issues) if issues else "No known issues"
                 entities.append({
-                    "name": row[0],
-                    "type": row[2],
-                    "label": f"{row[0]} {row[1]} ({row[5]} - {row[3]})",
-                    "property_count": 30 + (row[6] or 0) + (row[7] or 0),
-                    "detail": f"{row[4]} | {row[8]} violations",
+                    "name": first,
+                    "type": etype,
+                    "label": f"{first} {last} ({degree} - {program})",
+                    "properties": 30,
+                    "detail": f"{status} | {detail_str}",
+                    "status": status,
+                    "issues": len(issues),
                 })
 
             # Faculty
             cur.execute("""
-                SELECT title, first_name, last_name, department, position
+                SELECT title, first_name, last_name, department, position,
+                       grading_criteria_published, follows_disciplinary_procedures,
+                       discloses_conflicts, reports_cheating_suspects
                 FROM faculty ORDER BY id
             """)
             for row in cur.fetchall():
+                title, first, last, dept, pos, grading, disc, conflicts, reports = row
+                issues = []
+                if not grading:
+                    issues.append("No grading criteria")
+                if not disc:
+                    issues.append("No disciplinary procedures")
+                if not conflicts:
+                    issues.append("Undisclosed conflicts")
+                if not reports:
+                    issues.append("Not reporting cheating")
+                detail_str = ", ".join(issues) if issues else "No known issues"
                 entities.append({
-                    "name": f"{row[0]}{row[1]}{row[2]}".replace(" ", "").replace(".", ""),
+                    "name": f"{title}{first}{last}".replace(" ", "").replace(".", ""),
                     "type": "Faculty",
-                    "label": f"{row[0]} {row[1]} {row[2]} ({row[4]}, {row[3]})",
-                    "property_count": 5,
-                    "detail": row[4],
+                    "label": f"{title} {first} {last} ({pos}, {dept})",
+                    "properties": 5,
+                    "detail": detail_str,
+                    "status": "Active",
+                    "issues": len(issues),
                 })
 
             # Staff
             cur.execute("""
-                SELECT first_name, last_name, department, role
+                SELECT first_name, last_name, department, role,
+                       gifts_reported, settlements_reported,
+                       fees_managed_properly, ethical_authority_use
                 FROM staff ORDER BY id
             """)
             for row in cur.fetchall():
+                first, last, dept, role, gifts, settle, fees, ethical = row
+                issues = []
+                if not gifts:
+                    issues.append("Unreported gifts")
+                if not settle:
+                    issues.append("Unsettled obligations")
+                if not ethical:
+                    issues.append("Authority misuse")
+                detail_str = ", ".join(issues) if issues else "No known issues"
                 entities.append({
-                    "name": row[0],
+                    "name": first,
                     "type": "Employee",
-                    "label": f"{row[0]} {row[1]} ({row[3]}, {row[2]})",
-                    "property_count": 7,
-                    "detail": row[3],
+                    "label": f"{first} {last} ({role}, {dept})",
+                    "properties": 7,
+                    "detail": detail_str,
+                    "status": "Active",
+                    "issues": len(issues),
                 })
 
             # Committees
             cur.execute("""
-                SELECT committee_name, committee_type
+                SELECT committee_name, committee_type, chair_elected
                 FROM committees ORDER BY id
             """)
             for row in cur.fetchall():
+                name, ctype, chair = row
+                issues = []
+                if not chair:
+                    issues.append("No chair elected")
+                detail_str = ", ".join(issues) if issues else "No known issues"
                 entities.append({
-                    "name": row[0].replace(" ", "").replace("&", "And"),
+                    "name": name.replace(" ", "").replace("&", "And"),
                     "type": "Committee",
-                    "label": f"{row[0]} ({row[1]})",
-                    "property_count": 14,
-                    "detail": row[1],
+                    "label": f"{name} ({ctype})",
+                    "properties": 14,
+                    "detail": detail_str,
+                    "status": "Active",
+                    "issues": len(issues),
                 })
 
     return entities

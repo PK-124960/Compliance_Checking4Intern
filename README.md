@@ -50,7 +50,7 @@ Running the pipeline on the Asian Institute of Technology policy corpus
 | — Direct NL fallback | 90 |
 | Rule-type distribution | 326 obligations · 66 prohibitions · 50 permissions · 1 exemption |
 | Validation violations | 11,522 |
-| Pipeline errors | 12 (all override-relation warnings) |
+| Pipeline errors | 14 (12 override-relation + 2 sanitization warnings) |
 
 ## 📈 Evaluation
 
@@ -260,7 +260,7 @@ python web/app.py
 | Feature | Description |
 |---------|-------------|
 | **Pipeline Stats** | Real-time display of extraction, classification, and shape generation metrics |
-| **Rule Browser** | Search and filter 484 classified rules by type (obligation/prohibition/permission) |
+| **Rule Browser** | Search and filter 443 classified rules by type (obligation/prohibition/permission) |
 | **Rule Detail** | Click any rule to see its text, FOL formula, and generated SHACL shape |
 | **DB Entity Selector** | Select individual students, faculty, staff, and committees from the database |
 | **Load from Database** | Convert selected DB entities to RDF Turtle with one click |
