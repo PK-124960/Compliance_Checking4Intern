@@ -1,6 +1,16 @@
 """
 Multi-LLM Annotation Agreement (Computational IAA)
 ====================================================
+
+.. deprecated::
+    RETIRED with D3 re-grounding (2026-05-04).
+    This study used D2 SHACL gold shapes (derived from D1) as the "human" anchor.
+    With D1 retired, the human reference labels are no longer valid.
+    The multi-LLM agreement study is superseded by the 3-annotator IRR study
+    (author + Kittipat + Mayuree) in evaluation.external_annotator_agreement,
+    which achieved Fleiss kappa = 0.8436 (Almost Perfect).
+    Output: output/ait/multi_llm_agreement.json is kept for reference only.
+
 Runs multiple LLM models on a sample of gold-standard rules to classify
 their deontic type, then computes Fleiss' Kappa across all annotators
 (human + LLMs).

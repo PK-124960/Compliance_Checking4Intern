@@ -1,6 +1,17 @@
 """
 Intra-Annotator Reliability Study
 ==================================
+
+.. deprecated::
+    SUPERSEDED with D3 re-grounding (2026-05-04).
+    This script generated a blinded questionnaire from D2 SHACL gold shapes
+    (derived from D1) and computed Cohen's Kappa for author self-consistency.
+    With D1 retired, this single-annotator study is superseded by the
+    3-annotator IRR study (evaluation.external_annotator_agreement) which
+    includes external annotators Kittipat and Mayuree and achieved
+    Fleiss kappa = 0.8436 (Almost Perfect Agreement).
+    intra_annotator_results.json is kept for historical reference.
+
 Generates a blinded re-annotation questionnaire from the gold standard,
 and computes Cohen's Kappa when re-annotation results are provided.
 

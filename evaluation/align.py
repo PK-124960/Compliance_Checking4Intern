@@ -1,4 +1,12 @@
-"""Align pipeline rules (AIT-xxxx) to gold shapes (GS-xxx) by rule text similarity."""
+"""Align pipeline rules (AIT-xxxx) to gold shapes (GS-xxx) by rule text similarity.
+
+.. deprecated::
+    RETIRED with D3 re-grounding (2026-05-04).
+    This module computed M1 (Extraction Coverage) by aligning D3 pipeline rules
+    to D2 SHACL gold shapes (which were derived from the D1 gold standard).
+    With D1 retired, M1 is no longer a thesis metric.
+    This script is kept for reference; do not call it in the evaluation pipeline.
+"""
 from __future__ import annotations
 import json
 from dataclasses import dataclass, asdict

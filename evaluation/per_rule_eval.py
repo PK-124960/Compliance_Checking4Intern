@@ -1,4 +1,12 @@
-"""Run pyshacl per-rule: one pipeline shape against one gold Pos/Neg pair."""
+"""Run pyshacl per-rule: one pipeline shape against one gold Pos/Neg pair.
+
+.. deprecated::
+    RETIRED with D3 re-grounding (2026-05-04).
+    This module computed M4 (Shape Correctness F1) by running pyshacl against
+    D2 Pos/Neg test entities (which were hand-crafted from D1 gold standard rules).
+    With D1 retired, M4 is no longer a thesis metric.
+    This script is kept for reference; do not call it in the evaluation pipeline.
+"""
 from __future__ import annotations
 import json
 import re

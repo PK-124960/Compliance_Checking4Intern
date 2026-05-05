@@ -54,38 +54,37 @@ Running the pipeline on the Asian Institute of Technology policy corpus
 
 ## 📈 Evaluation
 
-The project includes a gold-standard evaluation harness (`evaluation/`) that aligns
-pipeline-generated rules to 96 curated SHACL shapes (`shacl/shapes/ait_policy_shapes.ttl`)
-using multi-signal alignment (embedding similarity, TF-IDF, fuzzy matching) and
-evaluates each pipeline shape against its corresponding `Pos_GSxxx` / `Neg_GSxxx`
-test entities.
+The project includes an evaluation harness (`evaluation/`) grounded in the full $D_3$ corpus
+(1,663 sentences) with a stratified 50-item human-annotated sample for IRR and LLM accuracy.
 
 | Metric | Definition | Current |
 |---|---|---:|
-| **M1** Extraction coverage | Gold rules with aligned pipeline rule (cosine ≥ 0.65) | **85.4%** (82/96), 95% CI [78.1%, 91.7%] |
-| **M2** Classification accuracy | Aligned rules with correct deontic type | **85.4%** (70/82), 95% CI [76.8%, 92.7%] |
-| **M3** FOL quality | FOL formulas with semantic predicates | **100%** (353/353), 95% CI [100%, 100%] |
-| **M4** Shape correctness (F1) | Per-rule precision/recall against Pos/Neg test entities | **F1 = 0.866** (P = 0.977, R = 0.778), 95% CI [0.791, 0.932] |
-| **M5** Output stability | Identical SHACL output across clean-cache runs with fixed seed | **100%** on the frozen 10-run snapshot (hash `520a0fa9`) |
+| **IRR** Fleiss' κ (3 humans) | Human agreement on 50-item D3 stratified sample (author, Kittipat, Mayuree) | **0.8436** [Almost perfect], 95% CI [0.8385, 0.8487] |
+| **LLM** Accuracy | LLM vs. majority-vote human gold (N=50) | **84.0%** (42/50), 95% CI [74.0%, 94.0%] |
+| **LLM** Cohen's κ | LLM vs. gold agreement | **0.629** [Substantial] |
+| **M3** FOL quality | FOL formulas with semantic predicates | **100%** (351/351), 95% CI [100%, 100%] |
+| **M5** Output stability | Identical SHACL output across clean-cache runs with fixed seed | **PASS** (hash-identical snapshot) |
 
 > [!NOTE]
-> **M4 analysis:** Of 69 evaluated shapes, 42 are correct, 1 is `too_strict`, 12 are `too_permissive`, 8 are `inverted` (deontic-type mismatch), and 6 are skipped. Precision is 0.977 (when the pipeline flags a violation, it is right 97.7% of the time); recall is 0.778. The 8 inverted cases trace to upstream prohibition misclassification rather than vocabulary issues. The Corpus Adapter pattern (configuration-driven vocabulary injection) was the key intervention that moved M4 from F1 = 0.000 to F1 = 0.866.
+> **M3 analysis:** The 100% rate reflects the post-fix pipeline with retry-and-backfill of FOL `predicates.action` from the `deontic_formula` field. 351 formulas parsed successfully; 92 failed parse are handled by the direct NL → SHACL fallback path and are not counted in M3.
 
 > [!NOTE]
-> **M3 analysis:** The 100% rate reflects the post-fix pipeline with retry-and-backfill of FOL `predicates.action` from the `deontic_formula` field. Earlier versions reported 29.8% (initial measurement bug, treating the empty `predicates.action` field as the only signal) and 68.7% (after the measurement fix). The current 100% is on the 353 FOL formulas that parsed successfully; the 90 formulas that failed parse are handled by the direct NL → SHACL fallback path and are not counted in M3.
->
-> **M5 framing:** M5 measures *output stability* on a fixed-seed, clean-cache snapshot — i.e., whether the pipeline produces hash-identical SHACL shapes when re-run with the same seed and prompt version. This is distinct from *semantic correctness* (which is measured by M4). The current `evaluation/report.py` flag `m5_reproducible` may report `false` when the LLM cache is invalidated between runs; the 100% figure applies to the snapshot run reported in §5.1 of the thesis.
->
+> **M5 framing:** M5 measures *output stability* on a fixed-seed, clean-cache snapshot — i.e., whether the pipeline produces hash-identical SHACL shapes when re-run with the same seed and prompt version.
+
+> [!NOTE]
 > **External Validation:** The pipeline's classification was also validated against the LexDeMod lease-contract benchmark (N=200). It achieved a Macro F1 of **0.370**, with strong obligation detection (F1=0.569) but degraded permission detection (F1=0.038) due to cross-domain vocabulary mismatch ("shall be entitled" vs "may").
+
+> [!NOTE]
+> **Retired metrics (D1/D2-dependent):** M1 (Extraction Coverage), M2 (Classification Accuracy vs. D2 SHACL gold), and M4 (Shape Correctness F1) have been retired. These metrics required a D1 gold standard (97 sentences) and D2 SHACL shapes that are no longer the primary evaluation anchor. They are superseded by the D3-grounded IRR + LLM accuracy study above.
 
 ### Running the evaluation
 
 ```bash
-python -m evaluation.align          # M1 extraction coverage → gold_alignment.json
-python -m evaluation.per_rule_eval  # M4 shape correctness → per_rule_eval.json
-python -m evaluation.report         # All metrics M1–M5 → console summary
-python -m evaluation.report --md    # Markdown table for thesis
-python -m evaluation.report --save  # Save thesis_metrics.json
+python -m evaluation.external_annotator_agreement  # IRR + LLM accuracy → external_annotator_agreement.json
+python -m evaluation.confidence_intervals           # Bootstrap 95% CIs → thesis_metrics_with_ci.json
+python -m evaluation.report --source ait            # D3 metrics summary → console
+python -m evaluation.report --source ait --md       # Markdown table for thesis
+python -m evaluation.report --source ait --save     # Save thesis_metrics.json
 ```
 
 ## 🧪 Ablation studies
@@ -136,10 +135,14 @@ Automatate_Compliance_Checking-v2/
 │   ├── schema.sql            # Relational table definitions (students, fees, etc.)
 │   ├── seed.py               # Populate DB with realistic AIT demo data
 │   └── rdf_converter.py      # Relational DB → Turtle RDF converter
-├── evaluation/               # Gold-standard alignment & thesis metrics
-│   ├── align.py              # Multi-signal GS ↔ AIT alignment (M1)
-│   ├── per_rule_eval.py      # Per-rule pyshacl evaluation (M4)
-│   └── report.py             # M1–M5 thesis metrics aggregator
+├── evaluation/               # D3-grounded IRR & thesis metrics
+│   ├── external_annotator_agreement.py  # 3-human Fleiss' κ + LLM accuracy (ACTIVE)
+│   ├── confidence_intervals.py          # Bootstrap CIs for D3 metrics (ACTIVE)
+│   ├── report.py                        # D3 metrics aggregator (ACTIVE)
+│   ├── align.py              # [RETIRED] M1 extraction coverage (D1/D2-dependent)
+│   ├── per_rule_eval.py      # [RETIRED] M4 shape correctness (D1/D2-dependent)
+│   ├── multi_llm_agreement.py  # [RETIRED] Multi-LLM IAA (D2 gold anchor)
+│   └── intra_annotator.py    # [RETIRED] Superseded by 3-annotator IRR
 ├── institutional_policy/     # Source PDFs (AIT corpus)
 ├── langgraph_agent/          # Pipeline orchestration
 │   ├── nodes/                # 9 processing nodes
@@ -355,16 +358,13 @@ committees   (committee_name, grievance/tribunal flags)
 
 Transparency about what the pipeline does *not* yet handle well:
 
-- **Permission classification (50% type accuracy)** — the LLM struggles to distinguish
+- **Permission classification challenges** — the LLM struggles to distinguish
   normative permissions ("Students may request an extension") from factual descriptions
-  ("Cultural differences may lead to misunderstanding"). Explicit-definition prompting
-  improves accuracy from 0% to 70% on a 10-permission test set (p=0.023), but the
-  challenge is fundamentally linguistic (deontic vs. epistemic modality).
-- **M4 inverted cases (8/69)** — eight shapes have the wrong deontic constraint type
-  (e.g., obligation encoded as prohibition). These trace to upstream deontic-type
-  misclassification rather than vocabulary issues.
-- **Single-annotator gold standard** — mitigated by intra-annotator κ=0.891 and
-  multi-LLM Fleiss' κ=0.635, but no external human annotators were recruited.
+  ("Cultural differences may lead to misunderstanding"), contributing to 8/50 LLM errors
+  on the human gold sample.
+- **Single-annotator gold standard (mitigated)** — addressed by a three-annotator IRR study
+  (author, Kittipat, Mayuree) on a 50-item D3 sample: Fleiss' κ = 0.8436 (Almost Perfect).
+  LLM accuracy validated against the majority-vote gold: 84.0% (42/50).
 - **Epistemic vs. deontic "may"** — disambiguation is implemented at the prefilter level
   with 80%+ accuracy on the eval set, but recall is not yet 100%.
 - **Sentence boundary detection** — PDF extraction produces some cross-item
@@ -379,7 +379,7 @@ Transparency about what the pipeline does *not* yet handle well:
   - `verify_rule` — classify a single text as policy rule
   - `check_status` — check Ollama availability
   - `list_rules` — browse classified rules from the latest run (filterable by type)
-  - `get_metrics` — return M1–M5 thesis metrics
+  - `get_metrics` — return D3-grounded thesis metrics (M3, M5, IRR, LLM accuracy)
   - `run_pipeline` — trigger a full pipeline run with optional ablation
 
   ```bash
