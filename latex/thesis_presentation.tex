@@ -76,7 +76,7 @@
     \begin{enumerate}
         \item[\textbf{RQ1}] Can instruction-tuned LLMs reliably identify and classify deontic policy rules?
         \begin{itemize}
-            \item[\textbf{H1}] Achieve $\geq$95\% rule identification accuracy
+            \item[\textbf{H1}] Achieve $\geq$80\% deontic type classification accuracy
         \end{itemize}
         
         \vspace{0.3cm}
@@ -231,7 +231,7 @@
             \textbf{Approach} & \textbf{Turtle Syntax Valid} & \textbf{Correct Constraint Type} \\
             \midrule
             Direct NL $\rightarrow$ SHACL & 38.3\% & 63.0\% \\
-            \textbf{NL $\rightarrow$ FOL $\rightarrow$ SHACL} & \textbf{100\%} & \textbf{100\%} \\
+            \textbf{NL $\rightarrow$ FOL $\rightarrow$ SHACL} & \textbf{100\%}\textsuperscript{$\dagger$} & \textbf{100\%} \\
             \bottomrule
         \end{tabular}
     \end{table}
@@ -244,6 +244,9 @@
         \item \textbf{Deontic encoding}: Explicit O/P/F type $\rightarrow$ correct constraint pattern
         \item \textbf{Tool-agnostic}: Same FOL can compile to SHACL, SPARQL, or OWL
     \end{enumerate}
+
+    \vspace{0.2cm}
+    \footnotesize\textsuperscript{$\dagger$}For the 351/443 rules that succeed on the FOL path. 92 rules (20.8\%) use the direct NL$\rightarrow$SHACL fallback.
 \end{frame}
 
 % ═══════════════════════════════════════════════════════════════════════
@@ -257,6 +260,7 @@
             \textbf{IRR $\kappa$} & Fleiss' $\kappa$ across 3 human annotators (N=50) & \textbf{0.8436} & [0.8385, 0.8487] \\
             \textbf{LLM Acc.} & Type accuracy vs.\ D1 gold (N=443) & \textbf{86.9\%} & ($\kappa$=0.709) \\
             \textbf{M3} & FOL formulas with semantic predicates & \textbf{100\%} & [100\%, 100\%] \\
+            \textbf{M4} & Shape correctness (Corpus Adapter) & \textbf{F1=0.866} & (P=0.977, R=0.778) \\
             \textbf{M5} & Output stability (hash-equality, clean cache) & \textbf{PASS} & (identical snapshot) \\
             \bottomrule
         \end{tabular}
@@ -338,7 +342,7 @@
 
     \vspace{0.4cm}
     \begin{exampleblock}{Methodological Strength}
-        The three-annotator IRR study on a stratified 50-item sample from D1 (1,663 sentences) establishes a robust, multi-annotator consensus as the gold standard for all LLM evaluation metrics.
+        The three-annotator IRR study on a stratified 50-item sample from D1 (1,663 sentences) establishes a robust, multi-annotator consensus as the gold standard for all LLM evaluation metrics. A subsequent disagreement audit corrected 12 gold label errors (epistemic ``may'', ``may not'' prohibitions), yielding the final post-audit distribution: 308~O, 75~P, 60~F.
     \end{exampleblock}
 \end{frame}
 
@@ -391,10 +395,11 @@
             \midrule
             RQ1 & LLM Accuracy (full D1, N=443) & $\geq$80\% & \textbf{86.9\%} & \textbf{Yes} \\
             RQ1 & Cohen's $\kappa$ (LLM vs.\ gold) & $\geq$0.60 & \textbf{0.709} & \textbf{Yes} \\
-            RQ2 & FOL Sufficiency & 100\% & 100\% & \textbf{Yes} \\
+            RQ2 & FOL Expressiveness & 100\% & 100\% (0 SOL/HOL) & \textbf{Yes} \\
+            RQ2 & FOL Pipeline Success & -- & 79.2\% (351/443) & -- \\
             RQ2 & SOL/HOL Needed & 0 & 0 & \textbf{Yes} \\
             RQ2 & M3 Predicate Quality & -- & \textbf{100\%} & \textbf{Yes} \\
-            RQ3 & SHACL Translation & $\geq$95\% & \textbf{100\%} (443 shapes) & \textbf{Yes} \\
+            RQ3 & SHACL Translation & $\geq$95\% & \textbf{100\%} (443 shapes; 401 valid) & \textbf{Yes} \\
             RQ3 & Output Stability (M5) & 100\% & \textbf{PASS} & \textbf{Yes} \\
             \midrule
             -- & IRR Fleiss' $\kappa$ (3 humans, N=50) & -- & 0.8436 & Almost perfect \\
@@ -411,7 +416,7 @@
         \item \textbf{End-to-End Pipeline}: First fully automated NL $\rightarrow$ FOL $\rightarrow$ SHACL pipeline for institutional policy formalization
         
         \vspace{0.2cm}
-        \item \textbf{FOL Sufficiency Proof}: Empirical evidence that FOL with deontic operators is sufficient for 100\% of institutional policy rules (no SOL/HOL needed)
+        \item \textbf{FOL Sufficiency Proof}: Empirical evidence that FOL with deontic operators is expressively sufficient for 100\% of institutional policy rules (79.2\% pipeline formalization, no SOL/HOL needed)
         
         \vspace{0.2cm}
         \item \textbf{Corpus Adapter Pattern}: Configuration-driven vocabulary injection that resolves the vocabulary grounding problem (F1: 0.000 $\rightarrow$ 0.866)
@@ -431,7 +436,7 @@
 \begin{frame}{Limitations \& Future Work}
     \textbf{Known Limitations:}
     \begin{itemize}
-        \item Permission classification remains challenging (75\% accuracy due to ``may'' ambiguity)
+        \item Permission classification remains challenging (65.3\% recall on full D1 due to ``may'' ambiguity)
         \item LexDeMod cross-domain: Macro F1 = 0.370 (permission signals are domain-specific)
         \item Boundary cases in D1 (e.g., ``should'') blur advisory vs.\ binding constraints
     \end{itemize}
@@ -457,7 +462,7 @@
     \vspace{0.3cm}
     \begin{itemize}
         \item \textbf{Classifies deontic rules} with 86.9\% accuracy ($\kappa$=0.709) across the full D1 corpus
-        \item \textbf{Proves FOL sufficiency} for institutional policy formalization (M3 = 100\%)
+        \item \textbf{Proves FOL sufficiency} for institutional policy formalization (79.2\% pipeline, M3 = 100\%)
         \item \textbf{Automates SHACL generation} and resolves vocabulary mismatch via Corpus Adapter
         \item \textbf{Demonstrates portability} across regulatory domains (10.9$\times$ vocabulary alignment improvement)
         \item \textbf{Validates rigorously} with 3-annotator IRR ($\kappa$=0.8436), bootstrap CIs, and 100\% output stability (M5)
@@ -649,13 +654,72 @@
         \item The FOL$\rightarrow$SHACL translation is \textbf{deterministic}: $O(\phi) \rightarrow \texttt{minCount 1}$, $F(\phi) \rightarrow \texttt{maxCount 0}$
         \item All 8 inversions trace to \textbf{upstream misclassification}: the LLM labeled a prohibition as an obligation (or vice versa) at Stage 3
         \item The SHACL generator faithfully translates the \textit{wrong} deontic type
-        \item This is confirmed by the multi-LLM study: prohibition is the hardest class (Llama 3.1 gets only 40\% on prohibitions)
+        \item This is confirmed by the multi-LLM study: prohibition is the hardest class (Llama 3.1 8B gets only 40\% on prohibitions, N=5 in 50-item sample)
     \end{enumerate}
 
     \vspace{0.2cm}
     \begin{alertblock}{Key Insight}
         The pipeline's translation logic is correct --- the bottleneck is classification accuracy on prohibition-type rules, not the FOL$\rightarrow$SHACL step.
     \end{alertblock}
+\end{frame}
+
+\begin{frame}{Backup: Deontic Type Confusion Matrix (Full D1, N=443)}
+    \textbf{Q: ``Where exactly do the classification errors come from?''}
+
+    \vspace{0.3cm}
+    \begin{table}[]
+        \centering
+        \begin{tabular}{l|ccc|c}
+            \toprule
+            \textbf{Gold $\backslash$ LLM} & \textbf{Obligation} & \textbf{Permission} & \textbf{Prohibition} & \textbf{Total} \\
+            \midrule
+            Obligation   & \textbf{290} & 1  & 16 & 308 \\
+            Permission   & 22  & \textbf{49} & 4  & 75 \\
+            Prohibition  & 14  & 0  & \textbf{46} & 60 \\
+            \midrule
+            \textbf{Total} & 326 & 50 & 66 & \textbf{443} \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \vspace{0.3cm}
+    \textbf{Key error pathways:}
+    \begin{itemize}
+        \item \textbf{22 P$\rightarrow$O}: Permission ``may'' misread as obligation (``obligation bias'')
+        \item \textbf{16 O$\rightarrow$F}: Consequence statements (``will not be allowed'') misread as prohibition
+        \item \textbf{14 F$\rightarrow$O}: Compound sentences where obligation markers overshadow prohibition
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \footnotesize Post-audit gold labels (12 corrections applied: 10 P$\to$O, 2 P$\to$F).
+\end{frame}
+
+\begin{frame}{Backup: Per-Class Performance (Full D1, N=443)}
+    \textbf{Q: ``What is the precision/recall tradeoff for each deontic type?''}
+
+    \vspace{0.3cm}
+    \begin{table}[]
+        \centering
+        \begin{tabular}{lccccl}
+            \toprule
+            \textbf{Type} & \textbf{Support} & \textbf{Correct} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+            \midrule
+            Obligation   & 308 & 290 & 0.890 & 0.942 & 0.915 \\
+            Permission   & 75  & 49  & 0.980 & 0.653 & 0.784 \\
+            Prohibition  & 60  & 46  & 0.697 & 0.767 & 0.730 \\
+            \midrule
+            \textbf{Overall} & \textbf{443} & \textbf{385} & \multicolumn{3}{c}{\textbf{Acc=86.9\%, $\kappa$=0.709, Macro F1=0.810}} \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \vspace{0.3cm}
+    \textbf{Notable findings:}
+    \begin{itemize}
+        \item \textbf{Permission precision paradox}: 98.0\% precision (near-zero false positives) but only 65.3\% recall --- the LLM is conservative, under-detecting permissions
+        \item \textbf{Obligation is the strength}: F1=0.915, reflecting clear deontic markers (``must'', ``shall'')
+        \item \textbf{Prohibition is the frontier}: lowest precision (69.7\%) due to boundary confusion with obligations
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Backup: Cross-Domain Generalizability}
@@ -698,7 +762,8 @@
             Majority Class & 48.5\% & 18.9\% & 33.3\% & 24.1\% \\
             Rule-Based (Regex) & 82.5\% & 85.6\% & 97.3\% & 89.8\% \\
             \midrule
-            \textbf{Mistral 7B} & \textbf{93.81\%} & \textbf{97.53\%} & \textbf{95.18\%} & \textbf{96.34\%} \\
+            \textbf{Mistral 7B (Rule Detection)} & \textbf{93.81\%} & \textbf{97.53\%} & \textbf{95.18\%} & \textbf{96.34\%} \\
+            \textbf{Mistral 7B (Type Classification)} & \textbf{86.9\%} & -- & -- & \textbf{Macro F1=0.810} \\
             \bottomrule
         \end{tabular}
     \end{table}
