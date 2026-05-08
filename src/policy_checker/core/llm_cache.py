@@ -17,7 +17,6 @@ from pathlib import Path
 from typing import Dict, Optional, Any
 from datetime import datetime
 
-# OLD:
 # (cache_dir computed relative to __file__ inside __init__, broke after restructure)
 from policy_checker import PROJECT_ROOT
 
@@ -34,7 +33,6 @@ class LLMCache:
             max_entries: Maximum number of cached entries (LRU eviction)
         """
         if cache_path is None:
-            # OLD:
             # cache_dir = Path(__file__).parent.parent / "cache"
             cache_dir = PROJECT_ROOT / "cache"
             cache_dir.mkdir(parents=True, exist_ok=True)

@@ -10,7 +10,6 @@ from pathlib import Path
 
 from  policy_checker.langgraph_agent.state import PipelineState
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent.parent
 from policy_checker import PROJECT_ROOT
  

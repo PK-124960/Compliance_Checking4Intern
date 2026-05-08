@@ -22,11 +22,10 @@ import sys
 from pathlib import Path
 from datetime import date
 
-# OLD:
 # PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # sys.path.insert(0, str(PROJECT_ROOT))
 # from db.connection import get_connection
-from policy_checker.db.connection import get_connection
+from policy_checker.database.connection import get_connection
 
 SCHEMA_FILE = Path(__file__).resolve().parent / "schema.sql"
 

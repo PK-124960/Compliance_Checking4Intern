@@ -9,7 +9,6 @@ from pyshacl import validate
 from rdflib import Graph, Namespace, URIRef
 
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent
 from policy_checker import PROJECT_ROOT
  

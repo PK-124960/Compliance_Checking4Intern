@@ -24,7 +24,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent
 # sys.path.insert(0, str(PROJECT_ROOT))
 from policy_checker import PROJECT_ROOT
@@ -235,7 +234,7 @@ async def get_rule_detail(rule_id: str):
 async def db_status():
     """Check if PostgreSQL is reachable and return entity count."""
     try:
-        from db.connection import db_health
+        from policy_checker.database.connection import db_health
         return db_health()
     except Exception as exc:
         return {"ok": False, "error": str(exc)}
@@ -245,7 +244,7 @@ async def db_status():
 async def list_db_entities():
     """List all entities in the database (name, type, property count)."""
     try:
-        from db.rdf_converter import list_entities
+        from policy_checker.database.rdf_converter import list_entities
         entities = list_entities()
         return {"entities": entities, "total": len(entities)}
     except Exception as exc:
@@ -269,7 +268,7 @@ async def load_from_db(request: Request):
         { "turtle": "...", "entity_count": N, "property_count": M }
     """
     try:
-        from db.rdf_converter import convert_db_to_turtle
+        from policy_checker.database.rdf_converter import convert_db_to_turtle
 
         body = await request.json()
         entity_names = body.get("entities", "all")

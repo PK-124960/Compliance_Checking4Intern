@@ -22,7 +22,6 @@ from pathlib import Path
 
 import requests
 
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent
 from policy_checker import PROJECT_ROOT
 

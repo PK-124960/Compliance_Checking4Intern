@@ -9,7 +9,6 @@ from rdflib import Graph, Namespace, RDF, RDFS
 from rdflib.namespace import SH
 
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent
 from policy_checker import PROJECT_ROOT
  

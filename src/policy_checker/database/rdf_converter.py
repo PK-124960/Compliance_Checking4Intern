@@ -16,7 +16,7 @@ Usage (standalone):
     python -m db.rdf_converter Somchai Lin     # specific students
 
 Usage (programmatic):
-    from db.rdf_converter import convert_db_to_turtle
+    from policy_checker.database.rdf_converter import convert_db_to_turtle
     turtle_str = convert_db_to_turtle()
 """
 from __future__ import annotations
@@ -25,7 +25,6 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-# OLD:
 # PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # sys.path.insert(0, str(PROJECT_ROOT))
 # (not needed — package is installed via uv)
@@ -38,7 +37,7 @@ TURTLE_PREFIXES = """\
 @prefix ait:  <http://example.org/ait-policy#> .
 """
 
-HEADER = """"\
+HEADER = """\
 # =================================================================
 # AIT Compliance Data -- Generated from PostgreSQL
 # =================================================================
@@ -330,7 +329,7 @@ def convert_db_to_turtle(
     Returns:
         dict with: turtle, entity_count, property_count
     """
-    from policy_checker.db.connection import get_connection
+    from policy_checker.database.connection import get_connection
 
     with get_connection() as conn:
         student_lines = _build_student_turtle(conn, entity_names)
@@ -364,7 +363,7 @@ def convert_db_to_turtle(
 
 
 def list_entities() -> list[dict]:
-    from policy_checker.db.connection import get_connection
+    from policy_checker.database.connection import get_connection
 
     entities = []
     with get_connection() as conn:

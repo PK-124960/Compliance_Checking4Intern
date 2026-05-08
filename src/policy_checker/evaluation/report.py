@@ -18,7 +18,6 @@ from pathlib import Path
 from typing import List
 
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent
 from policy_checker import PROJECT_ROOT
  

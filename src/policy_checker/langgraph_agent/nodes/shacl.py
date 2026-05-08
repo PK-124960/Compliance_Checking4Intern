@@ -7,7 +7,6 @@ from typing import List
 from policy_checker.langgraph_agent.state import FOLItem, PipelineState, SHACLShape
 from rdflib import Graph, Namespace, RDFS
  
-# OLD:
 # PROJECT_ROOT = Path(__file__).parent.parent.parent
 from policy_checker import PROJECT_ROOT
  
@@ -77,7 +76,6 @@ def _infer_target_class(text: str, fol: FOLItem | None = None) -> str:
         preds = fol.get("predicates") or {}
         if isinstance(preds, dict):
             raw_subj = preds.get("subject") or ""
-            # OLD: subj = (preds.get("subject") or "").strip()
             # LLM sometimes returns subject as a nested dict — guard against that
             subj = raw_subj.strip() if isinstance(raw_subj, str) else ""
             if subj:
