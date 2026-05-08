@@ -30,3 +30,4 @@ graphdb_data/data/
 .idea/
 *.swp
 .DS_Store
+.python-version
