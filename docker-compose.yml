@@ -1,13 +1,13 @@
 services:
   dev:
-    image: ${PROJECT_NAME}:latest
-    container_name: ${PROJECT_NAME}-dev
+    image: compliance-check:latest
+    container_name: compliance-check-dev
     build:
       context: .
       dockerfile: dockerfile
       args:
         - BUILD_VERSION=DEV
-        - WORKDIR=/Projects/${PROJECT_NAME}
+        - WORKDIR=/Projects/compliance-check
     ports:
       - 8000:8000
     env_file:
@@ -18,11 +18,11 @@ services:
       - OLLAMA_HOST=http://ollama:11434
     volumes:
       # Team convention: mount entire project folder
-      - .:/Projects/${PROJECT_NAME}:cached
+      - .:/Projects/compliance-check:cached
       # Team convention: named volumes for caching
-      - venv:/Projects/${PROJECT_NAME}/.venv
-      - python:/Projects/${PROJECT_NAME}/.python
-      - uv_cache:/Projects/${PROJECT_NAME}/.uv_cache
+      - venv:/Projects/compliance-check/.venv
+      - python:/Projects/compliance-check/.python
+      - uv_cache:/Projects/compliance-check/.uv_cache
       # Team convention: forward Docker socket
       - /var/run/docker.sock:/var/run/docker-host.sock
     depends_on:
