@@ -89,6 +89,8 @@ policy rules from PDF documents into validatable SHACL shapes.
 │           └── templates/
 │               └── index.html              # Dashboard UI
 │
+├── .gitignore                              # Files that git should never track
+├── .gitattribute                           # Enforce LF line endings for shell scripts across all OS
 ├── dev-setup.sh                            # One-time setup script
 ├── docker-compose.yml                      # Dev + PostgreSQL services
 ├── dockerfile                              # Dev container image
@@ -308,6 +310,7 @@ Download and install from [ollama.com/download](https://ollama.com/download).
 Pull the model (one-time, ~4GB):
 ```bash
 ollama pull mistral
+ollaa serve
 ```
 
 ### Step 2 — Clone the repo
@@ -333,24 +336,16 @@ OLLAMA_MODEL=mistral                  # must match what you pulled
 OLLAMA_SEED=42                        # fixed seed for reproducibility
 PIPELINE_VERSION=2.1-hints            # bump to invalidate LLM cache after prompt changes
  
-# PostgreSQL runs as a Docker service named "postgres"
-POSTGRES_HOST=postgres
-```
- 
-To clear the LLM cache after changing prompts:
-```bash
-# Option A — bump PIPELINE_VERSION in .env
-# Option B — delete cache file:
-rm data/cache/llm_cache.db
+POSTGRES_HOST=host.docker.internal
 ```
  
 ### Step 4 — Open in Dev Container
  
 1. Open VS Code
 2. `File → Open Folder` → select the project folder
-3. VS Code shows: *"Folder contains a Dev Container config"*
-4. Click **Reopen in Container**
-5. Wait for container to build (~2–3 minutes on first run)
+3. `Ctrl + Shift + P` → select rebuild and reopen in container
+4. Select docker outside docker
+
 ### Step 5 — Run dev-setup.sh
  
 Inside the VS Code terminal (you are now inside the container):
@@ -360,27 +355,10 @@ bash dev-setup.sh
 ```
  
 This will:
-- Fix volume permissions
 - Load `.env`
-- Install Python and all dependencies via `uv sync`
-- Install CLI tab completion
-### Step 6 — Verify everything works
+- Install uv and Python and all dependencies via `uv sync`
  
-```bash
-# Ollama reachable from container
-curl http://host.docker.internal:11434
-# → Ollama is running ✓
- 
-# Environment variable is correct
-echo $OLLAMA_HOST
-# → http://host.docker.internal:11434 ✓
- 
-# Package imports work
-uv run python -c "from policy_checker import PROJECT_ROOT; print(PROJECT_ROOT)"
-# → /Projects/compliance-checker ✓
-```
- 
-### Step 7 — Run the pipeline
+### Step 6 — Run the pipeline
  
 ```bash
 uv run policy-checker --source ait --verbose
