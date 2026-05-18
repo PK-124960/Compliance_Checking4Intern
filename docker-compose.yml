@@ -1,98 +1,54 @@
-# =============================================================================
-# PolicyChecker — Docker Compose
-# =============================================================================
-# Spins up PostgreSQL + the PolicyChecker web dashboard.
-# GraphDB and Ollama are included as optional services.
-#
-# Quick start:
-#   docker compose up -d postgres       # just the database
-#   docker compose up -d                # everything
-#   docker compose exec app python -m db.seed  # seed demo data
-#
-# =============================================================================
-
 services:
-
-  # ── PostgreSQL ──────────────────────────────────────────────────────────
-  postgres:
-    image: postgres:16-alpine
-    container_name: policychecker-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ait_database}
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mysecretpassword}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-ait_database}"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
-
-  # ── PolicyChecker Web App ───────────────────────────────────────────────
-  app:
+  dev:
+    image: compliance-checker:latest
+    container_name: compliance-checker-dev
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: policychecker-app
-    restart: unless-stopped
+      dockerfile: dockerfile
+      args:
+        - BUILD_VERSION=DEV
+        - WORKDIR=/Projects/compliance-checker
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      # Override to use service names instead of localhost
+      - POSTGRES_HOST=postgres
+    volumes:
+      # Team convention: mount entire project folder
+      - .:/Projects/compliance-checker:cached
+      # Team convention: named volumes for caching
+      - venv:/Projects/compliance-checker/.venv
+      - python:/Projects/compliance-checker/.python
+      - uv_cache:/Projects/compliance-checker/.uv_cache
+      # Team convention: forward Docker socket
+      - /var/run/docker.sock:/var/run/docker-host.sock
     depends_on:
       postgres:
         condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
     environment:
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
       POSTGRES_DB: ${POSTGRES_DB:-ait_database}
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mysecretpassword}
-      OLLAMA_HOST: ${OLLAMA_HOST:-http://host.docker.internal:11434}
-      OLLAMA_MODEL: ${OLLAMA_MODEL:-mistral}
-      OLLAMA_SECOND_MODEL: ${OLLAMA_SECOND_MODEL:-mistral}
-      OLLAMA_SEED: ${OLLAMA_SEED:-42}
-      PIPELINE_VERSION: ${PIPELINE_VERSION:-2.1-hints}
-    ports:
-      - "8000:8000"
+      POSTGRES_USER: ${POSTGRES_USER:-myuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
     volumes:
-      - ./output:/app/output
-      - ./cache:/app/cache
-      - ./institutional_policy:/app/institutional_policy
-
-  # ── GraphDB (optional — for RDF triple store) ──────────────────────────
-  graphdb:
-    image: ontotext/graphdb:10.6.0
-    container_name: policychecker-graphdb
-    restart: unless-stopped
+      - postgres_data:/var/lib/postgresql/data
+      # Auto-run schema on first start
+      - ./src/policy_checker/database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-myuser}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     ports:
-      - "7200:7200"
-    volumes:
-      - graphdb_data:/opt/graphdb/home
-    profiles:
-      - graphdb
-
-  # ── Ollama (optional — for local LLM inference) ────────────────────────
-  ollama:
-    image: ollama/ollama:latest
-    container_name: policychecker-ollama
-    restart: unless-stopped
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    profiles:
-      - ollama
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+      - "5432:5432"
 
 volumes:
-  pgdata:
-  graphdb_data:
+  venv:           # team convention: cache .venv
+  python:         # team convention: cache uv-managed Python
+  uv_cache:       # team convention: cache uv download cache
+  postgres_data:
   ollama_data:
