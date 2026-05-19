@@ -43,11 +43,11 @@ Running the pipeline on the Asian Institute of Technology policy corpus
 | Sentences extracted | 1,663 |
 | Candidates after prefilter | 461 |
 | Rules classified (confident) | 443 |
-| FOL formulas generated | 353 (79.7% parse success) |
-| FOL formulas failed | 90 (routed to NL fallback) |
+| FOL formulas generated | 351 (79.2% parse success) |
+| FOL formulas failed | 92 (routed to NL fallback) |
 | SHACL shapes produced | 443 (401 syntactically valid, 90.5%) |
-| — FOL-mediated | 353 |
-| — Direct NL fallback | 90 |
+| — FOL-mediated | 351 |
+| — Direct NL fallback | 92 |
 | Rule-type distribution | 326 obligations · 66 prohibitions · 50 permissions · 1 exemption |
 | Validation violations | 11,522 |
 | Pipeline errors | 14 (12 override-relation + 2 sanitization warnings) |
@@ -165,10 +165,11 @@ Automatate_Compliance_Checking-v2/
 │   ├── ontology/             # Domain ontology (Person, Student, Faculty, …)
 │   └── test_data/            # 180 Pos/Neg test entities per rule
 ├── output/                   # Pipeline reports & intermediate artifacts
-├── web/                     # Compliance Dashboard (FastAPI + HTML)
-│   ├── app.py                # FastAPI backend with pyshacl validation
-│   ├── templates/index.html  # Dashboard UI
-│   └── static/               # CSS + JS
+├── web/                     # Compliance Dashboard (FastAPI + Vite/React)
+│   ├── app.py                # FastAPI backend (CORS, data endpoints)
+│   └── frontend/             # Vite + React 19 frontend
+│       ├── src/              # React components & pages
+│       └── dist/             # Built assets (served by FastAPI in production)
 ├── tests/                    # Pytest suite (121 tests)
 │   ├── test_prefilter.py     # Core prefilter unit tests
 │   ├── test_shacl_shapes.py  # Gold-standard SHACL shape validation
@@ -249,13 +250,21 @@ in real-time.
 ### Running the demo
 
 ```bash
-# Option 1: Docker (recommended — starts Postgres + App together)
+# Option 1: Docker (recommended — starts Postgres + App + built frontend together)
 docker compose up -d
 # Open http://localhost:8000
 
-# Option 2: Local (requires Postgres already running)
-pip install fastapi uvicorn jinja2 python-multipart
-python web/app.py
+# Option 2: Local development (requires Postgres already running)
+
+# Backend (FastAPI)
+pip install fastapi uvicorn python-multipart
+uvicorn web.app:app --reload --port 8000
+
+# Frontend (Vite dev server — in a separate terminal)
+cd web/frontend
+npm install
+npm run dev
+# Open http://localhost:5173
 ```
 
 ### Features
